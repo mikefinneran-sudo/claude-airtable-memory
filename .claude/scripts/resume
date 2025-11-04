@@ -1,0 +1,4 @@
+#!/bin/bash
+# Simple wrapper for resume-work.sh
+# Just type: resume
+~/.claude/scripts/resume-work.sh "$@"

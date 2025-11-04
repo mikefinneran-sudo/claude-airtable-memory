@@ -1,0 +1,74 @@
+# Sensitive Files
+.ssh/
+.aws/
+.gmail-mcp/
+.lifehub-notion-token
+**/credentials.json
+**/*password*
+**/*secret*
+**/*token*
+!.claude/**/*.md
+!.zshrc
+
+# Logs
+*.log
+.claude/logs/
+
+# Node Modules & Dependencies
+**/node_modules/
+**/package-lock.json
+**/*.tar.gz
+**/*.zip
+
+# Large Directories
+Applications/
+Desktop/
+Documents/
+Downloads/
+Library/
+Movies/
+Music/
+Pictures/
+Public/
+Sites/
+Dropbox/
+*Google Drive*
+
+# OS Files
+.DS_Store
+.Trash/
+.cache/
+.thumbnails/
+
+# IDE & Tools
+.cursor/
+.windsurf/
+.warp/
+.warp.backup.*/
+.codeium/
+.obsidian/
+.config/gh/
+.config/1Password/
+
+# Temp & Build
+.cups/
+.local/
+.npm/
+.rustup/
+.ollama/
+.railway/
+.dropbox/
+.lesshst
+.bash_history
+.zsh_history
+.zsh_sessions/
+.viminfo
+.iterm2_shell_integration.zsh
+
+# Specific Files
+.CFUserTextEncoding
+.gitconfig
+.zprofile
+.bash_profile*
+*.pdf
+*.NDA*
