@@ -49,6 +49,20 @@ alias vscreenshot='~/Documents/ObsidianVault/.scripts/daily-screenshot.sh'
 alias vgit='cd ~/Documents/ObsidianVault && git status'
 alias vpush='cd ~/Documents/ObsidianVault && git add . && git commit -m "Updates $(date +%Y-%m-%d)" && git push'
 
+# DGX Ollama - Use models from DGX Spark storage
+export OLLAMA_HOST=http://192.168.68.88:11434
+
+# AI Model Aliases (all run on DGX with GPU)
+alias ai-code='ollama run qwen2.5-coder:7b'
+alias ai-chat='ollama run llama3.1:8b'
+alias ai-quick='ollama run llama3.2:1b'
+alias ai-vision='ollama run llava:13b'
+alias ai-reason='ollama run qwen2.5:14b'
+alias ai-beast='ollama run llama3.1:70b'
+alias ai-deepseek='ollama run deepseek-r1:70b'
+alias ai-list='ollama list'
+alias ai-dgx='ssh mikefinneran@192.168.68.88'
+
 
 # Airtable Sync
 alias airtable-sync='python3 ~/Documents/ObsidianVault/airtable-sync.py'
@@ -75,3 +89,15 @@ export S3_BACKUP_BUCKET="mikefinneran-personal"
 alias github-sync='python3 ~/.claude/scripts/github-airtable-sync.py'
 alias github-sync-logs='ls -lt ~/.claude/logs/github-airtable-sync_*.log | head -1 | awk "{print \$NF}" | xargs cat'
 alias github-sync-status='launchctl list | grep github-airtable-sync'
+alias organize-research='python3 ~/crewai-specialists/crews/research_organizer/auto_organize_research.py'
+
+# DGX Research Organization
+alias dgx-organize='ssh mikefinneran@192.168.68.88 "python3 ~/research-archive/dgx_organize_research.py"'
+alias research-download='scp mikefinneran@192.168.68.88:~/research-archive/organized-outputs/*.md ~/Downloads/'
+alias research-upload='function _upload() { scp "$1" mikefinneran@192.168.68.88:~/research-archive/downloads/; }; _upload'
+alias research-status='ssh mikefinneran@192.168.68.88 "echo \"DGX Research Archive:\" && du -sh ~/research-archive/* && echo && echo \"File counts:\" && echo \"  Downloads: \$(ls ~/research-archive/downloads/*.md 2>/dev/null | wc -l) files\" && echo \"  Outputs: \$(ls ~/research-archive/organized-outputs/*.md 2>/dev/null | wc -l) documents\""'
+
+# Puppeteer Cleanup (prevent session crashes)
+alias kill-puppeteer='pkill -f "mcp-server-puppeteer" && pkill -f "Google Chrome for Testing" && echo "Killed all Puppeteer processes"'
+
+source ~/.claude/scripts/iterm-aliases.sh
