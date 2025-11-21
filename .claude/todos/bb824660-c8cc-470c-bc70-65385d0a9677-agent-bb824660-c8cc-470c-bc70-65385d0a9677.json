@@ -1,0 +1,27 @@
+[
+  {
+    "content": "Check if Warp is already installed",
+    "status": "completed",
+    "activeForm": "Checking if Warp is already installed"
+  },
+  {
+    "content": "Install Warp if needed",
+    "status": "completed",
+    "activeForm": "Installing Warp"
+  },
+  {
+    "content": "Configure Warp AI with Claude models",
+    "status": "in_progress",
+    "activeForm": "Configuring Warp AI with Claude models"
+  },
+  {
+    "content": "Set up Warp preferences and settings",
+    "status": "pending",
+    "activeForm": "Setting up Warp preferences and settings"
+  },
+  {
+    "content": "Test Warp AI functionality",
+    "status": "pending",
+    "activeForm": "Testing Warp AI functionality"
+  }
+]

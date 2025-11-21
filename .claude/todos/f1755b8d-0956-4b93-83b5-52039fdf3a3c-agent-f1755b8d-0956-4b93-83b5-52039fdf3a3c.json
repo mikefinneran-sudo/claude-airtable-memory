@@ -1,0 +1,37 @@
+[
+  {
+    "content": "Launch AWS Lightsail instance",
+    "status": "completed",
+    "activeForm": "Launching AWS Lightsail instance"
+  },
+  {
+    "content": "Configure DNS for waltersignal.io",
+    "status": "in_progress",
+    "activeForm": "Configuring DNS for waltersignal.io"
+  },
+  {
+    "content": "Setup Ubuntu server",
+    "status": "completed",
+    "activeForm": "Setting up Ubuntu server"
+  },
+  {
+    "content": "Deploy Command Center ERP",
+    "status": "completed",
+    "activeForm": "Deploying Command Center ERP"
+  },
+  {
+    "content": "Configure Nginx reverse proxy",
+    "status": "completed",
+    "activeForm": "Configuring Nginx reverse proxy"
+  },
+  {
+    "content": "Configure SSL with Let's Encrypt",
+    "status": "pending",
+    "activeForm": "Configuring SSL with Let's Encrypt"
+  },
+  {
+    "content": "Verify deployment health",
+    "status": "pending",
+    "activeForm": "Verifying deployment health"
+  }
+]

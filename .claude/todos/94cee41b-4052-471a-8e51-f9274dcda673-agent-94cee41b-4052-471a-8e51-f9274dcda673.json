@@ -1,0 +1,22 @@
+[
+  {
+    "content": "Review UPWORK-TARGET-JOBS.md and select top 3 jobs",
+    "status": "in_progress",
+    "activeForm": "Reviewing UPWORK-TARGET-JOBS.md and selecting top 3 jobs"
+  },
+  {
+    "content": "Customize proposals for selected jobs",
+    "status": "pending",
+    "activeForm": "Customizing proposals for selected jobs"
+  },
+  {
+    "content": "Apply to first 3 jobs on Upwork",
+    "status": "pending",
+    "activeForm": "Applying to first 3 jobs on Upwork"
+  },
+  {
+    "content": "Track application responses",
+    "status": "pending",
+    "activeForm": "Tracking application responses"
+  }
+]

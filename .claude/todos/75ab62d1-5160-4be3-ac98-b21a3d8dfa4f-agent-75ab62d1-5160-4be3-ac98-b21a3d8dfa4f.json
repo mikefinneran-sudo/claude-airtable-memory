@@ -1,0 +1,17 @@
+[
+  {
+    "content": "Fix 1Password persistent authentication",
+    "status": "completed",
+    "activeForm": "Fixing 1Password persistent authentication"
+  },
+  {
+    "content": "Test authentication persists across commands",
+    "status": "completed",
+    "activeForm": "Testing authentication persists across commands"
+  },
+  {
+    "content": "Run prepare_1password.sh script successfully",
+    "status": "in_progress",
+    "activeForm": "Running prepare_1password.sh script successfully"
+  }
+]

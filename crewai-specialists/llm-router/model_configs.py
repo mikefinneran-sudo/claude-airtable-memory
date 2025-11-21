@@ -1,19 +1,29 @@
 """
 LLM Model Configurations for CrewAI Intelligent Router
-All models run on DGX Spark @ 192.168.68.88:11434
+Hybrid approach: 20 Local Models (DGX Spark) + 5 Commercial Models (API)
 """
 
 from crewai import LLM
+import os
 
 # Base URL for all DGX Ollama models
-OLLAMA_BASE_URL = "http://192.168.68.88:11434"
+OLLAMA_BASE_URL = "http://192.168.68.62:11434"
 
-# Router Model (Mission Control) - llama3.2:1b
-# Ultra-fast classification agent (1.3GB, optimized for speed)
+# Router Model (Mission Control) - GPT-4o-mini (Commercial)
+# Switched from llama3.2:1b for reliable tool calling and classification
+ROUTER_LLM_CONFIG = {
+    "provider": "openai",
+    "model": "gpt-4o-mini",
+    "temperature": 0.1,  # Low temp for consistent routing
+    "cost_per_1m_in": 0.15,
+    "cost_per_1m_out": 0.60
+}
+
+# Create router LLM instance
 ROUTER_LLM = LLM(
-    model="ollama/llama3.2:1b",
-    base_url=OLLAMA_BASE_URL,
-    temperature=0.1  # Low temp for consistent routing decisions
+    model=f"openai/{ROUTER_LLM_CONFIG['model']}",
+    api_key=os.getenv("OPENAI_API_KEY"),
+    temperature=ROUTER_LLM_CONFIG["temperature"]
 )
 
 # Model Inventory - All 20 models on DGX Spark
@@ -229,10 +239,103 @@ MODELS = {
         "capabilities": ["text_embeddings", "vector_search", "similarity"],
         "when_to_use": "Text embeddings for RAG, vector search, semantic similarity",
         "speed": "ultra_fast",
-        "quality": "specialized"
+        "quality": "specialized",
+        "provider": "ollama"
     },
 
+    # ==============================================================================
+    # COMMERCIAL MODELS (API-based, paid per use)
+    # ==============================================================================
+
+    "claude-sonnet-3.7": {
+        "llm": LLM(
+            model="anthropic/claude-3-7-sonnet-20250219",
+            api_key=os.getenv("ANTHROPIC_API_KEY")
+        ),
+        "provider": "anthropic",
+        "model_id": "claude-3-7-sonnet-20250219",
+        "specialization": "max_quality_reasoning",
+        "capabilities": ["reasoning", "coding", "analysis", "long_context"],
+        "when_to_use": "Critical tasks requiring best possible reasoning, coding, or analysis",
+        "speed": "medium",
+        "quality": "absolute_best",
+        "cost_per_1m_in": 3.0,
+        "cost_per_1m_out": 15.0,
+        "context_window": 200000
+    },
+
+    "gpt-4o": {
+        "llm": LLM(
+            model="openai/gpt-4o",
+            api_key=os.getenv("OPENAI_API_KEY")
+        ),
+        "provider": "openai",
+        "model_id": "gpt-4o",
+        "specialization": "max_quality_multimodal",
+        "capabilities": ["multimodal", "vision", "reasoning", "general_purpose"],
+        "when_to_use": "Best general intelligence, multimodal tasks, complex analysis",
+        "speed": "medium",
+        "quality": "absolute_best",
+        "cost_per_1m_in": 2.5,
+        "cost_per_1m_out": 10.0,
+        "context_window": 128000
+    },
+
+    "gpt-4o-mini": {
+        "llm": LLM(
+            model="openai/gpt-4o-mini",
+            api_key=os.getenv("OPENAI_API_KEY")
+        ),
+        "provider": "openai",
+        "model_id": "gpt-4o-mini",
+        "specialization": "fast_commercial",
+        "capabilities": ["general_purpose", "fast", "cost_effective"],
+        "when_to_use": "Fast commercial tasks when local models insufficient",
+        "speed": "fast",
+        "quality": "high",
+        "cost_per_1m_in": 0.15,
+        "cost_per_1m_out": 0.60,
+        "context_window": 128000
+    },
+
+    "claude-haiku-3.5": {
+        "llm": LLM(
+            model="anthropic/claude-3-5-haiku-20241022",
+            api_key=os.getenv("ANTHROPIC_API_KEY")
+        ),
+        "provider": "anthropic",
+        "model_id": "claude-3-5-haiku-20241022",
+        "specialization": "ultra_fast_commercial",
+        "capabilities": ["ultra_fast", "general_purpose", "cost_effective"],
+        "when_to_use": "Ultra-fast commercial responses when local insufficient",
+        "speed": "ultra_fast",
+        "quality": "high",
+        "cost_per_1m_in": 0.25,
+        "cost_per_1m_out": 1.25,
+        "context_window": 200000
+    },
+
+    "gemini-2.0-flash": {
+        "llm": LLM(
+            model="google/gemini-2.0-flash-thinking-exp",
+            api_key=os.getenv("GOOGLE_API_KEY")
+        ),
+        "provider": "google",
+        "model_id": "gemini-2.0-flash-thinking-exp",
+        "specialization": "multimodal_grounded",
+        "capabilities": ["multimodal", "vision", "grounding", "web_search", "thinking"],
+        "when_to_use": "Multimodal tasks requiring web grounding or real-time information",
+        "speed": "fast",
+        "quality": "high",
+        "cost_per_1m_in": 0.075,
+        "cost_per_1m_out": 0.30,
+        "context_window": 1000000
+    },
+
+    # ==============================================================================
     # DEPRECATED - Do not use
+    # ==============================================================================
+
     "llama3:70b": {
         "llm": LLM(model="ollama/llama3:70b", base_url=OLLAMA_BASE_URL),
         "size_gb": 39,
@@ -246,8 +349,9 @@ MODELS = {
     }
 }
 
-# Routing Categories (from research document)
+# Routing Categories (Hybrid: Local + Commercial)
 ROUTING_CATEGORIES = {
+    # Local Models (Free) - Prefer these when possible
     "max_vision": "llama3.2-vision:90b",
     "fast_vision": "llava:13b",
     "max_reasoning": "deepseek-r1:70b",
@@ -261,11 +365,17 @@ ROUTING_CATEGORIES = {
     "simple_chat": "mistral:7b",
     "instruction_following": "nous-hermes2",
     "long_context": "llama3.1:70b",
-    "max_quality_general": "qwen2.5:72b",
     "default_general": "mixtral:8x7b",
     "efficient_general": "gemma2:9b",
     "korean_multilingual": "solar",
-    "embeddings": "nomic-embed-text"
+    "embeddings": "nomic-embed-text",
+
+    # Commercial Models (Paid) - Use when local insufficient
+    "max_quality_reasoning": "claude-sonnet-3.7",        # Best reasoning/coding
+    "max_quality_multimodal": "gpt-4o",                  # Best multimodal
+    "fast_commercial": "gpt-4o-mini",                    # Fast + cheap
+    "ultra_fast_commercial": "claude-haiku-3.5",         # Ultra-fast
+    "multimodal_grounded": "gemini-2.0-flash"            # Multimodal + web grounding
 }
 
 def get_model_by_category(category: str) -> dict:
@@ -278,3 +388,15 @@ def get_model_by_category(category: str) -> dict:
 def get_all_active_models() -> dict:
     """Get all non-deprecated models"""
     return {k: v for k, v in MODELS.items() if not v.get("deprecated", False)}
+
+def is_local_model(model_name: str) -> bool:
+    """Check if model is local (Ollama) or commercial (API)"""
+    model = MODELS.get(model_name)
+    if not model:
+        return False
+    return model.get("provider", "ollama") == "ollama"
+
+def get_commercial_models() -> dict:
+    """Get all commercial (paid API) models"""
+    return {k: v for k, v in MODELS.items()
+            if v.get("provider") not in ["ollama", None] and not v.get("deprecated", False)}

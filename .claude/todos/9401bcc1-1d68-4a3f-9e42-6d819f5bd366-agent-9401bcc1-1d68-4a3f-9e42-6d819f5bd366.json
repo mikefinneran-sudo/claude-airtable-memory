@@ -1,0 +1,27 @@
+[
+  {
+    "content": "Research Clay API v2 email enrichment endpoint",
+    "status": "pending",
+    "activeForm": "Researching Clay API v2 email enrichment endpoint"
+  },
+  {
+    "content": "Set up Zapier → Clay → Airtable workflow",
+    "status": "pending",
+    "activeForm": "Setting up Zapier → Clay → Airtable workflow"
+  },
+  {
+    "content": "Test Zapier on 1 prospect",
+    "status": "pending",
+    "activeForm": "Testing Zapier on 1 prospect"
+  },
+  {
+    "content": "Run Zapier on all 226 prospects",
+    "status": "pending",
+    "activeForm": "Running Zapier on all 226 prospects"
+  },
+  {
+    "content": "Verify enrichment results in Airtable",
+    "status": "pending",
+    "activeForm": "Verifying enrichment results in Airtable"
+  }
+]

@@ -1,0 +1,27 @@
+[
+  {
+    "content": "Deploy Ollama on DGX Spark with 70B model",
+    "status": "in_progress",
+    "activeForm": "Deploying Ollama on DGX Spark with 70B model"
+  },
+  {
+    "content": "Configure Ollama for production use",
+    "status": "pending",
+    "activeForm": "Configuring Ollama for production use"
+  },
+  {
+    "content": "Migrate CrewAI to use Ollama on DGX",
+    "status": "pending",
+    "activeForm": "Migrating CrewAI to use Ollama on DGX"
+  },
+  {
+    "content": "Test and benchmark CrewAI with Ollama",
+    "status": "pending",
+    "activeForm": "Testing and benchmarking CrewAI with Ollama"
+  },
+  {
+    "content": "Document NIM migration path for later",
+    "status": "pending",
+    "activeForm": "Documenting NIM migration path for later"
+  }
+]

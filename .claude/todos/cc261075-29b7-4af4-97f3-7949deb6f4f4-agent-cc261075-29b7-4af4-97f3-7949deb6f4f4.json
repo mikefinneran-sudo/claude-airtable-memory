@@ -1,0 +1,32 @@
+[
+  {
+    "content": "Create Airtable base manually",
+    "status": "completed",
+    "activeForm": "Created Airtable base"
+  },
+  {
+    "content": "Get Base ID from user",
+    "status": "completed",
+    "activeForm": "Got Base ID"
+  },
+  {
+    "content": "Run dry run migration test",
+    "status": "completed",
+    "activeForm": "Completed dry run"
+  },
+  {
+    "content": "Fix table name and add fields",
+    "status": "completed",
+    "activeForm": "Fixed table structure"
+  },
+  {
+    "content": "Execute full migration of 8,361 contacts",
+    "status": "in_progress",
+    "activeForm": "Migrating 8,361 contacts to Airtable"
+  },
+  {
+    "content": "Verify migration and create views",
+    "status": "pending",
+    "activeForm": "Verifying migration and creating views"
+  }
+]

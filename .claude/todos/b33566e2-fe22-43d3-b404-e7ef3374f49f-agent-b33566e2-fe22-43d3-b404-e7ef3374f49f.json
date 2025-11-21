@@ -1,0 +1,22 @@
+[
+  {
+    "content": "Training completed - Anthropic courses mastered",
+    "status": "completed",
+    "activeForm": "Training completed - Anthropic courses mastered"
+  },
+  {
+    "content": "ObsidianVault MCP server built and deployed",
+    "status": "completed",
+    "activeForm": "ObsidianVault MCP server built and deployed"
+  },
+  {
+    "content": "MCP server configured in Claude Code",
+    "status": "completed",
+    "activeForm": "MCP server configured in Claude Code"
+  },
+  {
+    "content": "Test server in new Claude Code session",
+    "status": "pending",
+    "activeForm": "Testing server in new Claude Code session"
+  }
+]

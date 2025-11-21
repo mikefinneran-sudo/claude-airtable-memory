@@ -1,0 +1,17 @@
+[
+  {
+    "content": "Create test CrewAI project to demonstrate capabilities",
+    "status": "in_progress",
+    "activeForm": "Creating test CrewAI project"
+  },
+  {
+    "content": "Write test project CrewAI configuration",
+    "status": "pending",
+    "activeForm": "Writing test project configuration"
+  },
+  {
+    "content": "Create setup guide for test execution",
+    "status": "pending",
+    "activeForm": "Creating setup guide"
+  }
+]

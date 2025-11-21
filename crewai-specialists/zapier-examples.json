@@ -1,0 +1,176 @@
+{
+  "examples": [
+    {
+      "name": "Lead Enrichment from Google Sheets",
+      "description": "Automatically enrich new leads added to Google Sheets",
+      "trigger": {
+        "app": "Google Sheets",
+        "event": "New Spreadsheet Row"
+      },
+      "action": {
+        "app": "Webhooks by Zapier",
+        "event": "POST",
+        "url": "http://192.168.68.88:8001/webhook/lead-enrichment",
+        "headers": {
+          "Content-Type": "application/json",
+          "X-API-Key": "waltersignal-dev-key-12345"
+        },
+        "data": {
+          "company_name": "{{trigger.company_name}}",
+          "website": "{{trigger.website}}",
+          "industry": "{{trigger.industry}}",
+          "fields_to_enrich": ["company_info", "decision_makers", "pain_points", "tech_stack"]
+        }
+      },
+      "output_action": {
+        "app": "Google Sheets",
+        "event": "Update Spreadsheet Row",
+        "fields_to_update": {
+          "enriched_data": "{{webhook.result}}",
+          "status": "Enriched",
+          "last_updated": "{{timestamp}}"
+        }
+      }
+    },
+    {
+      "name": "Content Research from Trello",
+      "description": "Research topics when cards are added to Trello board",
+      "trigger": {
+        "app": "Trello",
+        "event": "New Card",
+        "board": "Content Ideas"
+      },
+      "action": {
+        "app": "Webhooks by Zapier",
+        "event": "POST",
+        "url": "http://192.168.68.88:8001/webhook/research",
+        "headers": {
+          "Content-Type": "application/json",
+          "X-API-Key": "waltersignal-dev-key-12345"
+        },
+        "data": {
+          "topic": "{{trigger.card_name}}",
+          "depth": "deep",
+          "output_format": "markdown"
+        }
+      },
+      "output_action": {
+        "app": "Trello",
+        "event": "Create Comment on Card",
+        "comment": "Research Results:\n\n{{webhook.result.summary}}\n\nFull report: {{webhook.result.output_file}}"
+      }
+    },
+    {
+      "name": "Client Onboarding Research",
+      "description": "Research new client's industry when they sign up",
+      "trigger": {
+        "app": "Stripe",
+        "event": "New Customer"
+      },
+      "action": {
+        "app": "Webhooks by Zapier",
+        "event": "POST",
+        "url": "http://192.168.68.88:8001/webhook/research",
+        "headers": {
+          "Content-Type": "application/json",
+          "X-API-Key": "waltersignal-dev-key-12345"
+        },
+        "data": {
+          "topic": "Industry analysis for {{trigger.customer_description}}",
+          "depth": "deep",
+          "output_format": "markdown"
+        }
+      },
+      "output_action": {
+        "app": "Gmail",
+        "event": "Send Email",
+        "to": "{{trigger.customer_email}}",
+        "subject": "Welcome! Industry Research for {{trigger.customer_name}}",
+        "body": "Hi {{trigger.customer_name}},\n\nWelcome to WalterSignal! Here's custom research about your industry:\n\n{{webhook.result.summary}}\n\nBest regards,\nWalterSignal Team"
+      }
+    },
+    {
+      "name": "Airtable Lead Enrichment",
+      "description": "Enrich leads from Airtable CRM",
+      "trigger": {
+        "app": "Airtable",
+        "event": "New Record",
+        "base": "Your CRM Base",
+        "table": "Leads"
+      },
+      "action": {
+        "app": "Webhooks by Zapier",
+        "event": "POST",
+        "url": "http://192.168.68.88:8001/webhook/lead-enrichment",
+        "headers": {
+          "Content-Type": "application/json",
+          "X-API-Key": "waltersignal-dev-key-12345"
+        },
+        "data": {
+          "company_name": "{{trigger.company_name}}",
+          "website": "{{trigger.website}}",
+          "industry": "{{trigger.industry}}"
+        }
+      },
+      "output_action": {
+        "app": "Airtable",
+        "event": "Update Record",
+        "fields": {
+          "Company Info": "{{webhook.result.enriched_fields.company_info}}",
+          "Decision Makers": "{{webhook.result.enriched_fields.decision_makers}}",
+          "Pain Points": "{{webhook.result.enriched_fields.pain_points}}",
+          "Tech Stack": "{{webhook.result.enriched_fields.tech_stack}}",
+          "Enrichment Status": "Complete",
+          "Last Enriched": "{{timestamp}}"
+        }
+      }
+    },
+    {
+      "name": "Daily Competitive Intelligence",
+      "description": "Monitor competitors daily and report to Slack",
+      "trigger": {
+        "app": "Schedule by Zapier",
+        "event": "Every Day",
+        "time": "09:00 AM"
+      },
+      "action": {
+        "app": "Webhooks by Zapier",
+        "event": "POST",
+        "url": "http://192.168.68.88:8001/webhook/research",
+        "headers": {
+          "Content-Type": "application/json",
+          "X-API-Key": "waltersignal-dev-key-12345"
+        },
+        "data": {
+          "topic": "Competitor analysis: [List of competitors]",
+          "depth": "standard",
+          "output_format": "markdown"
+        }
+      },
+      "output_action": {
+        "app": "Slack",
+        "event": "Send Channel Message",
+        "channel": "#competitive-intel",
+        "message": "📊 Daily Competitive Intelligence Report\n\n{{webhook.result.summary}}"
+      }
+    }
+  ],
+  "curl_examples": [
+    {
+      "name": "Test Lead Enrichment",
+      "command": "curl -X POST http://192.168.68.88:8001/webhook/lead-enrichment -H 'Content-Type: application/json' -H 'X-API-Key: waltersignal-dev-key-12345' -d '{\"company_name\": \"Acme Corp\", \"website\": \"https://acme.com\", \"industry\": \"Manufacturing\"}'"
+    },
+    {
+      "name": "Test Research",
+      "command": "curl -X POST http://192.168.68.88:8001/webhook/research -H 'Content-Type: application/json' -H 'X-API-Key: waltersignal-dev-key-12345' -d '{\"topic\": \"AI consulting market\", \"depth\": \"standard\"}'"
+    },
+    {
+      "name": "Test Design",
+      "command": "curl -X POST http://192.168.68.88:8001/webhook/design -H 'Content-Type: application/json' -H 'X-API-Key: waltersignal-dev-key-12345' -d '{\"task_type\": \"logo\", \"company_name\": \"TechCorp\", \"description\": \"Modern minimalist logo\"}'"
+    },
+    {
+      "name": "Health Check",
+      "command": "curl http://192.168.68.88:8001/health"
+    }
+  ]
+}

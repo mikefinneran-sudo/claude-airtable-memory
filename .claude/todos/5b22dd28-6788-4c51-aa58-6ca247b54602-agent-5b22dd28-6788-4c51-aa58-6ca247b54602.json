@@ -1,0 +1,67 @@
+[
+  {
+    "content": "CTO: Review API provider options and select elite stack",
+    "status": "completed",
+    "activeForm": "Reviewing API providers"
+  },
+  {
+    "content": "LLM SME: Research Adobe Firefly API capabilities, pricing, and best practices",
+    "status": "completed",
+    "activeForm": "Researching Adobe Firefly API"
+  },
+  {
+    "content": "LLM SME: Research Photoshop API capabilities and integration patterns",
+    "status": "completed",
+    "activeForm": "Researching Photoshop API"
+  },
+  {
+    "content": "LLM SME: Research elite API alternatives (Replicate, FLUX, SDXL)",
+    "status": "completed",
+    "activeForm": "Researching elite API alternatives"
+  },
+  {
+    "content": "Backend SME: Build ReplicateImageGeneratorTool with FLUX Pro and SDXL",
+    "status": "completed",
+    "activeForm": "Building ReplicateImageGeneratorTool"
+  },
+  {
+    "content": "Infrastructure SME: Set up Replicate account and test FLUX Pro",
+    "status": "pending",
+    "activeForm": "Setting up Replicate account (YOUR 5-min task)"
+  },
+  {
+    "content": "Backend SME: Build intelligent router (Replicate primary, Firefly backup)",
+    "status": "pending",
+    "activeForm": "Building intelligent API router"
+  },
+  {
+    "content": "Backend SME: Create Social Media Agent with smart routing",
+    "status": "pending",
+    "activeForm": "Creating Social Media Agent"
+  },
+  {
+    "content": "Infrastructure SME: Adobe Developer Console setup (optional backup)",
+    "status": "pending",
+    "activeForm": "Setting up Adobe Developer Console"
+  },
+  {
+    "content": "Backend SME: Build FireflyImageGeneratorTool (optional legal fallback)",
+    "status": "pending",
+    "activeForm": "Building FireflyImageGeneratorTool"
+  },
+  {
+    "content": "Backend SME: Write tests and documentation",
+    "status": "pending",
+    "activeForm": "Writing tests and documentation"
+  },
+  {
+    "content": "Tech Sonar: Register Replicate and Adobe APIs for monitoring",
+    "status": "pending",
+    "activeForm": "Registering APIs in Tech Sonar"
+  },
+  {
+    "content": "CTO: Review implementation and approve for production",
+    "status": "pending",
+    "activeForm": "Reviewing implementation"
+  }
+]

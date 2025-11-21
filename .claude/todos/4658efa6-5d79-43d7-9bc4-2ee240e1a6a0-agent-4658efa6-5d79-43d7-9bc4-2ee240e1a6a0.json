@@ -1,0 +1,52 @@
+[
+  {
+    "content": "Get all 3 API keys",
+    "status": "completed",
+    "activeForm": "Getting API keys"
+  },
+  {
+    "content": "Update all keys in 1Password",
+    "status": "completed",
+    "activeForm": "Updating 1Password"
+  },
+  {
+    "content": "Test OpenAI API",
+    "status": "completed",
+    "activeForm": "Testing OpenAI"
+  },
+  {
+    "content": "Test Anthropic API",
+    "status": "completed",
+    "activeForm": "Testing Anthropic"
+  },
+  {
+    "content": "Test Perplexity API",
+    "status": "completed",
+    "activeForm": "Testing Perplexity"
+  },
+  {
+    "content": "Create final API status report",
+    "status": "completed",
+    "activeForm": "Creating report"
+  },
+  {
+    "content": "Add Gemini and DeepSeek keys to 1Password",
+    "status": "completed",
+    "activeForm": "Adding Gemini and DeepSeek to 1Password"
+  },
+  {
+    "content": "Test Gemini API",
+    "status": "in_progress",
+    "activeForm": "Testing Gemini API"
+  },
+  {
+    "content": "Test DeepSeek API",
+    "status": "completed",
+    "activeForm": "Testing DeepSeek API"
+  },
+  {
+    "content": "Add credits to Anthropic account",
+    "status": "pending",
+    "activeForm": "Adding Anthropic credits"
+  }
+]

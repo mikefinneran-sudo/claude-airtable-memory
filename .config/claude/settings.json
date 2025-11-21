@@ -1,0 +1,48 @@
+{
+  "autoApprovalSettings": {
+    "bash": {
+      "enabled": true,
+      "patterns": [
+        "ls *",
+        "cat *",
+        "echo *",
+        "pwd",
+        "which *",
+        "whoami",
+        "date",
+        "find * -name *",
+        "grep *",
+        "rg *",
+        "git status",
+        "git log *",
+        "git diff *",
+        "git branch",
+        "npm *",
+        "node *",
+        "python *",
+        "python3 *",
+        "cd *",
+        "mkdir *",
+        "touch *",
+        "chmod +x *",
+        "op whoami",
+        "op account list",
+        "~/.claude/scripts/*"
+      ]
+    },
+    "read": {
+      "enabled": true,
+      "paths": [
+        "/Users/mikefinneran/.claude/*",
+        "/Users/mikefinneran/Documents/ObsidianVault/**",
+        "/Users/mikefinneran/.zshrc",
+        "/Users/mikefinneran/.bashrc",
+        "/Users/mikefinneran/.bash_profile"
+      ]
+    },
+    "write": {
+      "enabled": false,
+      "paths": []
+    }
+  }
+}

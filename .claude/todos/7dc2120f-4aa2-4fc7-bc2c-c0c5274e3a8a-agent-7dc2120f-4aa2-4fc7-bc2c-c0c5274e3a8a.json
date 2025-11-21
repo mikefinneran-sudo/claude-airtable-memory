@@ -1,0 +1,27 @@
+[
+  {
+    "content": "Extract Google Takeout archives on DGX",
+    "status": "completed",
+    "activeForm": "Extracting Google Takeout archives on DGX"
+  },
+  {
+    "content": "Organize extracted Takeout data",
+    "status": "pending",
+    "activeForm": "Organizing extracted Takeout data"
+  },
+  {
+    "content": "Batch fine-tune models with working config",
+    "status": "pending",
+    "activeForm": "Batch fine-tuning models"
+  },
+  {
+    "content": "Test fine-tuned models with CrewAI agents",
+    "status": "pending",
+    "activeForm": "Testing fine-tuned models with CrewAI agents"
+  },
+  {
+    "content": "Deploy fine-tuned models to Ollama",
+    "status": "pending",
+    "activeForm": "Deploying fine-tuned models to Ollama"
+  }
+]

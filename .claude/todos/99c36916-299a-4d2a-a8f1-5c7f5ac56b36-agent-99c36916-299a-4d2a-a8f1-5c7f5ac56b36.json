@@ -1,0 +1,22 @@
+[
+  {
+    "content": "Build production installer with auto-install",
+    "status": "completed",
+    "activeForm": "Building production installer with auto-install"
+  },
+  {
+    "content": "Transfer updated installer to VM",
+    "status": "in_progress",
+    "activeForm": "Transferring updated installer to VM"
+  },
+  {
+    "content": "Test complete end-user experience",
+    "status": "pending",
+    "activeForm": "Testing complete end-user experience"
+  },
+  {
+    "content": "Document final installer and process",
+    "status": "pending",
+    "activeForm": "Documenting final installer and process"
+  }
+]

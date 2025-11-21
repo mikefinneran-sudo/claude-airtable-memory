@@ -1,0 +1,27 @@
+[
+  {
+    "content": "Review Sales Navigator scraping script",
+    "status": "completed",
+    "activeForm": "Reviewing Sales Navigator scraping script"
+  },
+  {
+    "content": "Implement Puppeteer MCP integration",
+    "status": "in_progress",
+    "activeForm": "Implementing Puppeteer MCP integration"
+  },
+  {
+    "content": "Test Sales Nav login and navigation",
+    "status": "pending",
+    "activeForm": "Testing Sales Nav login"
+  },
+  {
+    "content": "Run scraping on remaining 163 prospects",
+    "status": "pending",
+    "activeForm": "Running scraping on prospects"
+  },
+  {
+    "content": "Verify scraped data saved to Airtable",
+    "status": "pending",
+    "activeForm": "Verifying scraped data"
+  }
+]

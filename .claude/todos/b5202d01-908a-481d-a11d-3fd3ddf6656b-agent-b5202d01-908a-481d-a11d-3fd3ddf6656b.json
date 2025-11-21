@@ -1,0 +1,27 @@
+[
+  {
+    "content": "Build n8n workflow manually in UI (15 min)",
+    "status": "pending",
+    "activeForm": "Building n8n workflow in UI"
+  },
+  {
+    "content": "Test n8n workflow with curl",
+    "status": "pending",
+    "activeForm": "Testing n8n workflow"
+  },
+  {
+    "content": "Update Zapier to point to n8n webhook",
+    "status": "pending",
+    "activeForm": "Updating Zapier webhook"
+  },
+  {
+    "content": "Test end-to-end with Google Sheets",
+    "status": "pending",
+    "activeForm": "Testing end-to-end"
+  },
+  {
+    "content": "Monitor first 5 production enrichments",
+    "status": "pending",
+    "activeForm": "Monitoring production enrichments"
+  }
+]

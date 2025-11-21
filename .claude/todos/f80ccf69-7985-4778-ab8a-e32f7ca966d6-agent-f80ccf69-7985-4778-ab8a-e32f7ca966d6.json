@@ -1,0 +1,22 @@
+[
+  {
+    "content": "Document complete Zapier workflow with Clay Email + Company APIs",
+    "status": "completed",
+    "activeForm": "Documenting complete Zapier workflow"
+  },
+  {
+    "content": "Create Zapier account and build 4-step workflow",
+    "status": "pending",
+    "activeForm": "Creating Zapier account and building workflow"
+  },
+  {
+    "content": "Test Zapier workflow with 1 prospect",
+    "status": "pending",
+    "activeForm": "Testing Zapier workflow"
+  },
+  {
+    "content": "Run production enrichment on 20 Florida prospects",
+    "status": "pending",
+    "activeForm": "Running production enrichment"
+  }
+]

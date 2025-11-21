@@ -1,27 +1,36 @@
 """
-CrewAI Intelligent LLM Router - Strategy 3B Implementation
-Uses CrewAI Flows with @router decorator for explicit Python routing logic
-Implements "Conscious Router" pattern with llama3.2:1b as Mission Control
+CrewAI Intelligent LLM Router - Hybrid Strategy 3B Implementation
+Uses CrewAI Flows with direct method calling for explicit Python routing logic
+Hybrid: GPT-4o-mini classifier + 20 Local Models + 5 Commercial Models
 """
 
 from crewai import Agent, Crew, Task, LLM
-from crewai.flow import Flow, start, listen, router
+from crewai.flow import Flow, start, listen
 from pydantic import BaseModel
 from typing import Literal
 import json
+import os
+from dotenv import load_dotenv
 
-from model_configs import ROUTER_LLM, MODELS, get_model_by_category, get_all_active_models
+# Load API keys from .env
+load_dotenv()
 
-# Define routing categories as Literal type
+from model_configs import ROUTER_LLM, MODELS, get_model_by_category, get_all_active_models, is_local_model
+
+# Define routing categories as Literal type (Local + Commercial)
 RoutingCategory = Literal[
+    # Local Models (Free)
     "max_vision", "fast_vision",
     "max_reasoning", "max_reasoning_moe", "efficient_reasoning", "hybrid_reasoner",
     "max_rag", "fast_rag",
     "agentic_tool_use",
     "structured_data",
     "simple_chat", "instruction_following",
-    "long_context", "max_quality_general", "default_general", "efficient_general",
-    "korean_multilingual", "embeddings"
+    "long_context", "default_general", "efficient_general",
+    "korean_multilingual", "embeddings",
+    # Commercial Models (Paid)
+    "max_quality_reasoning", "max_quality_multimodal",
+    "fast_commercial", "ultra_fast_commercial", "multimodal_grounded"
 ]
 
 class TaskClassification(BaseModel):
@@ -49,29 +58,36 @@ class DynamicModelFlow(Flow):
     4. run_task_with_model() - Execute task with selected model
     """
 
-    @start
-    def get_task(self, task_description: str):
-        """Entry point: Accept task description"""
+    @start()
+    def get_task(self):
+        """Entry point: Accept task description from state"""
+        task_description = self.state.get("task_description", "")
         print(f"\n📝 Received task: {task_description[:100]}...")
         return {"task_description": task_description}
 
     @listen(get_task)
-    def classify_task(self, inputs: dict) -> dict:
+    def classify_task(self) -> dict:
         """
-        Use llama3.2:1b (Mission Control) to classify the task
-        Ultra-fast 1B model dedicated to routing decisions
+        Use GPT-4o-mini (Mission Control) to classify the task
+        Fast, reliable commercial router (switched from llama3.2:1b for better accuracy)
         """
-        task_description = inputs["task_description"]
+        task_description = self.state.get("task_description", "")
 
-        print(f"\n🧠 Mission Control (llama3.2:1b) classifying task...")
+        print(f"\n🧠 Mission Control (GPT-4o-mini) classifying task...")
 
         # Create router agent with few-shot examples
         router_agent = Agent(
             role="Task Classification Specialist",
-            goal="Classify incoming tasks into the optimal routing category",
-            backstory="""You are Mission Control for a fleet of 20 specialized LLM models.
-            Your job is to analyze each task and determine which model is best suited for it.
-            You are extremely fast (1.3GB, 1B params) and focused only on classification.""",
+            goal="Classify incoming tasks into the optimal routing category (local or commercial models)",
+            backstory="""You are Mission Control for a hybrid fleet of 25 LLM models:
+            - 20 local models (free, on DGX Spark)
+            - 5 commercial models (paid, OpenAI/Anthropic/Google)
+
+            Your job is to analyze each task and route it to the most cost-effective model.
+            Prefer local models when possible. Use commercial models only when:
+            - Task requires absolute best quality
+            - Local models insufficient for task complexity
+            - User explicitly requests premium quality""",
             llm=ROUTER_LLM,
             verbose=True
         )
@@ -115,13 +131,24 @@ SPECIALIZED:
 - korean_multilingual: Korean language tasks
 - embeddings: Text embeddings, vector search
 
+COMMERCIAL MODELS (Use only when necessary):
+- max_quality_reasoning: Critical reasoning/coding requiring absolute best (Claude Sonnet 3.7)
+- max_quality_multimodal: Best multimodal intelligence (GPT-4o)
+- fast_commercial: Fast commercial when local insufficient (GPT-4o-mini)
+- ultra_fast_commercial: Ultra-fast commercial (Claude Haiku 3.5)
+- multimodal_grounded: Multimodal + web grounding (Gemini 2.0 Flash)
+
 FEW-SHOT EXAMPLES:
-1. "Analyze this sales chart and extract revenue trends" → max_vision
-2. "Prove that √2 is irrational" → max_reasoning
-3. "What's the weather like today?" → simple_chat
-4. "Generate JSON schema for user profile" → structured_data
-5. "Search 500 PDFs for mentions of 'quantum computing' with citations" → max_rag
-6. "Call the weather API and book a restaurant" → agentic_tool_use
+1. "Analyze this sales chart and extract revenue trends" → max_vision (local)
+2. "Prove that √2 is irrational" → max_reasoning (local)
+3. "What's the weather like today?" → simple_chat (local)
+4. "Generate JSON schema for user profile" → structured_data (local)
+5. "Search 500 PDFs for mentions of 'quantum computing' with citations" → max_rag (local)
+6. "Call the weather API and book a restaurant" → agentic_tool_use (local)
+7. "Write production-grade distributed system code for my startup's core architecture" → max_quality_reasoning (commercial)
+8. "Provide comprehensive strategic analysis for board presentation" → max_quality_reasoning (commercial)
+9. "Analyze this complex image and search web for related context" → multimodal_grounded (commercial)
+10. "I need the absolute best answer possible" → max_quality_multimodal (commercial)
 
 TASK TO CLASSIFY:
 {task_description}
@@ -168,120 +195,139 @@ Return ONLY valid JSON:
                 "reasoning": "Fallback due to classification error"
             }
 
-    @router(classify_task)
-    def route_by_category(self, inputs: dict) -> str:
+    @listen(classify_task)
+    def route_and_execute(self):
         """
-        Explicit Python routing logic based on classification
-        Uses @router decorator to select which method to call next
+        Route to appropriate model handler and execute it
+        Uses direct method calling - no @router decorator needed
         """
-        category = inputs["category"]
+        category = self.state.get("category", "default_general")
 
         print(f"\n🎯 Routing to category: {category}")
 
-        # Explicit routing map (all categories must be handled)
-        routing_map = {
-            "max_vision": "run_max_vision",
-            "fast_vision": "run_fast_vision",
-            "max_reasoning": "run_max_reasoning",
-            "max_reasoning_moe": "run_max_reasoning_moe",
-            "efficient_reasoning": "run_efficient_reasoning",
-            "hybrid_reasoner": "run_hybrid_reasoner",
-            "max_rag": "run_max_rag",
-            "fast_rag": "run_fast_rag",
-            "agentic_tool_use": "run_agentic_tool_use",
-            "structured_data": "run_structured_data",
-            "simple_chat": "run_simple_chat",
-            "instruction_following": "run_instruction_following",
-            "long_context": "run_long_context",
-            "max_quality_general": "run_max_quality_general",
-            "default_general": "run_default_general",
-            "efficient_general": "run_efficient_general",
-            "korean_multilingual": "run_korean_multilingual",
-            "embeddings": "run_embeddings"
-        }
+        # Direct routing - call the appropriate method based on category
+        if category == "max_vision":
+            return self.run_max_vision()
+        elif category == "fast_vision":
+            return self.run_fast_vision()
+        elif category == "max_reasoning":
+            return self.run_max_reasoning()
+        elif category == "max_reasoning_moe":
+            return self.run_max_reasoning_moe()
+        elif category == "efficient_reasoning":
+            return self.run_efficient_reasoning()
+        elif category == "hybrid_reasoner":
+            return self.run_hybrid_reasoner()
+        elif category == "max_rag":
+            return self.run_max_rag()
+        elif category == "fast_rag":
+            return self.run_fast_rag()
+        elif category == "agentic_tool_use":
+            return self.run_agentic_tool_use()
+        elif category == "structured_data":
+            return self.run_structured_data()
+        elif category == "simple_chat":
+            return self.run_simple_chat()
+        elif category == "instruction_following":
+            return self.run_instruction_following()
+        elif category == "long_context":
+            return self.run_long_context()
+        elif category == "efficient_general":
+            return self.run_efficient_general()
+        elif category == "korean_multilingual":
+            return self.run_korean_multilingual()
+        elif category == "embeddings":
+            return self.run_embeddings()
+        # Commercial models
+        elif category == "max_quality_reasoning":
+            return self.run_max_quality_reasoning()
+        elif category == "max_quality_multimodal":
+            return self.run_max_quality_multimodal()
+        elif category == "fast_commercial":
+            return self.run_fast_commercial()
+        elif category == "ultra_fast_commercial":
+            return self.run_ultra_fast_commercial()
+        elif category == "multimodal_grounded":
+            return self.run_multimodal_grounded()
+        else:  # default_general or unknown category
+            return self.run_default_general()
 
-        return routing_map.get(category, "run_default_general")
+    # Route handlers - called directly by route_and_execute()
+    # No decorators needed - these are regular methods
+    def run_max_vision(self):
+        return self._execute_with_model("llama3.2-vision:90b")
 
-    # Route handlers - one for each category
-    @listen(route_by_category)
-    def run_max_vision(self, inputs: dict):
-        return self._execute_with_model(inputs, "llama3.2-vision:90b")
+    def run_fast_vision(self):
+        return self._execute_with_model("llava:13b")
 
-    @listen(route_by_category)
-    def run_fast_vision(self, inputs: dict):
-        return self._execute_with_model(inputs, "llava:13b")
+    def run_max_reasoning(self):
+        return self._execute_with_model("deepseek-r1:70b")
 
-    @listen(route_by_category)
-    def run_max_reasoning(self, inputs: dict):
-        return self._execute_with_model(inputs, "deepseek-r1:70b")
+    def run_max_reasoning_moe(self):
+        return self._execute_with_model("deepseek-v3")
 
-    @listen(route_by_category)
-    def run_max_reasoning_moe(self, inputs: dict):
-        return self._execute_with_model(inputs, "deepseek-v3")
+    def run_efficient_reasoning(self):
+        return self._execute_with_model("phi4")
 
-    @listen(route_by_category)
-    def run_efficient_reasoning(self, inputs: dict):
-        return self._execute_with_model(inputs, "phi4")
+    def run_hybrid_reasoner(self):
+        return self._execute_with_model("apriel-1.5-15b-thinker")
 
-    @listen(route_by_category)
-    def run_hybrid_reasoner(self, inputs: dict):
-        return self._execute_with_model(inputs, "apriel-1.5-15b-thinker")
+    def run_max_rag(self):
+        return self._execute_with_model("command-r-plus")
 
-    @listen(route_by_category)
-    def run_max_rag(self, inputs: dict):
-        return self._execute_with_model(inputs, "command-r-plus")
+    def run_fast_rag(self):
+        return self._execute_with_model("command-r")
 
-    @listen(route_by_category)
-    def run_fast_rag(self, inputs: dict):
-        return self._execute_with_model(inputs, "command-r")
+    def run_agentic_tool_use(self):
+        return self._execute_with_model("gpt-oss:20b")
 
-    @listen(route_by_category)
-    def run_agentic_tool_use(self, inputs: dict):
-        return self._execute_with_model(inputs, "gpt-oss:20b")
+    def run_structured_data(self):
+        return self._execute_with_model("qwen2.5:14b")
 
-    @listen(route_by_category)
-    def run_structured_data(self, inputs: dict):
-        return self._execute_with_model(inputs, "qwen2.5:14b")
+    def run_simple_chat(self):
+        return self._execute_with_model("mistral:7b")
 
-    @listen(route_by_category)
-    def run_simple_chat(self, inputs: dict):
-        return self._execute_with_model(inputs, "mistral:7b")
+    def run_instruction_following(self):
+        return self._execute_with_model("nous-hermes2")
 
-    @listen(route_by_category)
-    def run_instruction_following(self, inputs: dict):
-        return self._execute_with_model(inputs, "nous-hermes2")
+    def run_long_context(self):
+        return self._execute_with_model("llama3.1:70b")
 
-    @listen(route_by_category)
-    def run_long_context(self, inputs: dict):
-        return self._execute_with_model(inputs, "llama3.1:70b")
+    def run_default_general(self):
+        return self._execute_with_model("mixtral:8x7b")
 
-    @listen(route_by_category)
-    def run_max_quality_general(self, inputs: dict):
-        return self._execute_with_model(inputs, "qwen2.5:72b")
+    def run_efficient_general(self):
+        return self._execute_with_model("gemma2:9b")
 
-    @listen(route_by_category)
-    def run_default_general(self, inputs: dict):
-        return self._execute_with_model(inputs, "mixtral:8x7b")
+    def run_korean_multilingual(self):
+        return self._execute_with_model("solar")
 
-    @listen(route_by_category)
-    def run_efficient_general(self, inputs: dict):
-        return self._execute_with_model(inputs, "gemma2:9b")
+    def run_embeddings(self):
+        return self._execute_with_model("nomic-embed-text")
 
-    @listen(route_by_category)
-    def run_korean_multilingual(self, inputs: dict):
-        return self._execute_with_model(inputs, "solar")
+    # Commercial model handlers
+    def run_max_quality_reasoning(self):
+        return self._execute_with_model("claude-sonnet-3.7")
 
-    @listen(route_by_category)
-    def run_embeddings(self, inputs: dict):
-        return self._execute_with_model(inputs, "nomic-embed-text")
+    def run_max_quality_multimodal(self):
+        return self._execute_with_model("gpt-4o")
 
-    def _execute_with_model(self, inputs: dict, model_name: str) -> dict:
+    def run_fast_commercial(self):
+        return self._execute_with_model("gpt-4o-mini")
+
+    def run_ultra_fast_commercial(self):
+        return self._execute_with_model("claude-haiku-3.5")
+
+    def run_multimodal_grounded(self):
+        return self._execute_with_model("gemini-2.0-flash")
+
+    def _execute_with_model(self, model_name: str) -> dict:
         """
-        Execute the task using the selected model
+        Execute the task using the selected model (local or commercial)
         """
-        task_description = inputs["task_description"]
-        category = inputs["category"]
-        reasoning = inputs["reasoning"]
+        task_description = self.state.get("task_description", "")
+        category = self.state.get("category", "unknown")
+        reasoning = self.state.get("reasoning", "")
 
         model_config = MODELS.get(model_name)
         if not model_config:
@@ -289,8 +335,16 @@ Return ONLY valid JSON:
             model_config = MODELS.get("mixtral:8x7b")
             model_name = "mixtral:8x7b"
 
+        is_local = is_local_model(model_name)
+        provider = model_config.get("provider", "ollama")
+
         print(f"\n🚀 Executing with {model_name}")
-        print(f"   Size: {model_config['size_gb']} GB | Params: {model_config['params']}")
+        if is_local:
+            print(f"   📍 Local (DGX) - FREE")
+            print(f"   Size: {model_config.get('size_gb', 'N/A')} GB | Params: {model_config.get('params', 'N/A')}")
+        else:
+            print(f"   ☁️  Commercial ({provider.upper()}) - PAID")
+            print(f"   Cost: ${model_config.get('cost_per_1m_in', 0)}/1M in, ${model_config.get('cost_per_1m_out', 0)}/1M out")
         print(f"   Speed: {model_config['speed']} | Quality: {model_config['quality']}")
         print(f"   Why: {model_config['when_to_use']}")
 
@@ -320,13 +374,27 @@ Return ONLY valid JSON:
 
         result = crew.kickoff()
 
+        # Calculate cost for commercial models (rough estimate)
+        cost_usd = 0.0
+        if not is_local:
+            # Rough token estimation: ~1.3 tokens per word
+            input_tokens = len(task_description.split()) * 1.3
+            output_tokens = len(str(result).split()) * 1.3
+            cost_in = (input_tokens / 1_000_000) * model_config.get("cost_per_1m_in", 0)
+            cost_out = (output_tokens / 1_000_000) * model_config.get("cost_per_1m_out", 0)
+            cost_usd = cost_in + cost_out
+            print(f"\n💰 Estimated cost: ${cost_usd:.6f} (~{int(input_tokens)} in, ~{int(output_tokens)} out tokens)")
+
         return {
             "task_description": task_description,
             "category": category,
             "selected_model": model_name,
-            "model_params": model_config['params'],
-            "model_size_gb": model_config['size_gb'],
+            "model_params": model_config.get('params', 'N/A'),
+            "model_size_gb": model_config.get('size_gb', 0),
             "routing_reasoning": reasoning,
+            "is_local": is_local,
+            "provider": provider,
+            "cost_usd": cost_usd,
             "result": str(result)
         }
 
@@ -339,8 +407,10 @@ def run_router(task_description: str) -> dict:
         result = run_router("Analyze this sales chart and extract trends")
     """
     flow = DynamicModelFlow()
-    result = flow.kickoff(task_description=task_description)
-    return result
+    result = flow.kickoff(inputs={"task_description": task_description})
+
+    # kickoff() returns the final dict from route_and_execute()
+    return result if isinstance(result, dict) else {"error": f"Unexpected result type: {type(result)}"}
 
 
 if __name__ == "__main__":

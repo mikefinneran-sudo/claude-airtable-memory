@@ -1,0 +1,42 @@
+[
+  {
+    "content": "Copy existing API keys to crew-specialist-team-prod vault",
+    "status": "completed",
+    "activeForm": "Copying existing API keys to crew-specialist-team-prod vault"
+  },
+  {
+    "content": "Add Grok API key",
+    "status": "completed",
+    "activeForm": "Adding Grok API key"
+  },
+  {
+    "content": "Add Adobe Firefly API key",
+    "status": "in_progress",
+    "activeForm": "Adding Adobe Firefly API key"
+  },
+  {
+    "content": "Add Replicate API key",
+    "status": "pending",
+    "activeForm": "Adding Replicate API key"
+  },
+  {
+    "content": "Get all item IDs from crew vault",
+    "status": "pending",
+    "activeForm": "Getting all item IDs from crew vault"
+  },
+  {
+    "content": "Update secure_config.py with all methods",
+    "status": "pending",
+    "activeForm": "Updating secure_config.py with all methods"
+  },
+  {
+    "content": "Test all API key retrievals from DGX",
+    "status": "pending",
+    "activeForm": "Testing all API key retrievals from DGX"
+  },
+  {
+    "content": "Restart services and validate",
+    "status": "pending",
+    "activeForm": "Restarting services and validating"
+  }
+]

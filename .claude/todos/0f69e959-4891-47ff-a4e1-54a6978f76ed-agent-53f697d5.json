@@ -1,0 +1,27 @@
+[
+  {
+    "content": "Guide Mike through Craft initial setup (folders and templates)",
+    "status": "pending",
+    "activeForm": "Guiding Craft initial setup"
+  },
+  {
+    "content": "Test workflow - create first daily note in Craft",
+    "status": "pending",
+    "activeForm": "Testing workflow with first daily note"
+  },
+  {
+    "content": "Execute migration when Mike confirms ready",
+    "status": "pending",
+    "activeForm": "Executing migration"
+  },
+  {
+    "content": "Set up Airtable sync automation",
+    "status": "pending",
+    "activeForm": "Setting up sync automation"
+  },
+  {
+    "content": "Document Mike's custom workflow preferences",
+    "status": "pending",
+    "activeForm": "Documenting custom workflow"
+  }
+]

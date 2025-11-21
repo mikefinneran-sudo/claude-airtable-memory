@@ -1,0 +1,32 @@
+[
+  {
+    "content": "Set up Gamma API credentials and test connection",
+    "status": "in_progress",
+    "activeForm": "Setting up Gamma API credentials and test connection"
+  },
+  {
+    "content": "Set up Figma API credentials and test connection",
+    "status": "pending",
+    "activeForm": "Setting up Figma API credentials and test connection"
+  },
+  {
+    "content": "Create WalterFetch report engine folder structure",
+    "status": "completed",
+    "activeForm": "Creating WalterFetch report engine folder structure"
+  },
+  {
+    "content": "Build Gamma integration module (Python)",
+    "status": "completed",
+    "activeForm": "Building Gamma integration module (Python)"
+  },
+  {
+    "content": "Design first Gamma template (Target List)",
+    "status": "completed",
+    "activeForm": "Designing first Gamma template (Target List)"
+  },
+  {
+    "content": "Test with sample WalterFetch data",
+    "status": "pending",
+    "activeForm": "Testing with sample WalterFetch data"
+  }
+]

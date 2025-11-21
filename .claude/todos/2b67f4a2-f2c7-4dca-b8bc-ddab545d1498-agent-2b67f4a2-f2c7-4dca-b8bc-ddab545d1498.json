@@ -1,0 +1,37 @@
+[
+  {
+    "content": "Set up Cloudflare domains (waltersignal.ai, waltersignal.com)",
+    "status": "pending",
+    "activeForm": "Setting up Cloudflare domains"
+  },
+  {
+    "content": "Deploy WalterSignal.AI website to Cloudflare Pages",
+    "status": "pending",
+    "activeForm": "Deploying website to Cloudflare Pages"
+  },
+  {
+    "content": "Configure Stripe account for WalterFetch ($99/$249/$499 tiers)",
+    "status": "pending",
+    "activeForm": "Configuring Stripe payment tiers"
+  },
+  {
+    "content": "Test WalterFetch checkout flow end-to-end",
+    "status": "pending",
+    "activeForm": "Testing WalterFetch checkout"
+  },
+  {
+    "content": "Set up email capture backend (Google Sheets or Airtable)",
+    "status": "pending",
+    "activeForm": "Setting up email capture backend"
+  },
+  {
+    "content": "Message 10 potential customers with offer",
+    "status": "pending",
+    "activeForm": "Messaging potential customers"
+  },
+  {
+    "content": "Close first customer and generate first revenue",
+    "status": "pending",
+    "activeForm": "Closing first customer"
+  }
+]

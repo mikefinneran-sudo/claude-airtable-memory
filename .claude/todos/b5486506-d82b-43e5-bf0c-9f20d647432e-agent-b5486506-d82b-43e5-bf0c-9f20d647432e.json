@@ -1,0 +1,27 @@
+[
+  {
+    "content": "Build email waterfall in cheap-to-expensive order (Prospeo → Hunter → DropContact → Datagma → PDL)",
+    "status": "completed",
+    "activeForm": "Built email waterfall via automation"
+  },
+  {
+    "content": "Set up 'Only Run If email is blank' conditional logic",
+    "status": "in_progress",
+    "activeForm": "Setting up conditional logic (manual step)"
+  },
+  {
+    "content": "Test waterfall in Sandbox Mode on 4 Florida prospects",
+    "status": "pending",
+    "activeForm": "Testing in Sandbox Mode"
+  },
+  {
+    "content": "Production: Enrich 20 Florida prospects for Travis (40 credits = $2.98)",
+    "status": "pending",
+    "activeForm": "Enriching Florida prospects"
+  },
+  {
+    "content": "Connect OpenAI API to Clay (BYO-API for 97% savings)",
+    "status": "completed",
+    "activeForm": "Connected OpenAI API"
+  }
+]

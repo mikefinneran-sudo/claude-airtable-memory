@@ -1,0 +1,22 @@
+[
+  {
+    "content": "Set up Amazon Order Parser (OAuth authorization) - Requires manual browser auth",
+    "status": "completed",
+    "activeForm": "Setup ready - awaiting manual OAuth"
+  },
+  {
+    "content": "Set up Gmail MCP Server (OAuth authorization) - Requires Python 3.10+",
+    "status": "completed",
+    "activeForm": "Setup ready - needs Python upgrade + OAuth"
+  },
+  {
+    "content": "Document setup blockers and next steps",
+    "status": "completed",
+    "activeForm": "Documented in CIO_SETUP_STATUS.md"
+  },
+  {
+    "content": "Verify both parsers working (after manual setup)",
+    "status": "pending",
+    "activeForm": "Awaiting CIO team manual completion"
+  }
+]

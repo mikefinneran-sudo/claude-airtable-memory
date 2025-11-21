@@ -1,0 +1,42 @@
+[
+  {
+    "content": "Create credential rotation framework structure",
+    "status": "completed",
+    "activeForm": "Creating credential rotation framework structure"
+  },
+  {
+    "content": "Build service-specific rotation modules",
+    "status": "completed",
+    "activeForm": "Building service-specific rotation modules"
+  },
+  {
+    "content": "Create rotation MCP server",
+    "status": "completed",
+    "activeForm": "Creating rotation MCP server"
+  },
+  {
+    "content": "Build audit and logging system",
+    "status": "completed",
+    "activeForm": "Building audit and logging system"
+  },
+  {
+    "content": "Set up automated scheduling",
+    "status": "completed",
+    "activeForm": "Setting up automated scheduling"
+  },
+  {
+    "content": "Create notification system",
+    "status": "completed",
+    "activeForm": "Creating notification system"
+  },
+  {
+    "content": "Create setup and documentation",
+    "status": "completed",
+    "activeForm": "Creating setup and documentation"
+  },
+  {
+    "content": "Test rotation system",
+    "status": "in_progress",
+    "activeForm": "Testing rotation system"
+  }
+]

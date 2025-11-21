@@ -1,0 +1,22 @@
+[
+  {
+    "content": "Update n8n HTTP Request URL to new DGX IP (192.168.68.62)",
+    "status": "completed",
+    "activeForm": "Updating n8n HTTP Request URL to new DGX IP"
+  },
+  {
+    "content": "Fix Airtable Update node using direct API approach",
+    "status": "pending",
+    "activeForm": "Fixing Airtable Update node using direct API approach"
+  },
+  {
+    "content": "Test complete n8n workflow end-to-end",
+    "status": "pending",
+    "activeForm": "Testing complete n8n workflow end-to-end"
+  },
+  {
+    "content": "Activate n8n workflow for production use",
+    "status": "pending",
+    "activeForm": "Activating n8n workflow for production use"
+  }
+]

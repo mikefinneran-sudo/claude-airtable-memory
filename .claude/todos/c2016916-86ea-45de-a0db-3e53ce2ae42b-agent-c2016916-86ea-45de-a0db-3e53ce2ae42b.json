@@ -1,0 +1,32 @@
+[
+  {
+    "content": "Research and design Airtable ERP schema",
+    "status": "in_progress",
+    "activeForm": "Researching and designing Airtable ERP schema"
+  },
+  {
+    "content": "Create comprehensive ERP specification document",
+    "status": "pending",
+    "activeForm": "Creating comprehensive ERP specification document"
+  },
+  {
+    "content": "Build Airtable base with all tables and relationships",
+    "status": "pending",
+    "activeForm": "Building Airtable base with all tables and relationships"
+  },
+  {
+    "content": "Develop API integration layer for Airtable",
+    "status": "pending",
+    "activeForm": "Developing API integration layer for Airtable"
+  },
+  {
+    "content": "Update Command Center with live Airtable data",
+    "status": "pending",
+    "activeForm": "Updating Command Center with live Airtable data"
+  },
+  {
+    "content": "Implement real-time sync and webhooks",
+    "status": "pending",
+    "activeForm": "Implementing real-time sync and webhooks"
+  }
+]

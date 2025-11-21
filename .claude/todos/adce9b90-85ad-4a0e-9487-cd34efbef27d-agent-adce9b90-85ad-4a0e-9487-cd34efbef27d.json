@@ -1,0 +1,27 @@
+[
+  {
+    "content": "Clean up Airtable company names (remove Sales Navigator IDs)",
+    "status": "completed",
+    "activeForm": "Cleaning up Airtable company names"
+  },
+  {
+    "content": "Upload clean CSV to Clay table",
+    "status": "completed",
+    "activeForm": "Uploading clean CSV to Clay table"
+  },
+  {
+    "content": "Configure Clay email enrichment waterfall",
+    "status": "in_progress",
+    "activeForm": "Configuring Clay email enrichment waterfall"
+  },
+  {
+    "content": "Run Clay enrichment on all 223 prospects",
+    "status": "pending",
+    "activeForm": "Running Clay enrichment on all prospects"
+  },
+  {
+    "content": "Export Clay results and merge with Mixtral data",
+    "status": "pending",
+    "activeForm": "Exporting Clay results and merging with Mixtral data"
+  }
+]

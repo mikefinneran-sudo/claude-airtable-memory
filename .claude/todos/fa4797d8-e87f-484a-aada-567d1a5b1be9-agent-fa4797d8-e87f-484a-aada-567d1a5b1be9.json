@@ -1,0 +1,27 @@
+[
+  {
+    "content": "Build 1,016 partnership prospect database",
+    "status": "completed",
+    "activeForm": "Building partnership database"
+  },
+  {
+    "content": "Create Airtable import files (CSV + JSON)",
+    "status": "completed",
+    "activeForm": "Creating import files"
+  },
+  {
+    "content": "Write comprehensive summary document",
+    "status": "completed",
+    "activeForm": "Writing summary document"
+  },
+  {
+    "content": "Import to Airtable and set up views",
+    "status": "pending",
+    "activeForm": "Importing to Airtable"
+  },
+  {
+    "content": "Begin Top 10 outreach campaign",
+    "status": "pending",
+    "activeForm": "Beginning outreach"
+  }
+]

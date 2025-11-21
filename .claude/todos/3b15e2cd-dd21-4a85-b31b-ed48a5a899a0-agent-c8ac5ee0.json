@@ -1,0 +1,27 @@
+[
+  {
+    "content": "Configure field options for Projects and Tasks tables",
+    "status": "completed",
+    "activeForm": "Configuring field options for Projects and Tasks tables"
+  },
+  {
+    "content": "Create optimal views for Projects and Tasks tables",
+    "status": "completed",
+    "activeForm": "Creating optimal views for Projects and Tasks tables"
+  },
+  {
+    "content": "Check and populate Prompts table from Obsidian vault",
+    "status": "completed",
+    "activeForm": "Checking and populating Prompts table from Obsidian vault"
+  },
+  {
+    "content": "Add client records (WalterSignal, FlyFlat) to Clients table",
+    "status": "completed",
+    "activeForm": "Adding client records to Clients table"
+  },
+  {
+    "content": "Generate and save setup completion report with manual instructions",
+    "status": "in_progress",
+    "activeForm": "Generating and saving setup completion report with manual instructions"
+  }
+]

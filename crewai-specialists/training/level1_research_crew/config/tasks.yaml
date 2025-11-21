@@ -1,0 +1,160 @@
+# Research Organization Crew - Tasks Configuration
+# Learning Objective: 80/20 Rule - Focus 80% effort on description & expected_output
+
+collect_research_files:
+  description: >
+    Scan the source location at {source_location} to discover all research files
+    related to {topic_filter}. You must search for markdown files (.md), PDFs (.pdf),
+    text files (.txt), and Word documents (.docx).
+
+    For each file discovered, extract:
+    - Full file path
+    - Filename
+    - File size in KB
+    - Last modified timestamp
+    - A 500-character preview of the content
+
+    Filter results to only include files that contain keywords related to {topic_filter}.
+    Case-insensitive matching is required.
+
+    If the source is Airtable, retrieve documents from the Knowledge Management base
+    and extract Title, Content, URL, Tags, and Created timestamp fields.
+
+    Return a structured JSON list with all discovered files and their metadata.
+    Do not skip any files that match the filter criteria.
+  expected_output: >
+    A JSON array of file objects with this exact structure:
+    [
+      {
+        "source": "Downloads|Google Drive|Airtable",
+        "type": "Markdown|PDF|Document",
+        "title": "File title or name",
+        "filename": "actual_filename.md",
+        "content": "Full text content of the file",
+        "preview": "First 500 characters...",
+        "file_path": "/full/path/to/file.md",
+        "size_kb": 45.2,
+        "modified": "2025-01-15T10:30:00"
+      }
+    ]
+
+    Minimum fields required: source, type, title, content, preview.
+    Optional fields: filename, file_path, size_kb, modified, url, tags, airtable_id.
+  agent: research_collector
+
+categorize_content:
+  description: >
+    Analyze each research item from the collected files and assign it to the most
+    relevant topic category. Use both keyword matching and semantic analysis to
+    determine the best fit.
+
+    Available categories:
+    - CrewAI & AI Agents: Multi-agent systems, orchestration, crew frameworks
+    - Business Intelligence: Analytics, reporting, dashboards, BI automation
+    - FlyFlat & Hospitality: Hotel tech, booking systems, Cvent, Groupize
+    - AI/ML Infrastructure: DGX, Ollama, LLMs, GPU deployment, model serving
+    - Sales & Marketing: Growth strategies, outreach, lead generation
+    - Real Estate & Development: Property development, Symbiosis projects
+    - AI Prompting & Education: Prompt engineering, training, Wispr Flow
+    - General Business: Consulting, strategy, service offerings
+    - Other Research: Anything that doesn't fit the above categories
+
+    Categorization algorithm:
+    1. Extract keywords from title and content (convert to lowercase)
+    2. For each category, count how many category keywords appear in the text
+    3. Assign the category with the highest keyword match score
+    4. If no keywords match, assign to "Other Research"
+    5. If multiple categories tie, choose the first alphabetically
+
+    Accuracy target: {accuracy}%
+
+    For each item, add a "topic" field with the assigned category name.
+    Preserve all existing metadata from the collection phase.
+  expected_output: >
+    The same JSON array from the collection task, but with an added "topic" field:
+    [
+      {
+        "source": "Downloads",
+        "type": "Markdown",
+        "title": "CrewAI Multi-Agent Systems",
+        "content": "...",
+        "preview": "...",
+        "topic": "CrewAI & AI Agents",  # NEW FIELD
+        ...all other fields preserved...
+      }
+    ]
+
+    Every item MUST have a "topic" field.
+    Topic must be one of the 9 predefined categories (exact string match).
+    Items with the same topic will be grouped together in the next task.
+  agent: content_categorizer
+  context:
+    - collect_research_files
+
+create_notebooklm_documents:
+  description: >
+    Transform the categorized research items into publication-ready markdown documents
+    optimized for NotebookLM upload. Create ONE document per topic category.
+
+    Each document must include:
+
+    1. YAML Frontmatter:
+       - title: "{Topic Name} - Research Collection"
+       - sources: List of unique source names found in items
+       - created: Current ISO timestamp
+       - items_included: Count of items in this document
+       - auto_generated: true
+
+    2. Header Section:
+       - H1 with topic name
+       - Metadata table showing: Total Items, Sources, Generated date
+       - Horizontal rule separator
+
+    3. Table of Contents:
+       - Numbered list of all items with format: "N. Title (Source)"
+       - Must match the order of items in detailed section
+       - Another horizontal rule after TOC
+
+    4. Detailed Content Section:
+       - For each item, create H2 with: "N. Title"
+       - Include metadata block with: Source, Type, File (if applicable), URL (if applicable),
+         Tags (if applicable), Size (if applicable), Modified/Created (if applicable)
+       - H3 "Content" subsection
+       - Full content (truncate to 10,000 characters if longer, add "[Content truncated]" note)
+       - Horizontal rule separator between items
+
+    Output requirements:
+    - Save each document to {output_dir}
+    - Filename format: {topic_name_lowercase_with_underscores}_research.md
+    - Use UTF-8 encoding
+    - Remove special characters from filename (keep only alphanumeric, spaces, hyphens)
+
+    Quality standards:
+    - Proper markdown syntax (no broken headers, links, or formatting)
+    - Consistent spacing and indentation
+    - All items from the same topic grouped in one document
+    - No duplicate content
+  expected_output: >
+    A list of file paths to created markdown documents:
+    [
+      "/path/to/output/crewai__ai_agents_research.md",
+      "/path/to/output/business_intelligence_research.md",
+      "/path/to/output/other_research_research.md"
+    ]
+
+    Each file must:
+    - Be valid markdown that renders correctly in NotebookLM
+    - Have proper YAML frontmatter
+    - Include all items for that topic
+    - Be immediately uploadable to NotebookLM without manual editing
+
+    Console output should show:
+    - Topic name
+    - Number of items included
+    - File size in KB
+    - Output file path
+  agent: document_formatter
+  context:
+    - collect_research_files
+    - categorize_content
+  output_file: notebooklm_documents.json

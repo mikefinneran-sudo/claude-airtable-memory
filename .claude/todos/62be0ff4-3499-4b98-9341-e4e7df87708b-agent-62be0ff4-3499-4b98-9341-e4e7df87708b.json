@@ -1,0 +1,42 @@
+[
+  {
+    "content": "Create Google Cloud project and OAuth credentials",
+    "status": "completed",
+    "activeForm": "Creating Google Cloud project and OAuth credentials"
+  },
+  {
+    "content": "Build OAuth callback server (local)",
+    "status": "completed",
+    "activeForm": "Building OAuth callback server"
+  },
+  {
+    "content": "Create setup wizard script (obs-setup)",
+    "status": "completed",
+    "activeForm": "Creating setup wizard script"
+  },
+  {
+    "content": "Update sync_gmail.py for centralized auth",
+    "status": "completed",
+    "activeForm": "Updating sync_gmail.py for centralized auth"
+  },
+  {
+    "content": "Update sync_calendar.py for centralized auth",
+    "status": "completed",
+    "activeForm": "Updating sync_calendar.py for centralized auth"
+  },
+  {
+    "content": "Create secure token storage system",
+    "status": "completed",
+    "activeForm": "Creating secure token storage system"
+  },
+  {
+    "content": "Test OAuth flow end-to-end",
+    "status": "pending",
+    "activeForm": "Testing OAuth flow end-to-end"
+  },
+  {
+    "content": "Update documentation and install.sh",
+    "status": "in_progress",
+    "activeForm": "Updating documentation and install.sh"
+  }
+]

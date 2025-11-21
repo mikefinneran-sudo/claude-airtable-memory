@@ -1,0 +1,32 @@
+[
+  {
+    "content": "Sign into 1Password CLI",
+    "status": "in_progress",
+    "activeForm": "Signing into 1Password CLI"
+  },
+  {
+    "content": "Run prepare_1password.sh to clean up 1Password duplicates and add metadata",
+    "status": "pending",
+    "activeForm": "Running prepare_1password.sh to clean up 1Password"
+  },
+  {
+    "content": "Run setup.sh to deploy the credential rotation system",
+    "status": "pending",
+    "activeForm": "Running setup.sh to deploy the system"
+  },
+  {
+    "content": "Verify LaunchAgent installation and scheduling",
+    "status": "pending",
+    "activeForm": "Verifying LaunchAgent installation and scheduling"
+  },
+  {
+    "content": "Run dry-run test with rotation_scheduler.py",
+    "status": "pending",
+    "activeForm": "Running dry-run test with rotation_scheduler.py"
+  },
+  {
+    "content": "Document deployment results and any issues",
+    "status": "pending",
+    "activeForm": "Documenting deployment results and issues"
+  }
+]

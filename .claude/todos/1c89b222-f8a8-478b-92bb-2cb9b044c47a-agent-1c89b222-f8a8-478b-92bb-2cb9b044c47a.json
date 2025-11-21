@@ -1,0 +1,22 @@
+[
+  {
+    "content": "Get Florida prospects from Airtable",
+    "status": "completed",
+    "activeForm": "Getting Florida prospects from Airtable"
+  },
+  {
+    "content": "Create Clay table and import from Airtable",
+    "status": "completed",
+    "activeForm": "Creating Clay table and importing from Airtable"
+  },
+  {
+    "content": "Add email waterfall enrichment in Clay",
+    "status": "completed",
+    "activeForm": "Adding email waterfall enrichment in Clay"
+  },
+  {
+    "content": "Run enrichment on test prospects",
+    "status": "in_progress",
+    "activeForm": "Running enrichment on test prospects"
+  }
+]

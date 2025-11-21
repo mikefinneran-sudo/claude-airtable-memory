@@ -1,0 +1,27 @@
+[
+  {
+    "content": "Open Google Cloud Console and create/select project",
+    "status": "in_progress",
+    "activeForm": "Opening Google Cloud Console and creating/selecting project"
+  },
+  {
+    "content": "Enable Gmail API for the project",
+    "status": "pending",
+    "activeForm": "Enabling Gmail API for the project"
+  },
+  {
+    "content": "Create OAuth 2.0 credentials",
+    "status": "pending",
+    "activeForm": "Creating OAuth 2.0 credentials"
+  },
+  {
+    "content": "Download and save credentials.json",
+    "status": "pending",
+    "activeForm": "Downloading and saving credentials.json"
+  },
+  {
+    "content": "Test authentication with first run",
+    "status": "pending",
+    "activeForm": "Testing authentication with first run"
+  }
+]

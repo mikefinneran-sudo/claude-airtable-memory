@@ -1,0 +1,17 @@
+[
+  {
+    "content": "Guide user through Figma editing process",
+    "status": "in_progress",
+    "activeForm": "Guiding Figma editing"
+  },
+  {
+    "content": "Get edited logo file",
+    "status": "pending",
+    "activeForm": "Getting edited file"
+  },
+  {
+    "content": "Update launch page with new logo",
+    "status": "pending",
+    "activeForm": "Updating launch page"
+  }
+]

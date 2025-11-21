@@ -1,0 +1,27 @@
+[
+  {
+    "content": "Design Zapier workflow architecture",
+    "status": "completed",
+    "activeForm": "Designing Zapier workflow"
+  },
+  {
+    "content": "Create Google Sheet template for prospects",
+    "status": "completed",
+    "activeForm": "Creating sheet template"
+  },
+  {
+    "content": "Create Zapier setup documentation",
+    "status": "completed",
+    "activeForm": "Creating documentation"
+  },
+  {
+    "content": "User: Build Zapier automation in Zapier.com",
+    "status": "pending",
+    "activeForm": "User building Zap"
+  },
+  {
+    "content": "User: Test with 1 prospect (Tropicana)",
+    "status": "pending",
+    "activeForm": "User testing workflow"
+  }
+]

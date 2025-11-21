@@ -1,0 +1,42 @@
+[
+  {
+    "content": "✅ Ollama installed on MacBook - Ready for dev",
+    "status": "completed",
+    "activeForm": "Ollama installed"
+  },
+  {
+    "content": "⏰ TOMORROW (2025-10-31): Get Adobe Developer Console credentials",
+    "status": "pending",
+    "activeForm": "Getting Adobe credentials tomorrow"
+  },
+  {
+    "content": "⏰ TOMORROW: Install CrewAI framework on MacBook",
+    "status": "pending",
+    "activeForm": "Installing CrewAI tomorrow"
+  },
+  {
+    "content": "⏰ TOMORROW: Build Adobe API tools (Firefly, Photoshop, Brand)",
+    "status": "pending",
+    "activeForm": "Building Adobe API tools tomorrow"
+  },
+  {
+    "content": "Days 1-3: Build 5-agent Social Post Generator crew",
+    "status": "pending",
+    "activeForm": "Building Social Post Generator crew"
+  },
+  {
+    "content": "Days 4-6: Test and bulletproof framework on Mac",
+    "status": "pending",
+    "activeForm": "Testing and bulletproofing framework"
+  },
+  {
+    "content": "Days 7-9: Create DGX Spark deployment scripts",
+    "status": "pending",
+    "activeForm": "Creating deployment scripts"
+  },
+  {
+    "content": "Day 10: DGX Spark arrives → Deploy and go live",
+    "status": "pending",
+    "activeForm": "Deploying to DGX Spark"
+  }
+]

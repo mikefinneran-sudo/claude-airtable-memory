@@ -1,0 +1,17 @@
+[
+  {
+    "content": "Set up Clay table for Travis's 20 leads",
+    "status": "pending",
+    "activeForm": "Setting up Clay table for Travis's 20 leads"
+  },
+  {
+    "content": "Enrich 20 leads with full data package",
+    "status": "pending",
+    "activeForm": "Enriching 20 leads with full data package"
+  },
+  {
+    "content": "Export enriched data for delivery",
+    "status": "pending",
+    "activeForm": "Exporting enriched data for delivery"
+  }
+]

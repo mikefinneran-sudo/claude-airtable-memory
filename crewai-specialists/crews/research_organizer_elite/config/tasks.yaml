@@ -1,0 +1,361 @@
+# Elite Research Organization Crew - Tasks Configuration
+# 80/20 Rule: Extremely detailed task descriptions, minimal agent definition
+# Refinement: Merged collection + categorization into single atomic task
+
+discover_and_categorize_research:
+  description: >
+    Execute a comprehensive research discovery and categorization workflow across multiple
+    sources. This is an atomic operation that combines discovery, metadata extraction,
+    content analysis, and topic assignment into a single streamlined process.
+
+    **PHASE 1: MULTI-SOURCE DISCOVERY**
+
+    Scan and collect research from ALL of the following sources:
+
+    1. Local Files ({source_location}):
+       - Search for: *.md, *.pdf, *.txt, *.docx files
+       - Recursive directory scan
+       - Filter by: {topic_filter} keyword matching (case-insensitive)
+
+    2. Google Drive:
+       - Research folder
+       - Knowledge Base folder
+       - AI Projects folder
+       - Same file type and filter criteria
+
+    3. Airtable (Knowledge Management base: appx922aa4LURWlMI):
+       - Table: tblbLNQlJ9Ojaz9gK (Documents)
+       - Fields to extract: Title, Content, URL, Tags, Created, Description
+       - Filter by {topic_filter} in Title or Content
+
+    For EACH discovered item, extract complete metadata:
+    - source: Origin (Downloads, Google Drive, Airtable)
+    - type: File type (Markdown, PDF, Document)
+    - title: File title or document name
+    - filename: Actual filename (if applicable)
+    - content: Full text content (complete extraction)
+    - preview: First 500 characters
+    - file_path: Absolute path (for files)
+    - size_kb: File size in kilobytes
+    - modified: Last modified timestamp (ISO 8601)
+    - url: URL (if from Airtable)
+    - tags: Associated tags (if from Airtable)
+    - airtable_id: Record ID (if from Airtable)
+
+    **PHASE 2: INTELLIGENT CATEGORIZATION**
+
+    For each discovered item, perform sophisticated topic classification:
+
+    Available Categories (9):
+    1. "CrewAI & AI Agents" - multi-agent systems, orchestration, crew, crewai, agents, specialists
+    2. "Business Intelligence" - bi automation, analytics, reporting, dashboard, powerbi, tableau
+    3. "FlyFlat & Hospitality" - flyflat, hotel, hospitality, cvent, groupize, booking, lodging
+    4. "AI/ML Infrastructure" - dgx, ollama, llm, gpu, nvidia, deployment, model, infrastructure
+    5. "Sales & Marketing" - sales, marketing, growth, email, outreach, strategy, lead generation
+    6. "Real Estate & Development" - symbiosis, development, property, real estate, acre
+    7. "AI Prompting & Education" - prompt, ivy league, education, persona, wispr, flow, prompting
+    8. "General Business" - business, consulting, strategy, service offering, client
+    9. "Other Research" - fallback for unmatched content
+
+    Categorization Algorithm (Hybrid Approach):
+
+    1. Extract keywords from title + content (lowercase)
+    2. For each category, count keyword matches
+    3. Calculate match score = (keyword_matches / total_keywords) * 100
+    4. Apply semantic weight: Title matches count 2x, content matches count 1x
+    5. Assign category with highest weighted score
+    6. Ties: Choose first alphabetically
+    7. No matches: Assign to "Other Research"
+    8. Quality check: Verify assignment makes logical sense
+
+    Accuracy Requirement: {accuracy}% classification accuracy
+
+    **PHASE 3: STRUCTURED OUTPUT GENERATION**
+
+    Compile results into a single comprehensive JSON array with ALL items:
+    - Preserve complete metadata from Phase 1
+    - Add "topic" field from Phase 2
+    - Sort by: topic (primary), modified date (secondary)
+    - Validate JSON structure before returning
+    - Include summary statistics
+
+    **ERROR HANDLING**
+
+    - If source not accessible: Log warning, continue with other sources
+    - If file unreadable: Include in results with content: "[Error: Could not read file]"
+    - If categorization uncertain: Default to "Other Research" and flag for review
+    - Never skip items due to errors - include all discovered items
+
+    **PERFORMANCE TARGETS**
+
+    - Discovery completeness: 100% (never miss eligible files)
+    - Categorization accuracy: {accuracy}%
+    - Processing speed: < 5 seconds per item
+    - Memory efficiency: Stream large files, don't load all into memory
+
+  expected_output: >
+    A complete JSON array of ALL discovered and categorized research items:
+
+    [
+      {
+        "source": "Downloads|Google Drive (Research)|Google Drive (Knowledge Base)|Google Drive (AI Projects)|Airtable (Knowledge Management)",
+        "type": "Markdown|PDF|Document|Text",
+        "title": "Descriptive title or filename",
+        "filename": "actual_file.md",
+        "content": "Complete file content...",
+        "preview": "First 500 characters for quick scanning...",
+        "topic": "CrewAI & AI Agents",  // ONE OF THE 9 CATEGORIES
+        "file_path": "/absolute/path/to/file.md",
+        "size_kb": 45.2,
+        "modified": "2025-01-15T10:30:00",
+        "url": "https://airtable.com/...",  // if from Airtable
+        "tags": ["AI", "Multi-Agent"],  // if from Airtable
+        "airtable_id": "recXXXXXXXXXXXXXX"  // if from Airtable
+      },
+      // ... all items
+    ]
+
+    Summary Statistics (append to output):
+    {
+      "total_items": 85,
+      "by_source": {
+        "Downloads": 33,
+        "Google Drive (Research)": 10,
+        "Google Drive (Knowledge Base)": 4,
+        "Airtable (Knowledge Management)": 38
+      },
+      "by_topic": {
+        "CrewAI & AI Agents": 12,
+        "Sales & Marketing": 34,
+        "AI/ML Infrastructure": 10,
+        "Business Intelligence": 8,
+        "AI Prompting & Education": 9,
+        "General Business": 5,
+        "Other Research": 7
+      },
+      "accuracy_estimate": "{accuracy}%"
+    }
+
+    **VALIDATION CHECKLIST**
+    - [ ] All sources scanned (local, GDrive, Airtable)
+    - [ ] Every item has required fields (source, type, title, content, topic)
+    - [ ] Topic matches one of 9 predefined categories (exact string)
+    - [ ] JSON is valid and parseable
+    - [ ] Summary statistics are accurate
+    - [ ] No items were skipped due to errors
+
+  agent: research_intelligence_specialist
+
+create_elite_notebooklm_documents:
+  description: >
+    Transform categorized research into world-class NotebookLM documents that set the
+    industry standard for AI-optimized knowledge documentation.
+
+    **ARCHITECTURAL REQUIREMENTS**
+
+    Create ONE document per topic category (9 documents total).
+
+    Each document follows this elite structure:
+
+    **1. YAML FRONTMATTER (Semantic Metadata)**
+
+    ---
+    title: "{Topic Name} - Research Collection"
+    sources: ["Downloads", "Google Drive", "Airtable"]  # unique sources only
+    created: "{ISO 8601 timestamp}"
+    items_included: {count}
+    auto_generated: true
+    category: "{topic}"
+    accuracy: "{accuracy}%"
+    version: "2.0-elite"
+    notebooklm_optimized: true
+    ---
+
+    **2. EXECUTIVE SUMMARY (Top of document)**
+
+    # {Topic Name}
+
+    **Quick Stats**
+    - **Total Items**: {count}
+    - **Sources**: {unique_source_list}
+    - **Generated**: {human_readable_date}
+    - **Accuracy**: {accuracy}%
+    - **Coverage**: Comprehensive knowledge base for {topic}
+
+    **Overview**
+    This collection contains {count} high-quality research items covering {topic}.
+    Items are sourced from {source_count} different locations and have been
+    categorized with {accuracy}% accuracy using hybrid keyword + semantic analysis.
+
+    ---
+
+    **3. TABLE OF CONTENTS (Navigation)**
+
+    ## Contents
+
+    1. [Item 1 Title](#1-item-1-title) - Source Name
+    2. [Item 2 Title](#2-item-2-title) - Source Name
+    ...
+
+    *Jump to any section using the links above*
+
+    ---
+
+    **4. DETAILED CONTENT (Main Body)**
+
+    For EACH item, create this structure:
+
+    ## {N}. {Title}
+
+    **📊 Metadata**
+    - **Source**: {source}
+    - **Type**: {type}
+    - **File**: `{filename}` (if applicable)
+    - **URL**: [{url}]({url}) (if applicable)
+    - **Tags**: {tag1}, {tag2}, {tag3} (if applicable)
+    - **Size**: {size_kb} KB (if applicable)
+    - **Modified**: {modified_date} (if applicable)
+    - **Created**: {created_date} (if applicable)
+
+    ### Content
+
+    {full_content_up_to_10000_chars}
+
+    *[Content truncated - original was {original_length} characters]* (if > 10,000 chars)
+
+    ---
+
+    **5. APPENDIX (End of document)**
+
+    ## Document Information
+
+    **Generation Details**
+    - Generated by: Elite Research Organization Crew
+    - Process: Multi-source discovery → Hybrid categorization → NotebookLM optimization
+    - Quality assurance: Automated validation + human-readable formatting
+
+    **Sources Breakdown**
+    {detailed_source_statistics}
+
+    **Citation Guidelines**
+    When citing items from this document in NotebookLM:
+    - Reference by section number (e.g., "Section 5: CrewAI Best Practices")
+    - Include source in citation (e.g., "...from Airtable Knowledge Management")
+    - Original URLs provided where available for verification
+
+    ---
+
+    **TECHNICAL REQUIREMENTS**
+
+    File Management:
+    - Output directory: {output_dir}
+    - Filename format: {topic_lowercase_underscores}_research.md
+    - Encoding: UTF-8
+    - Line endings: LF (Unix-style)
+    - Max line length: None (markdown wrapping disabled)
+
+    Markdown Quality Standards:
+    - Use ATX-style headers (# ## ###)
+    - Proper link syntax with anchor tags for TOC
+    - Escaped special characters in titles
+    - Consistent indentation (2 spaces for lists)
+    - Code blocks with language identifiers
+    - Horizontal rules as section separators (---)
+
+    NotebookLM Optimization:
+    - Clear section hierarchy (H1 → H2 → H3 only)
+    - Semantic HTML in YAML frontmatter
+    - Unique anchor IDs for every section
+    - Rich metadata for AI comprehension
+    - Citation-friendly structure
+
+    Content Integrity:
+    - Preserve all original content (no summarization)
+    - Maintain source attribution
+    - Include complete metadata
+    - No broken links or references
+    - No duplicate content across documents
+
+    **VALIDATION & QUALITY CHECKS**
+
+    Before saving each document:
+    1. Validate markdown syntax (no broken headers, links)
+    2. Verify YAML frontmatter parses correctly
+    3. Check all items from topic are included
+    4. Confirm TOC links match section anchors
+    5. Test file encoding (must be UTF-8)
+    6. Verify filename follows convention
+    7. Check no content was accidentally dropped
+
+    **OUTPUT FORMAT**
+
+    Return a structured report for each created document:
+
+    [
+      {
+        "topic": "CrewAI & AI Agents",
+        "filename": "crewai__ai_agents_research.md",
+        "filepath": "/full/path/to/output/crewai__ai_agents_research.md",
+        "items_included": 12,
+        "file_size_kb": 245.8,
+        "sources": ["Downloads", "Google Drive (Research)", "Airtable"],
+        "created": "2025-01-15T14:30:00",
+        "validation": {
+          "markdown_valid": true,
+          "yaml_valid": true,
+          "toc_links_valid": true,
+          "encoding_valid": true,
+          "all_items_included": true
+        }
+      },
+      // ... one entry per document
+    ]
+
+    **CONSOLE OUTPUT (For user feedback)**
+
+    For each document created, print:
+
+    ✅ {Topic Name}
+       📄 {filename} ({size_kb}KB)
+       📊 {item_count} items from {source_count} sources
+       🔗 {filepath}
+
+    Total: {total_documents} NotebookLM documents created
+    Total size: {total_size_kb}KB
+    Ready for upload to https://notebooklm.google.com
+
+  expected_output: >
+    A JSON array of created document metadata + console-friendly summary:
+
+    {
+      "documents": [
+        {
+          "topic": "CrewAI & AI Agents",
+          "filename": "crewai__ai_agents_research.md",
+          "filepath": "/absolute/path/crewai__ai_agents_research.md",
+          "items_included": 12,
+          "file_size_kb": 245.8,
+          "sources": ["Downloads", "Airtable"],
+          "word_count": 15234,
+          "created": "2025-01-15T14:30:00",
+          "validation_passed": true
+        }
+        // ... 9 documents total
+      ],
+      "summary": {
+        "total_documents": 9,
+        "total_items_processed": 85,
+        "total_size_kb": 1842.5,
+        "avg_items_per_document": 9.4,
+        "generation_time_seconds": 12.3,
+        "output_directory": "/path/to/output",
+        "notebooklm_ready": true
+      }
+    }
+
+    All files must be immediately uploadable to NotebookLM without any manual editing.
+
+  agent: knowledge_architect
+  context:
+    - discover_and_categorize_research
+  output_file: elite_notebooklm_manifest.json

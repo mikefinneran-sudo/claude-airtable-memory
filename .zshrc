@@ -101,3 +101,8 @@ alias research-status='ssh mikefinneran@192.168.68.88 "echo \"DGX Research Archi
 alias kill-puppeteer='pkill -f "mcp-server-puppeteer" && pkill -f "Google Chrome for Testing" && echo "Killed all Puppeteer processes"'
 
 source ~/.claude/scripts/iterm-aliases.sh
+
+# Web scraping utility
+alias scrape='python3 ~/.claude/scripts/scrape-url.py'
+alias scrape-js='python3 ~/.claude/scripts/scrape-url.py --js'
+alias scrape-proxy='python3 ~/.claude/scripts/scrape-url.py --proxy'

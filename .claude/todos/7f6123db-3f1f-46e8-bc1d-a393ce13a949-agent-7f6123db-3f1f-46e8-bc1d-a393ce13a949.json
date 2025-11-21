@@ -1,0 +1,32 @@
+[
+  {
+    "content": "Create new Railway project from GitHub",
+    "status": "completed",
+    "activeForm": "Creating new Railway project from GitHub"
+  },
+  {
+    "content": "Configure root directory",
+    "status": "completed",
+    "activeForm": "Configuring root directory"
+  },
+  {
+    "content": "Wait for successful build",
+    "status": "completed",
+    "activeForm": "Waiting for successful build"
+  },
+  {
+    "content": "Add environment variables",
+    "status": "completed",
+    "activeForm": "Adding environment variables"
+  },
+  {
+    "content": "Wait for redeploy with env vars",
+    "status": "in_progress",
+    "activeForm": "Waiting for redeploy with env vars"
+  },
+  {
+    "content": "Get deployment URL and test",
+    "status": "pending",
+    "activeForm": "Getting deployment URL and testing"
+  }
+]

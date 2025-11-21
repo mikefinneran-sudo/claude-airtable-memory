@@ -1,0 +1,84 @@
+{
+  "Name": "WalterSignal Development",
+  "Guid": "waltersignal-dev-profile",
+  "Badge Text": "WS",
+  "Working Directory": "/Users/mikefinneran/.claude/command-center/erp-dashboard",
+  "Custom Directory": "Yes",
+  "Initial Text": "",
+  "Custom Command": "No",
+  "Command": "",
+  "Triggers": [
+    {
+      "regex": "(Error|Failed|error|failed|ERROR)",
+      "action": "HighlightText",
+      "parameter": {
+        "backgroundColor": {
+          "Red Component": 0.937,
+          "Green Component": 0.267,
+          "Blue Component": 0.267
+        }
+      }
+    },
+    {
+      "regex": "(✓ Compiled|Success|success|BUILD SUCCESS)",
+      "action": "HighlightText",
+      "parameter": {
+        "backgroundColor": {
+          "Red Component": 0.063,
+          "Green Component": 0.725,
+          "Blue Component": 0.369
+        }
+      }
+    },
+    {
+      "regex": "(Warning|warning|WARN)",
+      "action": "HighlightText",
+      "parameter": {
+        "backgroundColor": {
+          "Red Component": 0.961,
+          "Green Component": 0.620,
+          "Blue Component": 0.043
+        }
+      }
+    },
+    {
+      "regex": "✓ Ready in",
+      "action": "Alert",
+      "parameter": {
+        "message": "WalterSignal Dashboard Ready"
+      }
+    }
+  ],
+  "Background Color": {
+    "Red Component": 0.0,
+    "Green Component": 0.0,
+    "Blue Component": 0.0
+  },
+  "Foreground Color": {
+    "Red Component": 1.0,
+    "Green Component": 1.0,
+    "Blue Component": 1.0
+  },
+  "Badge Color": {
+    "Red Component": 0.545,
+    "Green Component": 0.361,
+    "Blue Component": 0.965,
+    "Alpha Component": 0.5
+  },
+  "Cursor Color": {
+    "Red Component": 0.545,
+    "Green Component": 0.361,
+    "Blue Component": 0.965
+  },
+  "Selected Text Color": {
+    "Red Component": 1.0,
+    "Green Component": 1.0,
+    "Blue Component": 1.0
+  },
+  "Selection Color": {
+    "Red Component": 0.545,
+    "Green Component": 0.361,
+    "Blue Component": 0.965,
+    "Alpha Component": 0.3
+  }
+}

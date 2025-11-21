@@ -1,0 +1,27 @@
+[
+  {
+    "content": "Locate WalterSignal Tech Stack CSV and document contents",
+    "status": "in_progress",
+    "activeForm": "Locating WalterSignal Tech Stack CSV"
+  },
+  {
+    "content": "Find FlyFlat Partnerships Airtable files (wizard, CSVs, schema)",
+    "status": "pending",
+    "activeForm": "Finding FlyFlat Partnerships Airtable files"
+  },
+  {
+    "content": "Locate SoloPreneur CRM + Accounting setup script and files",
+    "status": "pending",
+    "activeForm": "Locating SoloPreneur CRM setup script"
+  },
+  {
+    "content": "Document each system's structure and requirements",
+    "status": "pending",
+    "activeForm": "Documenting system structures"
+  },
+  {
+    "content": "Create consolidated deployment guide",
+    "status": "pending",
+    "activeForm": "Creating deployment guide"
+  }
+]

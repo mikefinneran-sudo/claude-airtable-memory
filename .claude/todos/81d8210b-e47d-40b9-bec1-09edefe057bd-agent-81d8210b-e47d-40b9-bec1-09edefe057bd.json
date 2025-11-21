@@ -1,0 +1,37 @@
+[
+  {
+    "content": "Extract JavaScript code from .output files to project structure",
+    "status": "pending",
+    "activeForm": "Extracting JavaScript code from .output files"
+  },
+  {
+    "content": "Set up test environment variables",
+    "status": "pending",
+    "activeForm": "Setting up test environment variables"
+  },
+  {
+    "content": "Run unit tests with Jest",
+    "status": "pending",
+    "activeForm": "Running unit tests with Jest"
+  },
+  {
+    "content": "Test webhook signature verification",
+    "status": "pending",
+    "activeForm": "Testing webhook signature verification"
+  },
+  {
+    "content": "Test calendar .ics file generation",
+    "status": "pending",
+    "activeForm": "Testing calendar .ics file generation"
+  },
+  {
+    "content": "Integration test full workflow",
+    "status": "pending",
+    "activeForm": "Running integration test full workflow"
+  },
+  {
+    "content": "Deploy to staging environment",
+    "status": "pending",
+    "activeForm": "Deploying to staging environment"
+  }
+]
