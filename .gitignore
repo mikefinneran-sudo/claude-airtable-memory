@@ -73,3 +73,6 @@ Dropbox/
 *.pdf
 *.NDA*
 .claude/debug/*.txt
+.claude/projects/**/*.jsonl
+.claude/file-history/
+.claude/command-center/
