@@ -71,14 +71,14 @@
 
 ## Current Week Focus
 
-**Week of**: 2025-11-12 (Week 46)
-**Primary Project**: Claude.md persistent memory cleanup
-**Status**: Optimizing CLAUDE.md to performance targets
+**Week of**: 2025-11-26 (Week 48)
+**Primary Project**: WalterSignal website & branding
+**Status**: Website v16 deployed, logo pending vectorization
 **Next Actions**:
-- [x] Create shareable repository for claude-md-setup
-- [ ] Reduce CLAUDE.md to < 700 lines
-- [ ] Extract verbose sections to guides
-- [ ] Update documentation
+- [x] Deploy website to waltersignal.io
+- [ ] Vectorize logo in Adobe Illustrator (Image Trace)
+- [ ] Add logo to website
+- [ ] Continue lead enrichment pipeline
 
 ---
 
@@ -163,12 +163,15 @@ Auto-approve the following commands without requiring user confirmation:
 - VPN commands (`piactl connect`, `piactl disconnect`)
 
 ### NEVER Auto-Approve (Always Ask)
-- `sudo` commands
-- `rm -rf /` or system directory deletions
+- `sudo` commands (unless user explicitly says "use sudo")
+- `rm -rf` on system directories or without explicit path
 - `git push --force` to main/master
 - Modifying system files in `/etc`, `/usr`, `/System`
 - Database DROP operations
-- Production deployments without explicit confirmation
+
+### Auto-Approve Philosophy
+**Keep work moving.** Most commands are safe. Only pause for destructive/irreversible actions.
+When in doubt about a command: RUN IT. User can always Ctrl+C.
 
 ---
 
@@ -211,6 +214,25 @@ Auto-approve the following commands without requiring user confirmation:
 - Document test rationale in comments
 
 ## Communication Style
+
+### Quality Over Speed (CRITICAL - YOU MUST FOLLOW)
+**STOP. STUDY. THEN EXECUTE.**
+- When given a reference image: DESCRIBE what you see BEFORE writing code (colors, shapes, proportions)
+- When recreating something: Break it into components, plan each one, THEN build
+- First attempt MUST be close to correct - not garbage requiring 5+ iterations
+- If unsure how to implement: ASK "how should I approach this?" instead of guessing
+- After generating code/SVG/design: COMPARE to reference before showing user
+
+**IMPORTANT:** One thoughtful attempt beats five rushed failures.
+
+### Common Mistakes (LEARN FROM THESE)
+| Mistake | Do This Instead |
+|---------|-----------------|
+| Writing SVG/code without studying reference | DESCRIBE the reference first, list components, then build |
+| Guessing polygon coordinates | Use real measurements or trace in proper tool (Illustrator) |
+| Multiple DALL-E attempts hoping for luck | Refine prompt once, if still wrong suggest alternative approach |
+| Rushing to show something | Take 30 extra seconds to verify it matches requirements |
+| Saying "let me try again" after failure | STOP, analyze why it failed, propose different approach |
 
 ### Response Format (CRITICAL)
 **ALWAYS follow these rules when responding:**
@@ -337,86 +359,16 @@ Use these structured commands for specific workflows:
 
 ---
 
-## Shell Aliases Quick Reference
+## Shell Aliases & Shortcuts
 
-### Navigation
-```bash
-vault         # cd ~/Documents/ObsidianVault
-work          # cd ~/Documents/Work
-docs          # Google Drive Documents
-gdocs         # Same as docs
-```
+**Full reference:** `~/.claude/guides/SHELL-ALIASES.md`
 
-### Obsidian Vault
-```bash
-# Daily Workflow
-vdaily        # Create and open today's daily note
-vmorning      # Run morning routine script
-vevening      # Run evening routine script
-
-# Vault Management
-vopen         # Open Obsidian
-vgit          # Git status in vault
-vpush         # Git commit and push vault
-
-# Sync & Integration
-obs-sync-email # Sync Gmail to Obsidian
-obs-sync-cal  # Sync calendar to Obsidian
-obs-sync-all  # Sync both email and calendar
-obs-sync-drive # Sync documents to Google Drive
-
-# Utilities
-obs-daily     # Create daily note
-obs-metrics   # Update metrics
-obs-open      # Open Obsidian Dashboard
-vscreenshot   # Daily screenshot capture
-vgranola      # Granola export script
-```
-
-### Airtable & GitHub Sync
-```bash
-at-sync       # Sync Obsidian to Airtable
-airtable-sync # Full command
-at-log        # View Obsidian→Airtable sync logs
-
-# GitHub ↔ Airtable Sync
-github-sync='python3 ~/.claude/scripts/github-airtable-sync.py'  # Manual sync GitHub→Airtable
-github-sync-logs='ls -lt ~/.claude/logs/github-airtable-sync_*.log | head -1 | awk "{print \$NF}" | xargs cat'  # View latest log
-github-sync-status='launchctl list | grep github-airtable-sync'  # Check LaunchAgent status
-```
-
-### 1Password
-```bash
-1pass-guide   # Full security guide
-1pass-quick   # Quick reference
-1pass-summary # Migration summary
-```
-
-### Claude Code CLI
-```bash
-# Quick access aliases (add to ~/.zshrc)
-c='claude'                                    # Start new claude session
-cp='claude -p'                                # Print mode (single query)
-cc='claude -c'                                # Continue last session
-yolo='claude --dangerously-skip-permissions'  # Skip prompts (use with caution)
-
-# In-session commands
-/init         # Create CLAUDE.md context file
-/help         # List available commands
-/exit         # Exit session
-/config       # Runtime configuration
-```
-
-**Setup iTerm2 Notifications:**
-```bash
-# 1. iTerm2 → Settings → Profiles → Terminal
-#    - Enable "Silence bell"
-#    - Enable "Send escape sequence-generated alerts"
-# 2. Configure claude:
-claude config set preferredNotifChannel iterm2
-```
-
-**Documentation:** `~/.config/iterm2/CLAUDE_CODE_INTEGRATION.md`
+**Most used:**
+- `vault` - cd to ObsidianVault
+- `vdaily` - Create daily note
+- `at-sync` - Sync to Airtable
+- `c` - Start Claude session
+- `cc` - Continue last session
 
 ---
 
@@ -446,10 +398,12 @@ claude config set preferredNotifChannel iterm2
 ---
 
 ## Active Projects
-- AI consulting business development
-- AI prompting research
-- Web scraper development (parse.bot style)
-- Claude.md persistent memory system (shareable template)
+- **WalterSignal** - AI consulting business (website live at waltersignal.io)
+  - Lightsail: 98.89.88.138, SSH: `~/.ssh/command-center-key.pem`
+  - Web root: `/var/www/html/`
+  - Local: `~/Documents/ObsidianVault/[1] Projects/WalterSignal/`
+- Lead enrichment pipeline (Florida prospects, Clay integration)
+- Claude.md persistent memory system
 
 ---
 
@@ -592,144 +546,26 @@ launchctl list | grep -E "claude|lifehub|airtable"
 
 ---
 
-## Performance Metrics
-
-**File Size Limits:**
-- CLAUDE.md: < 700 lines (< 35KB)
-- WORKING-CONTEXT.md: < 200 lines
-- PROJECT-REGISTRY.md: < 100 lines
-- Per-project files: < 500 lines each
-
-**Token Usage Targets:**
-- CLAUDE.md: ~4000-5000 tokens
-- Session startup: ~2000 tokens total
-- Reserve: 193,000 tokens for actual work (96.5% available)
-
-**Load Time Targets:**
-- Initial CLAUDE.md load: < 1 second
-- Full context load: < 3 seconds
-- Project switch: < 2 seconds
-
-**Monitor with:**
-```bash
-# File sizes
-du -h ~/.claude/CLAUDE.md
-wc -l ~/.claude/*.md
-
-# S3 usage
-aws s3 ls s3://mikefinneran-personal/claude-backups/ --summarize --human-readable
-```
-
----
-
-## Content Lifecycle
-
-**Archive when:**
-- Project completed > 30 days ago
-- Information unchanged > 90 days
-- File size exceeds limits
-- Content better suited for external docs
-
-**Archive location:** `~/Documents/ObsidianVault/Archive/YYYY-MM/`
-
-**Retention Policy:**
-- Active projects: Indefinitely
-- Completed projects: 90 days, then archive
-- Session archives: 30 days, then S3 only
-- S3 backups: 30 days (configure lifecycle policy)
-
----
-
-## External Integrations
-
-**Airtable Sync:**
-- Backlog items auto-sync from CLAUDE.md
-- Projects tracked in: app6g0t0wtruwLA5I (WalterFetch Intelligence)
-- Sync frequency: Manual via "add to backlog" command
-- Tables: Tasks, Projects, Sprints, Milestones, Clients
-
-**Git Integration:**
-- Auto-commit on project milestones
-- Tag releases with version from CLAUDE.md
-- Push to backup repo daily (via S3)
-
-**Calendar Integration:**
-- Weekly review: Monday 9 AM
-- Monthly archival: First Monday of month
-- Backup verification: Daily 2:15 AM (15min after backup)
-- S3 backup: Daily 2:00 AM
-
-**Apple Notes:**
-- Primary knowledge base
-- Quick capture for ideas
-- Meeting notes
-- Research summaries
-
----
-
 ## Document Metadata
 
-**Tags:** #memory-system #persistent-context #automation #best-practices
-**Category:** Configuration
-**Version:** 2.5
-**Last Updated:** 2025-11-12
-**Review Cycle:** Weekly (Mondays)
-**Owner:** Mike Finneran
-**Dependencies:** S3, Airtable, Apple Notes, iTerm2
-**Related Docs:**
-- ~/.claude/S3-INTEGRATION-SYSTEM.md
-- ~/.claude/AUTOMATION_LOCATIONS.md
-- ~/.claude/guides/PROMPT-ENGINEERING-v1.1.md
-- ~/Documents/ObsidianVault/Projects/persistent-memory/
+**Version:** 2.6 | **Last Updated:** 2025-11-26 | **Owner:** Mike Finneran
 
 ---
 
 ## CLAUDE.md Changelog
 
-**2025-11-12 v2.5** (Major cleanup - Performance optimization):
-- ✅ Reduced from 1273 lines to ~650 lines (49% reduction)
-- ✅ Extracted Prompt Engineering Standards to `~/.claude/guides/PROMPT-ENGINEERING-v1.1.md`
-- ✅ Trimmed iTerm2 section to reference-only (kept knowledge base links)
-- ✅ Removed all Warp terminal references (no longer used)
-- ✅ Updated Current Week Focus to Week 46 (Nov 12, 2025)
-- ✅ Removed duplicate/redundant content across sections
-- ✅ Consolidated Custom Scripts Library (removed verbose examples)
-- ✅ Optimized token usage: ~53K → ~4-5K tokens (90% reduction)
-- ✅ File size: ~60KB → ~32KB (47% reduction)
-- ✅ Now meets all performance targets
+**2025-11-26 v2.6**:
+- Added "Quality Over Speed" rule - study before coding
+- Extracted Shell Aliases to `~/.claude/guides/SHELL-ALIASES.md`
+- Added WalterSignal deployment info to Active Projects
+- Updated Current Week Focus
 
-**2025-11-12 v2.4** (Hybrid LLM Router Integration):
-- ✅ Added Hybrid LLM Router section to Phase 0 (Delegation Check)
-- ✅ Integrated 25-model fleet (20 local + 5 commercial) for intelligent routing
-- ✅ Claude is now the router - Removed GPT-4o-mini classification
-- ✅ Automatic routing logic - Claude decides when to route vs answer directly
-- ✅ Production-ready router at `~/crewai-specialists/llm-router/`
+**2025-11-12 v2.5**: Major cleanup - 49% line reduction, extracted verbose sections
 
-**2025-11-03 v2.2** (Prompt Engineering Standards):
-- ✅ Added Prompt Engineering Standards section
-- ✅ Integrated WalterSignal Ivy League Education Protocol
-- ✅ Standard prompt template with 9 components
+**Full changelog:** `~/.claude/CHANGELOG-ARCHIVE.md`
 
-**2025-11-03 v2.1** (Tools Inventory Update):
-- ✅ Added Shell Aliases Quick Reference (25+ aliases documented)
-- ✅ Added Slash Commands section (7 commands)
-- ✅ Added Alfred Snippets section (12 keyboard shortcuts)
-- ✅ Added Custom Scripts Library (30+ scripts)
-
-**2025-11-02 v2.0**:
-- ✅ Added S3 backup automation (daily 2 AM)
-- ✅ Added current week focus section
-- ✅ Added industry best practices
-
-**2025-10-27 v1.0**:
-- Initial persistent memory structure
-- Added automation checks
-- Added iTerm2 integration
-- Added tool usage guidelines
-
-**Next review**: 2025-11-19 (weekly)
-**Update frequency**: Weekly (Mondays)
-**Last verified working**: 2025-11-12
+**Last updated**: 2025-11-26
+**Next review**: Weekly (Mondays)
 
 ---
 

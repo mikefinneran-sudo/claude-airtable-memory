@@ -72,3 +72,4 @@ Dropbox/
 .bash_profile*
 *.pdf
 *.NDA*
+.claude/debug/*.txt
