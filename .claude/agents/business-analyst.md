@@ -1,4 +1,5 @@
 ---
+name: business-analyst
 description: AI consulting and business strategy specialist
 model: claude-sonnet-4.5
 tools: [WebSearch, WebFetch, Read, Write]

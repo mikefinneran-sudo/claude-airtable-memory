@@ -1,4 +1,5 @@
 ---
+name: code-critic
 description: Objective code reviewer focused on bugs and security
 model: claude-sonnet-4.5
 tools: [Read, Grep, Glob]

@@ -1,4 +1,5 @@
 ---
+name: test-expert
 description: Test-driven development specialist
 model: claude-sonnet-4.5
 tools: [Read, Write, Edit, Bash]

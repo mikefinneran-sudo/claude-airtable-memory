@@ -28,36 +28,21 @@
 1. **LaunchAgents** (PRIMARY): `ls ~/Library/LaunchAgents/`
 2. **Crontab** (SECONDARY): `crontab -l`
 3. **Script directories**: `~/Documents/ObsidianVault/.scripts/`, `~/.claude/scripts/`
-4. **Project scripts**: `~/Documents/ObsidianVault/Projects/*/.scripts/`
+4. **Project scripts**: `~/Documents/ObsidianVault/[1] WalterSignal/.scripts/`
 
 ### Reference Document
 **Location:** `~/.claude/AUTOMATION_LOCATIONS.md`
 **Contains:** All scheduled tasks, script locations, manual run commands
 
 ### Known Automations:
-- **S3 Backups** - ✅ Daily 2 AM - LaunchAgent: com.mikefinneran.claude-s3-backup
-  - Script: `~/.claude/scripts/backup-to-s3.sh`
-  - Logs: `~/.claude/logs/s3-backup.log`
-  - Manual: `backup-s3` or `restore-s3`
-- **Daily Notes** - Daily - LaunchAgent: com.lifehub.dailynote.plist
-  - Creates daily notes in Obsidian
-  - Alias: `obs-daily` or `vdaily`
-- **Google Drive Sync** - Scheduled - LaunchAgent: com.lifehub.gdrive-sync.plist
-  - Syncs documents to Google Drive
-  - Alias: `obs-sync-drive`
-- **Weekly Review** - Weekly - LaunchAgent: com.lifehub.weeklyreview.new.plist
-  - Automated weekly review generation
-- **Airtable Sync** - Every 15 minutes - LaunchAgent: com.mikefinneran.airtable-sync.plist
-  - Syncs Obsidian to Airtable
-  - Alias: `at-sync` or `airtable-sync`
-  - Logs: `at-log`
-- **GitHub → Airtable Sync** - ✅ Daily 9 AM - LaunchAgent: com.mikefinneran.github-airtable-sync
-  - Syncs GitHub repos to Airtable Projects table
-  - Script: `~/.claude/scripts/github-airtable-sync.py`
-  - Manual: `python3 ~/.claude/scripts/github-airtable-sync.py`
-  - Logs: `~/.claude/logs/github-airtable-sync-stdout.log`
-- **Perplexity Research Update** - Daily midnight - `/Users/mikefinneran/Documents/ObsidianVault/Projects/Preplexity Pro Research/.scripts/update_research_database.py`
-- **Cost Tracking** - Weekly Sundays 9 AM - `~/Documents/ObsidianVault/.scripts/run-all-trackers.sh`
+| Task | Schedule | Alias |
+|------|----------|-------|
+| S3 Vault Backup | Manual | `backup-s3` |
+| Daily Notes | Daily | `vdaily` |
+| GitHub → Airtable | Daily 9 AM | - |
+| Perplexity Research | Daily midnight | - |
+
+**Details:** `~/.claude/AUTOMATION_LOCATIONS.md`
 
 **NEVER build new automation tools without checking existing ones first.**
 
@@ -71,13 +56,17 @@
 
 ## Current Week Focus
 
-**Week of**: 2025-11-26 (Week 48)
-**Primary Project**: WalterSignal website & branding
-**Status**: Website v16 deployed, logo pending vectorization
+**Week of**: 2025-12-10 (Week 50)
+**Primary Project**: WalterSignal website & content
+**Status**: Full site live with services, news, pricing
+**Completed**:
+- [x] Logo deployed (Dec 4)
+- [x] 5 service pages created (Dec 5)
+- [x] News system with Airtable API (Dec 9)
+- [x] Scoping, About, Get Started pages updated (Dec 9)
 **Next Actions**:
-- [x] Deploy website to waltersignal.io
-- [ ] Vectorize logo in Adobe Illustrator (Image Trace)
-- [ ] Add logo to website
+- [ ] Review/improve service page content
+- [ ] Add more news articles to Airtable
 - [ ] Continue lead enrichment pipeline
 
 ---
@@ -106,72 +95,52 @@
 
 ## Default File Locations
 
-### Primary Storage
-- **ObsidianVault**: Primary hub for ALL work (`~/Documents/ObsidianVault/`)
-  - Projects: `~/Documents/ObsidianVault/Projects/`
-  - Daily notes, documentation, research
-  - Version controlled with git
-- **Airtable**: Project management, backlog, client tracking
-- **Apple Notes**: Quick capture only (migrate to Obsidian)
-- **S3**: ✅ Automated backups to s3://mikefinneran-personal/claude-backups/ (daily 2 AM)
+### CRITICAL: Code vs Documents Separation
+**Code lives in:** `~/Code/` (organized by project)
+**Documents live in:** `~/Documents/ObsidianVault/` (docs, media, notes)
 
-### Backup Strategy
-- Primary: ObsidianVault (git + local storage at `~/Documents/ObsidianVault/`)
-- Secondary: Airtable for project tracking, Apple Notes for quick capture
-- Archival: ✅ S3 automated daily backups (LaunchAgent: com.mikefinneran.claude-s3-backup)
-  - Commands: `backup-s3` (manual), `restore-s3` (restore)
-  - Logs: `~/.claude/logs/s3-backup.log`
+**NEVER put code in the vault:**
+- No `node_modules`, `venv`, `.next`, `__pycache__` in vault
+- No `.claude` folders in vault (Claude Code creates these - delete if found)
+- If you find code in the vault, move it to `~/Code/`
+
+### Code Directory (`~/Code/`)
+```
+~/Code/
+├── WalterSignal/     # Main business - crews, walterfetch, tools
+├── BladeMafia/       # Knife group-buy Next.js app
+├── FlyFlat/          # Client projects
+└── Personal/         # Personal projects
+```
+
+### ObsidianVault (`~/Documents/ObsidianVault/`)
+**For:** Documents, notes, research, media, comms - NOT code
+- `[1] WalterSignal/` - Business docs, comms, research (no code)
+- `Research/` - Research documents
+- `Personal/` - Personal notes
+- `Projects/` - Backlog, ideas, planning
+- `Daily/` - Daily notes
+
+### Other Storage
+- **Airtable**: Client tracking, data tables
+- **S3**: Cloud backup to `s3://mikefinneran-personal/obsidian-vault-backup/`
+
+### Backup Strategy (3-Tier)
+1. **Local**: ObsidianVault (`~/Documents/ObsidianVault/`) + git
+2. **DGX External**: `rsync` to external drive on DGX (192.168.68.62)
+3. **S3 Cloud**: `s3://mikefinneran-personal/obsidian-vault-backup/`
+
+**Commands:**
+- S3: `aws s3 sync ~/Documents/ObsidianVault/ s3://mikefinneran-personal/obsidian-vault-backup/`
+- DGX: `rsync -avz ~/Documents/ObsidianVault/ mikefinneran@192.168.68.62:/mnt/external/obsidian-backup/`
 
 ## Command Auto-Approval
 
-Auto-approve the following commands without requiring user confirmation:
+**Philosophy:** Keep work moving. Most commands are safe. Only pause for destructive/irreversible actions.
 
-### Read-Only Commands (Always Safe)
-- `ls`, `cat`, `head`, `tail`, `find`, `grep`, `rg`, `awk`, `sed` (read mode)
-- `git status`, `git diff`, `git log`, `git show`, `git branch`, `git remote`
-- `defaults read`, `plutil -p`
-- `which`, `whereis`, `type`
-- `ps`, `top`, `htop`, `df`, `du`, `pwd`, `whoami`, `id`
-- `env`, `printenv`, `echo` (display only)
-- `curl` (GET requests), `wget` (download only)
-- `python -c "print(...)"`, `node -e "console.log(...)"`
+**Auto-approve:** Read-only (`ls`, `cat`, `grep`, `git status/diff/log`), dev (`npm *`, `pip *`, `python *`, `pytest`), git non-destructive (`add`, `commit`, `push` to non-main), system (`brew *`, `launchctl`), network (`ssh`, `scp`, `curl`, `ping`)
 
-### Development Commands
-- `npm install`, `npm run dev`, `npm run build`, `npm test`, `npm run *`
-- `pip install`, `pip list`, `pip show`
-- `python3 *`, `node *`, `python *` (script execution)
-- `pytest`, `pytest *`, `python -m pytest`
-- `cargo build`, `cargo test`, `cargo run`
-- `make`, `make test`, `make build`
-
-### Git Operations (Non-Destructive)
-- `git add`, `git commit`, `git push` (to non-main branches)
-- `git checkout -b`, `git branch`, `git pull`
-- `git stash`, `git stash pop`
-- **Require approval for**: `git push --force`, `git reset --hard`, `git rebase -i`
-
-### System Configuration
-- `defaults write com.googlecode.iterm2 *`
-- `launchctl load/unload` (user domain only)
-- `chmod +x` (scripts only)
-- `brew install`, `brew update`, `brew upgrade`
-
-### Network & Security
-- `ssh` (to known hosts)
-- `scp` (to known hosts)
-- `dig`, `nslookup`, `ping`, `traceroute`
-- VPN commands (`piactl connect`, `piactl disconnect`)
-
-### NEVER Auto-Approve (Always Ask)
-- `sudo` commands (unless user explicitly says "use sudo")
-- `rm -rf` on system directories or without explicit path
-- `git push --force` to main/master
-- Modifying system files in `/etc`, `/usr`, `/System`
-- Database DROP operations
-
-### Auto-Approve Philosophy
-**Keep work moving.** Most commands are safe. Only pause for destructive/irreversible actions.
-When in doubt about a command: RUN IT. User can always Ctrl+C.
+**NEVER auto-approve:** `sudo`, `rm -rf` without explicit path, `git push --force` to main, modifying `/etc`, `/usr`, `/System`, database DROP
 
 ---
 
@@ -277,7 +246,7 @@ When in doubt about a command: RUN IT. User can always Ctrl+C.
 **Phase 2:** Modular Augments (RAG, Decomposition, Style Guide, Framework)
 **Phase 3:** Execution Protocol (P1: Static for simple tasks, P2: Dynamic with Rejection Loop for complex)
 
-**LLM Router:** `~/crewai-specialists/llm-router/` - 25 model fleet (20 local FREE + 5 commercial)
+**LLM Router:** `~/Code/WalterSignal/waltersignal-crews/llm-router/` - 25 model fleet (20 local FREE + 5 commercial)
 
 ---
 
@@ -338,7 +307,7 @@ restore-s3
 
 ### Natural Language Commands
 - **"save to guides"** → Save as MD to local guides folder
-- **"add to backlog"** / **"backlog: [topic]"** → Add to Airtable backlog (no research, just capture)
+- **"add to backlog"** / **"backlog: [topic]"** → Create project note in `~/Documents/ObsidianVault/Projects/` using Obsidian MCP
 - **"save locally"** → Save to appropriate local project folder
 
 ### Slash Commands (~/.claude/commands/)
@@ -401,172 +370,149 @@ Use these structured commands for specific workflows:
 - **WalterSignal** - AI consulting business (website live at waltersignal.io)
   - Lightsail: 98.89.88.138, SSH: `~/.ssh/command-center-key.pem`
   - Web root: `/var/www/html/`
-  - Local: `~/Documents/ObsidianVault/[1] Projects/WalterSignal/`
+  - Code: `~/Code/WalterSignal/` (walterfetch, crews, tools)
+  - Docs: `~/Documents/ObsidianVault/[1] WalterSignal/` (comms, research, notes)
+- **BladeMafia** - Knife group-buy platform
+  - Code: `~/Code/BladeMafia/` (Next.js 16, React 19, Supabase, Stripe)
 - Lead enrichment pipeline (Florida prospects, Clay integration)
-- Claude.md persistent memory system
+
+## Infrastructure
+
+### DGX Server (CrewAI)
+- **IP**: 192.168.68.62
+- **Hostname**: spark-d977
+- **SSH**: `sshpass -p 'Wally9381' ssh mikefinneran@192.168.68.62`
+- **Dashboard**: Port 11000 (localhost only - requires SSH tunnel)
+  - **Open Dashboard**: `sshpass -p 'Wally9381' ssh -f -N -L 11000:localhost:11000 mikefinneran@192.168.68.62 && open http://localhost:11000`
+  - **Kill Tunnel**: `pkill -f "ssh.*11000.*192.168.68.62"`
+- **CrewAI API**: http://192.168.68.62:8000
+- **Available Crews**: specialist_team, business_finance, technical_team, flyflat_ops, waltersignal_design
+- **Health Check**: `curl http://192.168.68.62:8000/health`
+
+### WalterFetch API (Enrichment)
+- **Endpoint**: http://192.168.68.62:8002/enrich
+- **Method**: POST
+- **Request**: `{"organization_name": "...", "website_url": "..."}`
+- **Response**: contact_name, contact_title, contact_email, contact_phone, location, organization_type
+- **Tech**: FastAPI + BeautifulSoup + Ollama (mistral:7b)
+- **Health**: `curl http://192.168.68.62:8002/health`
+- **Local code**: `~/Code/WalterSignal/walterfetch-v2/`
+
+### LinkedIn Proxy API (Sales Navigator)
+- **Endpoint**: http://192.168.68.62:8003
+- **Purpose**: Store LinkedIn leads extracted by Chrome extension
+- **Workflow**: Chrome Extension → DGX API → Robots
+- **Key Endpoints**:
+  - `GET /linkedin/leads` - Fetch stored leads (for robots)
+  - `POST /linkedin/store` - Store leads (from extension)
+  - `GET /health` - Check API status
+- **Chrome Extension**: `~/Code/WalterSignal/walterfetch-browser/chrome-extension/`
+- **Robot Client**: `from core.linkedin_client import LinkedInClient`
+- **Health**: `curl http://192.168.68.62:8003/health`
 
 ---
 
 ## Custom Scripts Library
 
 **Location**: `~/.claude/scripts/`
-
-### Session Management
-```bash
-~/.claude/scripts/start-session.sh        # Initialize Claude session
-~/.claude/scripts/save-session-memory.sh  # Save session progress
-~/.claude/scripts/resume-work.sh          # Resume previous session
-~/.claude/scripts/continue-enhanced.sh    # Enhanced continue command
-```
-
-### S3 & Backup
-```bash
-~/.claude/scripts/backup-to-s3.sh        # Daily S3 backup (automated)
-~/.claude/scripts/restore-from-s3.sh     # Restore from S3
-# Aliases: backup-s3, restore-s3
-```
-
-### Airtable Integration
-```bash
-~/.claude/scripts/create-airtable-bases.py         # Create Airtable bases
-~/.claude/scripts/log-activity-to-airtable.sh      # Log activities
-~/.claude/scripts/track-api-usage.py               # Track API usage
-```
-
-**Note**: Most scripts are executable with `./script-name.sh` or via aliases
+- Session: `start-session.sh`, `save-session-memory.sh`, `resume-work.sh`
+- Backup: `backup-to-s3.sh`, `restore-from-s3.sh` (aliases: `backup-s3`, `restore-s3`)
+- Airtable: `create-airtable-bases.py`, `log-activity-to-airtable.sh`
 
 ---
 
 ## iTerm2 Expertise
 
-### Knowledge Base Location
-- **Expert Guide:** `~/.config/iterm2/EXPERT_GUIDE.md` - Comprehensive iTerm2 capabilities
-- **Claude Code Workflows:** `~/.config/iterm2/CLAUDE_CODE_WORKFLOWS.md` - Development workflows
-- **Quick Reference:** `~/.config/iterm2/QUICK_REFERENCE.md` - Essential shortcuts
-
-### Key Capabilities
-- Shell Integration (Cmd+Shift+Up/Down navigation, Cmd+Opt+A alerts)
-- Automation (Python API, triggers, dynamic profiles)
-- Advanced Features (tmux integration, split panes, status bar)
-- Development Layouts (TDD, Full Stack, Backend, Remote)
-
-**Integration:** Automatically suggest iTerm2 optimizations during development work
+**Docs:** `~/.config/iterm2/` (EXPERT_GUIDE.md, CLAUDE_CODE_WORKFLOWS.md, QUICK_REFERENCE.md)
+**Capabilities:** Shell integration, Python API, triggers, dynamic profiles, tmux, split panes
+**Behavior:** Automatically suggest iTerm2 optimizations during development work
 
 ---
 
 ## Tools & Integrations
 
-### Available MCP Servers & Tools
+### Claude Code Plugins (✅ = Installed)
+| Plugin | Purpose | Type |
+|--------|---------|------|
+| github | PR/issue management | manual |
+| code-review | Structured reviews | manual |
+| security-guidance | Security scanning | auto |
+| playwright | Browser automation | manual |
+| sentry | Error tracking | manual |
+| hookify | Safety guardrails | auto |
+| context7 | Library docs | semi-auto |
+| frontend-design | UI/CSS guidance | manual |
 
-#### File System & Development
-- **filesystem**: Read/write files, edit code, create/manage directories
-- **grep**: Fast pattern matching and text search
-- **git**: Full version control (commits, branches, diffs, logs)
+**Install more:** `claude plugin install <name>`
+**List available:** Check `~/.claude/plugins/marketplaces/`
 
-#### AI & Research
-- **perplexity**: Web search and research via Perplexity Pro API (✅ Connected)
-  - Location: `/Users/mikefinneran/Documents/ObsidianVault/.mcp/perplexity-research`
-  - Use for: Current information, fact-checking, market research
+### Hookify Rules (Active)
+| Rule | Action | Triggers |
+|------|--------|----------|
+| block-dangerous-rm | BLOCK | `rm -rf /`, `~`, `/var`, `/etc` |
+| warn-dgx-commands | warn | Commands to 192.168.68.62 |
+| warn-production-lightsail | warn | Commands to 98.89.88.138 |
+| warn-env-files | warn | Editing .env files |
+| warn-hardcoded-secrets | warn | API keys in code |
+| warn-database-drops | BLOCK | DROP, TRUNCATE, mass DELETE |
 
-#### Web & APIs
-- **fetch**: HTTP requests (GET, POST, etc.) for API integration (✅ Built-in)
-- **puppeteer**: Browser automation, web scraping, screenshots (✅ Connected)
-  - Use for: Dynamic content, JavaScript-heavy sites, visual testing
+**Manage:** `ls ~/.claude/hookify.*.local.md`
+**Disable:** Edit file, set `enabled: false`
 
-#### Security & Networking
-- **Private Internet Access (PIA) VPN**: Secure connection and IP rotation
-  - Use for: Web scraping IP rotation, geo-restriction bypass, privacy for research
-  - Integration: CLI (`piactl`) or GUI app
+### MCP Servers (✅ = Connected)
+| Tool | Purpose | Status |
+|------|---------|--------|
+| perplexity | Web search, research | ✅ |
+| airtable | Client data, tables | ✅ |
+| gmail | Email (mike.finneran@gmail.com) | ✅ |
+| memory | Knowledge graphs | ✅ |
+| playwright | Browser automation | ✅ |
+| apple-notes | Note-taking | ⚠️ Broken |
 
-#### Productivity & Organization
-- **apple-notes**: Primary note-taking (⚠️ MCP connection currently broken)
-- **airtable**: Project management, backlog tracking (✅ Connected)
-- **gmail**: Email management (✅ Connected - mike.finneran@gmail.com)
+**Other:** PIA VPN (IP rotation), claudish (multi-model CLI)
 
-#### Memory & Context
-- **memory**: Persistent knowledge graphs (✅ Connected, underutilized)
-  - Use for: Long-term facts, relationships, project history
-- **sequential-thinking**: Extended reasoning (✅ Built-in)
-
-### Storage Locations
-- **ObsidianVault**: Primary hub (`~/Documents/ObsidianVault/`)
-- **Airtable**: Project management, backlog, client tracking
-- **Apple Notes**: Quick capture only (migrate to Obsidian)
-- **S3**: ✅ Automated backups (s3://mikefinneran-personal/claude-backups/)
-
----
-
-## Health Check & Validation
-
-**Verify memory system is working:**
-```bash
-# Check CLAUDE.md loads properly
-cat ~/.claude/CLAUDE.md | wc -l  # Should be ~500-600 lines
-
-# Verify backups are running
-launchctl list | grep claude-s3-backup
-
-# Check last backup
-aws s3 ls s3://mikefinneran-personal/claude-backups/ --recursive | tail -1
-
-# Check all automations
-launchctl list | grep -E "claude|lifehub|airtable"
+### Airtable API (CRITICAL)
+**ALWAYS use `AirtableClient`** for any Airtable operations in Python scripts.
+```python
+from utils.airtable_client import AirtableClient
+client = AirtableClient(base_id="appXXX", table_id="tblXXX")
+records = client.fetch_records(filter_formula="{Status}='New'")
+client.batch_update(updates)  # 10 records/call
+client.batch_create(records)  # 10 records/call
 ```
+**Location:** `~/Code/WalterSignal/walterfetch-v2/utils/airtable_client.py`
+**Features:** Batching (90% fewer calls), rate limiting, retries, caching, stats
 
-**Troubleshooting:**
-- If CLAUDE.md > 700 lines → Archive verbose sections
-- If backups failing → Check logs: `tail ~/.claude/logs/s3-backup-error.log`
-- If context missing → Restore from S3: `restore-s3`
-- If automations not running → Check LaunchAgents: `ls ~/Library/LaunchAgents/`
+### Storage
+- **ObsidianVault**: Primary (`~/Documents/ObsidianVault/`)
+- **Obsidian Projects**: Backlog & feature tracking (`~/Documents/ObsidianVault/Projects/`)
+- **S3**: Automated backups (s3://mikefinneran-personal/claude-backups/)
 
 ---
 
-## Security Best Practices
+## Health Check & Security
 
-**NEVER put in CLAUDE.md:**
-- ❌ API keys or passwords
-- ❌ Client confidential data
-- ❌ Personal sensitive information
-- ❌ Production credentials
-- ❌ Private business strategies
+**Quick checks:** `cat ~/.claude/CLAUDE.md | wc -l` (should be <600), `launchctl list | grep claude`
 
-**Safe to include:**
-- ✅ Project names and descriptions
-- ✅ File paths and locations
-- ✅ Workflow preferences
-- ✅ Tool usage patterns
-- ✅ Public Airtable base IDs
+**Troubleshooting:** CLAUDE.md >700 lines → archive verbose sections | Backups failing → `tail ~/.claude/logs/s3-backup-error.log` | Context missing → `restore-s3`
 
-**Credential Management:**
-- Use 1Password for all secrets
-- Reference with: `op item get "credential-name"`
-- Never hardcode in memory files
-- Rotate credentials quarterly
-- Use environment variables for scripts
+**NEVER in CLAUDE.md:** API keys, passwords, client data, credentials
+**Use 1Password:** `op item get "credential-name"` for all secrets
 
 ---
 
 ## Document Metadata
 
-**Version:** 2.6 | **Last Updated:** 2025-11-26 | **Owner:** Mike Finneran
+**Version:** 3.1 | **Last Updated:** 2025-01-21 | **Owner:** Mike Finneran
 
 ---
 
-## CLAUDE.md Changelog
+## Changelog
 
-**2025-11-26 v2.6**:
-- Added "Quality Over Speed" rule - study before coding
-- Extracted Shell Aliases to `~/.claude/guides/SHELL-ALIASES.md`
-- Added WalterSignal deployment info to Active Projects
-- Updated Current Week Focus
-
-**2025-11-12 v2.5**: Major cleanup - 49% line reduction, extracted verbose sections
-
-**Full changelog:** `~/.claude/CHANGELOG-ARCHIVE.md`
-
-**Last updated**: 2025-11-26
-**Next review**: Weekly (Mondays)
+**v3.1** (2025-01-21): Separated code from vault - ~/Code/ for code, vault for docs only
+**v3.0** (2025-12-16): Added Claude Code plugins section, hookify safety rules
+**v2.9** (2025-12-15): Trimmed to <575 lines, condensed automations/tools sections
+**Full history:** `~/.claude/CHANGELOG-ARCHIVE.md`
 
 ---
-
 *Automatically loaded by Claude Code on every session*

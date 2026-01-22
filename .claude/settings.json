@@ -1,5 +1,18 @@
 {
   "alwaysThinkingEnabled": false,
+  "hooks": {
+    "SessionStart": [
+      {
+        "matcher": {},
+        "hooks": [
+          {
+            "type": "command",
+            "command": "~/.claude/scripts/1password-auth.sh"
+          }
+        ]
+      }
+    ]
+  },
   "allowedTools": [
     "Bash(~/.claude/init-project-memory.sh)",
     "Bash(mkdir:*)",
@@ -233,5 +246,100 @@
     "Bash(man:*)",
     "Bash(history:*)",
     "Bash(alias:*)"
-  ]
+  ],
+  "enabledPlugins": {
+    "code-review@claude-plugins-official": true,
+    "context7@claude-plugins-official": true,
+    "frontend-design@claude-plugins-official": true,
+    "github@claude-plugins-official": true,
+    "security-guidance@claude-plugins-official": true,
+    "playwright@claude-plugins-official": true,
+    "sentry@claude-plugins-official": true,
+    "hookify@claude-plugins-official": true,
+    "figma@claude-plugins-official": true,
+    "Notion@claude-plugins-official": true
+  },
+  "permissions": {
+    "allow": [
+      "mcp__airtable__list_bases",
+      "Bash(ls:*)",
+      "Bash(lsof:*)",
+      "Bash(pkill:*)",
+      "mcp__obsidian-vault__list_recent_notes",
+      "Bash(open:*)",
+      "Bash(chmod:*)",
+      "Bash(npx create-next-app@latest:*)",
+      "Bash(~/.local/bin/uv run:*)",
+      "Bash(tree:*)",
+      "Bash(open \"https://supabase.com/dashboard/project/lnabwyviifqfwitwaher/settings/database\")",
+      "Bash(op item list:*)",
+      "Bash(open ~/Desktop/FB Ads/mockups/before-dentist.html)",
+      "Bash(supabase --version:*)",
+      "Bash(brew install:*)",
+      "Bash(supabase login:*)",
+      "Bash(# The Supabase connection string format for pooled connections: # postgresql://postgres.[project-ref]:[password]@aws-0-[region].pooler.supabase.com:6543/postgres # # For direct connections: # postgresql://postgres:[password]@db.[project-ref].supabase.co:5432/postgres # # Project ref: lnabwyviifqfwitwaher # We need to either: # 1. Use the database password \\(set during project creation\\) # 2. Reset it via API using service role key # Let''s check if we can use the Supabase API to get database info curl -s -X GET \"\"https://api.supabase.com/v1/projects\"\" \\\\ -H \"\"Authorization: Bearer sb_secret_KstlRN05FFyTmXF9fnQrLw_1Ce4vQHd\"\")",
+      "Bash(brew services:*)",
+      "Bash(psql:*)",
+      "Bash(export PATH=\"/opt/homebrew/opt/postgresql@15/bin:$PATH\")",
+      "Bash(createdb:*)",
+      "Bash(uv run alembic:*)",
+      "Bash(xargs kill -9)",
+      "Bash(uv add:*)",
+      "Bash(redis-cli ping:*)",
+      "Bash(sshpass -p 'Wally9381' ssh:*)",
+      "Bash(sshpass:*)",
+      "Bash(ssh-keyscan:*)",
+      "Bash(~/.ssh/known_hosts)",
+      "Bash(SSHPASS='Wally9381' sshpass -e ssh mikefinneran@192.168.68.62 \"echo ''Wally9381'' | sudo -S -p '''' pg_ctlcluster 16 main start\")",
+      "Bash(SSHPASS='Wally9381' sshpass -e ssh mikefinneran@192.168.68.62 \"cd ~/linkedin-outreach && python3 -m venv venv && source venv/bin/activate && pip install -r requirements.txt 2>&1 | tail -10\")",
+      "Bash(SSHPASS='Wally9381' sshpass -e ssh mikefinneran@192.168.68.62 \"cd ~/linkedin-outreach && source venv/bin/activate && export DATABASE_URL=''postgresql://linkedin_app:linkedin_secure_2026@localhost/linkedin_outreach'' && cd api && nohup python -m uvicorn main:app --host 0.0.0.0 --port 8004 > /tmp/linkedin_api.log 2>&1 &\")",
+      "Bash(SSHPASS='Wally9381' sshpass -e ssh mikefinneran@192.168.68.62 \"ps aux | grep uvicorn | grep -v grep\")",
+      "Bash(SSHPASS='Wally9381' sshpass -e ssh mikefinneran@192.168.68.62 \"cd ~/linkedin-outreach && source venv/bin/activate && export DATABASE_URL=''postgresql://linkedin_app:linkedin_secure_2026@localhost/linkedin_outreach'' && nohup bash -c ''cd api && python -m uvicorn main:app --host 0.0.0.0 --port 8004'' > /tmp/linkedin_api.log 2>&1 &\")",
+      "Bash(SSHPASS='Wally9381' sshpass -e ssh mikefinneran@192.168.68.62 \"cd ~ && npx create-next-app@latest linkedin-dashboard --typescript --tailwind --eslint --app --src-dir --no-import-alias --yes 2>&1 | tail -10\")",
+      "Bash(sshpass -p 'Wally9381' ssh mikefinneran@192.168.68.62 \"ps aux | grep -E ''walterfetch|uvicorn|celery'' | grep -v grep\")",
+      "Bash(scp:*)",
+      "Bash(osascript:*)",
+      "Bash(curl:*)",
+      "Bash(ping:*)",
+      "Bash(SSHPASS='Wally9381' sshpass -e ssh mikefinneran@192.168.68.62 \"cd ~/linkedin-dashboard && npm install swr lucide-react 2>&1 | tail -5\")",
+      "Bash(sshpass -p 'Wally9381' scp:*)",
+      "Bash(SSHPASS='Wally9381' sshpass -e ssh mikefinneran@192.168.68.62 \"mkdir -p ~/linkedin-dashboard/src/app/accounts ~/linkedin-dashboard/src/app/campaigns ~/linkedin-dashboard/src/app/inbox\")",
+      "Bash(SSHPASS='Wally9381' sshpass -e ssh mikefinneran@192.168.68.62 \"cd ~/linkedin-dashboard && npm run build 2>&1 | tail -20\")",
+      "Bash(SSHPASS='Wally9381' sshpass -e ssh mikefinneran@192.168.68.62 \"cd ~/linkedin-dashboard && nohup npm run start -- -p 3000 -H 0.0.0.0 > /tmp/dashboard.log 2>&1 &\")",
+      "Bash(SSHPASS='Wally9381' sshpass -e ssh mikefinneran@192.168.68.62 \"echo ''Wally9381'' | sudo -S -p '''' cp /tmp/linkedin-dashboard.service /etc/systemd/system/ && echo ''Wally9381'' | sudo -S -p '''' systemctl daemon-reload && echo ''Wally9381'' | sudo -S -p '''' systemctl enable linkedin-dashboard\")",
+      "Bash(JOB_ID=\"90bfe97a-a32c-4f15-be44-5b7bfc07d584\")",
+      "Bash(open \"https://oxylabs.io/products/static-residential-proxy\")",
+      "Bash(open \"https://oxylabs.io/pricing/isp-proxies\")",
+      "Bash(python3:*)",
+      "Bash(git rev-parse:*)",
+      "Bash(git add:*)",
+      "Bash(git commit -m \"$\\(cat <<''EOF''\nAdd WalterFetch macOS native app for lead enrichment\n\nSwiftUI app that provides GUI control over the WalterFetch API:\n- Dashboard with job stats and quality tier breakdown\n- New job creation with CSV upload or LinkedIn URL import\n- Job detail view with progress tracking and lead table\n- Chrome debug controls for LinkedIn scraping\n- Real-time polling during job execution\n\nBackend API \\(walterfetch_api.py\\) includes:\n- Job/lead CRUD operations\n- Web scraping with aiohttp + BeautifulSoup\n- Ollama integration for contact extraction\n- Chrome DevTools Protocol support for LinkedIn\n- Quality tier scoring \\(GOLD/SILVER/BRONZE\\)\n\nCo-Authored-By: Claude Opus 4.5 <noreply@anthropic.com>\nEOF\n\\)\")",
+      "Bash(ssh:*)",
+      "mcp__obsidian-vault__search_notes",
+      "mcp__memory__search_nodes",
+      "Bash(sshpass -p 'Wally9381' ssh mikefinneran@192.168.68.62:*)",
+      "Bash(op signin:*)",
+      "Bash(op whoami:*)",
+      "mcp__obsidian-vault__create_daily_note",
+      "Read(//private/tmp/**)",
+      "Bash(grep:*)",
+      "Bash(piactl connect:*)",
+      "Bash(kill:*)",
+      "Bash(open \"https://docs.google.com/document/create\")",
+      "Bash(cat:*)",
+      "Bash(pbcopy)",
+      "Bash(python:*)",
+      "Bash(git commit:*)",
+      "Bash(file:*)",
+      "mcp__airtable__create_record",
+      "Bash(npm run dev:*)",
+      "Bash(du:*)",
+      "Bash(open http://localhost:3000)",
+      "Bash(~/Documents/ObsidianVault/.obsidian/community-plugins.json)",
+      "Bash(brew list:*)"
+    ],
+    "additionalDirectories": [
+      "/Users/mikefinneran/Documents/ObsidianVault/[1] WalterSignal/Code/walterfetch-browser/data/exports"
+    ]
+  }
 }

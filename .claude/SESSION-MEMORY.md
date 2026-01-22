@@ -1,41 +1,56 @@
-# Session Memory - 2025-11-26
+# Session Memory - 2025-01-07
 
-## WalterSignal Website - DEPLOYED
-- **Live**: https://waltersignal.io/ (v16 deployed)
-- **Source**: `~/Documents/ObsidianVault/[1] Projects/WalterSignal/Website/waltersignal-ai/index.html`
-- **All versions**: `/tmp/waltersignal-v*.html` (v2-v16, gemini)
-- **Server**: AWS Lightsail 98.89.88.138, SSH: ~/.ssh/command-center-key.pem
+## Session Started
+2025-01-07
 
-## Logo Work - PENDING
-- DALL-E attempts (~$0.40) - close but not exact match
-- Reference: Geometric French Bulldog (purple ears, cyan forehead, white muzzle)
-- SVG hand-coding failed - shapes not accurate
-- **Next step**: Use Adobe Illustrator Image Trace on reference PNG to get clean vector
+## Resume After Restart
 
-## CLAUDE.md v2.6 - MAJOR UPDATE
-- Reduced from 745 → 572 lines
-- Added "Quality Over Speed" with STOP. STUDY. THEN EXECUTE.
-- Added "Common Mistakes" table with specific failures/fixes
-- Added "Auto-Approve Philosophy" - keep work moving
-- Extracted Shell Aliases to `~/.claude/guides/SHELL-ALIASES.md`
-- Removed rarely-used sections (Performance Metrics, Content Lifecycle, External Integrations)
-- Applied industry best practices from Anthropic, Arize, community guides
+### DGX Drive Mapping (IN PROGRESS)
+**Status:** macFUSE installed, needs restart
 
-## Settings Changed
-- `claude config set autoApprove true` - commands run without prompting
+**After restart, run:**
+```bash
+brew install gromgit/fuse/sshfs-mac
+mkdir -p ~/mnt/dgx
+sshfs mikefinneran@192.168.68.62:/home/mikefinneran ~/mnt/dgx
+```
+Password: `Wally9381`
 
 ---
 
-## Previous Work (2025-11-20)
+## Completed This Session
 
-### Florida Prospects - Clay Enrichment Ready
-- ✅ 220/224 enriched with Mixtral (buying signals, pain points)
-- ✅ Airtable cleaned (removed Sales Nav IDs + CS numbers)
-- ✅ Uploaded 223 prospects to Clay table
-- ✅ Hunter enrichment configured for CFO emails
-- **Next**: Run Clay enrichment → Export → Merge with Mixtral data
+### 1. AeroDyne BT-1 Form Data Gathered
+Indiana Business Tax Application ready to fill:
+- Business: AERODYNE, LLC
+- Address: 6730 Palmilla Ct, Fort Wayne, IN 46835
+- SOS Control #: 202507071906060
+- EIN: 39-3054211
+- CEO: Michael J. Finneran
+- Phone: 260-443-4043
+- Business Type: Retail knife sales (NAICS 453998)
+- Purpose: Sales tax registration
 
-### Ascend AI Conditions Spreadsheet
-- ✅ COMPLETE - 51 conditions filled with tailored messaging
-- File: `~/Downloads/AI Conditions info.xlsx`
-- Key stats: $127K saved (BitKraft), ~35% savings, Google Ventures/Bessemer clients
+### 2. Vault Cleanup - CrewAI Folders
+**Confirmed NOT in use:** Both `crewai-specialists` folders were inactive
+- Old training materials, stale documentation
+- Referenced wrong IP (192.168.68.81 vs current 192.168.68.62)
+- Active CrewAI code lives in `/[1] WalterSignal/Code/waltersignal-crews/`
+**User cleaned up the folders**
+
+### 3. Discovered Blade Mafia Project
+New Next.js e-commerce platform in `/blade-mafia/`:
+- Stack: Next.js 16, React 19, Supabase, Stripe, Tailwind
+- Business: Group buy platform for premium knives
+- Membership: Standard ($9.99/mo, Cost+10%), Elite ($19.99/mo, Cost+5%)
+
+---
+
+## Previous Session Context
+- Edge Collective knife club MVP (~/edge-collective/)
+- Principal Crafts website (principalcrafts.com) - LIVE
+- WalterSignal Gamma presentations
+
+---
+
+*Session saved: 2025-01-07*

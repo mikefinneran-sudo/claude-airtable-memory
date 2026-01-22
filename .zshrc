@@ -106,3 +106,12 @@ source ~/.claude/scripts/iterm-aliases.sh
 alias scrape='python3 ~/.claude/scripts/scrape-url.py'
 alias scrape-js='python3 ~/.claude/scripts/scrape-url.py --js'
 alias scrape-proxy='python3 ~/.claude/scripts/scrape-url.py --proxy'
+
+# Chrome Debug Mode (for LinkedIn robot / Playwright)
+alias chrome-debug='/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome --remote-debugging-port=9222'
+
+# OpenRouter API Configuration (Added 2025-12-02)
+export OPENROUTER_API_KEY="$(op item get openrouter_api_key --fields credential 2>/dev/null || echo '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')"
+
+# Identity Graph monitoring
+alias ig-status="python ~/Documents/ObsidianVault/WalterSignal/Code/identity-graph/api_status.py"

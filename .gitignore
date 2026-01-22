@@ -4,6 +4,7 @@
 .gmail-mcp/
 .lifehub-notion-token
 **/credentials.json
+**/service_account.json
 **/*password*
 **/*secret*
 **/*token*
@@ -33,6 +34,7 @@ Public/
 Sites/
 Dropbox/
 *Google Drive*
+Code/
 
 # OS Files
 .DS_Store
@@ -49,6 +51,7 @@ Dropbox/
 .obsidian/
 .config/gh/
 .config/1Password/
+.vscode/extensions/
 
 # Temp & Build
 .cups/
@@ -65,6 +68,24 @@ Dropbox/
 .viminfo
 .iterm2_shell_integration.zsh
 
+# Claude Code Generated Files
+.claude-worktrees/
+.claude/cache/
+.claude/history.jsonl
+.claude/hookify.*.local.md
+.claude/ide/
+.claude/plans/
+.claude/plugins/
+.claude/shell-snapshots/
+.claude/stats-cache.json
+.claude/todos/
+chrome-debug-profile/
+linkedin-proxy/
+
+# Exclude .claude folders in subdirectories
+Documents/ObsidianVault/.claude/
+Code/**/.claude/
+
 # Specific Files
 .CFUserTextEncoding
 .gitconfig
@@ -76,3 +97,4 @@ Dropbox/
 .claude/projects/**/*.jsonl
 .claude/file-history/
 .claude/command-center/
+.claude/projects/

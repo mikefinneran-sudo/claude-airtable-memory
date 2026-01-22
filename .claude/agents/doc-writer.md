@@ -1,4 +1,5 @@
 ---
+name: doc-writer
 description: Technical documentation specialist
 model: claude-sonnet-4.5
 tools: [Read, Write, Edit, Grep, Glob]
