@@ -56,18 +56,16 @@
 
 ## Current Week Focus
 
-**Week of**: 2025-12-10 (Week 50)
-**Primary Project**: WalterSignal website & content
-**Status**: Full site live with services, news, pricing
+**Week of**: 2026-01-22 (Week 4)
+**Primary Focus**: System cleanup & organization
+**Status**: Repository restructure complete
 **Completed**:
-- [x] Logo deployed (Dec 4)
-- [x] 5 service pages created (Dec 5)
-- [x] News system with Airtable API (Dec 9)
-- [x] Scoping, About, Get Started pages updated (Dec 9)
+- [x] Separated code from vault (2026-01-22)
+- [x] Created vault purity checks
+- [x] Added automated prevention (cron job every 6 hours)
 **Next Actions**:
-- [ ] Review/improve service page content
-- [ ] Add more news articles to Airtable
-- [ ] Continue lead enrichment pipeline
+- [ ] Continue lead enrichment work
+- [ ] Focus on active client projects
 
 ---
 
@@ -328,87 +326,24 @@ Use these structured commands for specific workflows:
 
 ---
 
-## Shell Aliases & Shortcuts
+## Quick Reference
 
-**Full reference:** `~/.claude/guides/SHELL-ALIASES.md`
-
-**Most used:**
-- `vault` - cd to ObsidianVault
-- `vdaily` - Create daily note
-- `at-sync` - Sync to Airtable
-- `c` - Start Claude session
-- `cc` - Continue last session
-
----
-
-## Alfred Snippets (Keyboard Shortcuts)
-
-**Location**: `~/Desktop/Claude-Code-Snippets.alfredsnippets`
-**Documentation**: `~/.claude/ALFRED-SNIPPETS-GUIDE.md`
-
-### Most Important
-- **;ctx** - Session start - loads context ⭐
-- **;ws** - WalterSignal quick access
-- **;save** - Save session progress
-
-### All Snippets
-- `;cont` - Continue [project]
-- `;deep` - Deep dive [project]
-- `;weekly` - Weekly review
-- `;proj` - Show all projects
-- `;health` - Health check
-- `;restore` - Restore from S3
-- `;backlog` - Add to backlog
-- `;yesterday` - Yesterday's work
-- `;focus` - Update week focus
-
-**Installation**: Double-click `.alfredsnippets` file on Desktop
+**Shell Aliases**: `~/.claude/guides/SHELL-ALIASES.md` - Most used: `vault`, `vdaily`, `c`, `cc`
+**Alfred Snippets**: `~/.claude/ALFRED-SNIPPETS-GUIDE.md` - Quick access: `;ctx`, `;ws`, `;save`
 
 ---
 
 ## Active Projects
-- **WalterSignal** - AI consulting business (website live at waltersignal.io)
-  - Lightsail: 98.89.88.138, SSH: `~/.ssh/command-center-key.pem`
-  - Web root: `/var/www/html/`
-  - Code: `~/Code/WalterSignal/` (walterfetch, crews, tools)
-  - Docs: `~/Documents/ObsidianVault/[1] WalterSignal/` (comms, research, notes)
-- **BladeMafia** - Knife group-buy platform
-  - Code: `~/Code/BladeMafia/` (Next.js 16, React 19, Supabase, Stripe)
-- Lead enrichment pipeline (Florida prospects, Clay integration)
 
-## Infrastructure
+### WalterSignal (Primary)
+- **Code**: `~/Code/WalterSignal/` - See `~/Code/WalterSignal/CLAUDE.md` for infrastructure details
+- **Docs**: `~/Documents/ObsidianVault/[1] WalterSignal/` - Business docs, research, comms
+- **Site**: waltersignal.io (Lightsail: 98.89.88.138)
 
-### DGX Server (CrewAI)
-- **IP**: 192.168.68.62
-- **Hostname**: spark-d977
-- **SSH**: `sshpass -p 'Wally9381' ssh mikefinneran@192.168.68.62`
-- **Dashboard**: Port 11000 (localhost only - requires SSH tunnel)
-  - **Open Dashboard**: `sshpass -p 'Wally9381' ssh -f -N -L 11000:localhost:11000 mikefinneran@192.168.68.62 && open http://localhost:11000`
-  - **Kill Tunnel**: `pkill -f "ssh.*11000.*192.168.68.62"`
-- **CrewAI API**: http://192.168.68.62:8000
-- **Available Crews**: specialist_team, business_finance, technical_team, flyflat_ops, waltersignal_design
-- **Health Check**: `curl http://192.168.68.62:8000/health`
-
-### WalterFetch API (Enrichment)
-- **Endpoint**: http://192.168.68.62:8002/enrich
-- **Method**: POST
-- **Request**: `{"organization_name": "...", "website_url": "..."}`
-- **Response**: contact_name, contact_title, contact_email, contact_phone, location, organization_type
-- **Tech**: FastAPI + BeautifulSoup + Ollama (mistral:7b)
-- **Health**: `curl http://192.168.68.62:8002/health`
-- **Local code**: `~/Code/WalterSignal/walterfetch-v2/`
-
-### LinkedIn Proxy API (Sales Navigator)
-- **Endpoint**: http://192.168.68.62:8003
-- **Purpose**: Store LinkedIn leads extracted by Chrome extension
-- **Workflow**: Chrome Extension → DGX API → Robots
-- **Key Endpoints**:
-  - `GET /linkedin/leads` - Fetch stored leads (for robots)
-  - `POST /linkedin/store` - Store leads (from extension)
-  - `GET /health` - Check API status
-- **Chrome Extension**: `~/Code/WalterSignal/walterfetch-browser/chrome-extension/`
-- **Robot Client**: `from core.linkedin_client import LinkedInClient`
-- **Health**: `curl http://192.168.68.62:8003/health`
+### Other Projects
+- **BladeMafia**: `~/Code/BladeMafia/` - Knife group-buy platform (Next.js 16, React 19, Supabase)
+- **FlyFlat**: `~/Code/FlyFlat/` - Client work
+- **Various**: `~/Code/[ProjectName]/` - See individual project CLAUDE.md files
 
 ---
 

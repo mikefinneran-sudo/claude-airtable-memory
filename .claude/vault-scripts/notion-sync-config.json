@@ -1,0 +1,47 @@
+{
+  "mappings": [
+    {
+      "obsidian_folder": "Projects/FlyFlat/Weekly-Updates",
+      "notion_database_id": "REPLACE_WITH_FLYFLAT_UPDATES_DB_ID",
+      "type_filter": "weekly-update",
+      "property_mapping": {
+        "week": "Week",
+        "date": "Date",
+        "status": "Status",
+        "project": "Project",
+        "recipient": "Recipient"
+      }
+    },
+    {
+      "obsidian_folder": "Projects",
+      "notion_database_id": "REPLACE_WITH_PROJECTS_DB_ID",
+      "type_filter": "project",
+      "property_mapping": {
+        "status": "Status",
+        "priority": "Priority",
+        "deadline": "Deadline",
+        "client": "Client",
+        "progress": "Progress",
+        "start-date": "Start Date",
+        "owner": "Owner",
+        "category": "Category",
+        "revenue-potential": "Revenue Potential"
+      }
+    },
+    {
+      "obsidian_folder": "Clients",
+      "notion_database_id": "REPLACE_WITH_CLIENTS_DB_ID",
+      "type_filter": "client",
+      "property_mapping": {
+        "status": "Status",
+        "industry": "Industry",
+        "company-size": "Company Size",
+        "lifetime-value": "Lifetime Value",
+        "monthly-value": "Monthly Value",
+        "conversion-probability": "Conversion Probability",
+        "first-contact": "First Contact",
+        "last-contact": "Last Contact"
+      }
+    }
+  ]
+}

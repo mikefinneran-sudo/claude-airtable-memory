@@ -33,7 +33,7 @@
     "stickers-command": 246,
     "default-permission-mode-config": 252,
     "frontend-design-plugin": 251,
-    "rename-conversation": 239,
+    "rename-conversation": 254,
     "config-thinking-mode": 240,
     "guest-passes": 252,
     "desktop-app": 252,
@@ -43,7 +43,7 @@
     "btw-side-question": 233,
     "vscode-command-install": 253
   },
-  "promptQueueUseCount": 719918,
+  "promptQueueUseCount": 719923,
   "showExpandedTodos": true,
   "cachedStatsigGates": {
     "tengu_tool_pear": false,

@@ -1,0 +1,90 @@
+{
+  "name": "Airtable → Notion Sync",
+  "nodes": [
+    {
+      "parameters": {
+        "pollTimes": {
+          "item": [
+            {
+              "mode": "everyMinute"
+            }
+          ]
+        },
+        "base": {
+          "__rl": true,
+          "value": "appx922aa4LURWlMI",
+          "mode": "id"
+        },
+        "table": {
+          "__rl": true,
+          "value": "tblbLNQlJ9Ojaz9gK",
+          "mode": "id"
+        }
+      },
+      "name": "Airtable Trigger - Documents",
+      "type": "n8n-nodes-base.airtableTrigger",
+      "typeVersion": 1,
+      "position": [250, 300],
+      "credentials": {
+        "airtableApi": {
+          "id": "REPLACE_WITH_YOUR_AIRTABLE_CREDENTIAL_ID",
+          "name": "Airtable account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "resource": "databasePage",
+        "operation": "create",
+        "databaseId": {
+          "__rl": true,
+          "value": "292f55156d0d806b91e9d55546d57032",
+          "mode": "id"
+        },
+        "title": "={{ $json.fields.Name }}",
+        "propertiesUi": {
+          "propertyValues": [
+            {
+              "key": "Content",
+              "textContent": "={{ $json.fields.Notes }}"
+            }
+          ]
+        },
+        "blockUi": {
+          "blockValues": [
+            {
+              "type": "paragraph",
+              "richText": "={{ $json.fields.Notes }}"
+            }
+          ]
+        }
+      },
+      "name": "Notion - Create Page",
+      "type": "n8n-nodes-base.notion",
+      "typeVersion": 2,
+      "position": [450, 300],
+      "credentials": {
+        "notionApi": {
+          "id": "REPLACE_WITH_YOUR_NOTION_CREDENTIAL_ID",
+          "name": "Notion account"
+        }
+      }
+    }
+  ],
+  "connections": {
+    "Airtable Trigger - Documents": {
+      "main": [
+        [
+          {
+            "node": "Notion - Create Page",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1"
+  }
+}
