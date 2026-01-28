@@ -1,5 +1,5 @@
 {
-  "numStartups": 262,
+  "numStartups": 263,
   "installMethod": "native",
   "autoUpdates": false,
   "hasSeenTasksHint": true,
@@ -28,10 +28,10 @@
     "permissions": 261,
     "custom-commands": 257,
     "git-worktrees": 257,
-    "shift-enter-setup": 252,
+    "shift-enter-setup": 262,
     "ide-upsell-external-terminal": 239,
     "stickers-command": 246,
-    "default-permission-mode-config": 252,
+    "default-permission-mode-config": 262,
     "frontend-design-plugin": 261,
     "rename-conversation": 254,
     "config-thinking-mode": 240,
@@ -44,7 +44,7 @@
     "vscode-command-install": 253,
     "agent-flag": 256
   },
-  "promptQueueUseCount": 719926,
+  "promptQueueUseCount": 719927,
   "showExpandedTodos": true,
   "cachedStatsigGates": {
     "tengu_tool_pear": false,
@@ -136,7 +136,9 @@
     "tengu_kv7_prompt_sort": false,
     "tengu_cache_plum_violet": false,
     "tengu_cork_m4q": false,
-    "tengu_plum_vx3": false
+    "tengu_plum_vx3": false,
+    "tengu_file_write_optimization": false,
+    "tengu_compact_cache_prefix": false
   },
   "hasSeenStashHint": true,
   "firstStartTime": "2025-10-14T14:31:32.909Z",
@@ -366,7 +368,7 @@
     "e0ec3be9-bd96-466b-a6b8-713cf1258aa5": {
       "hasAccess": false,
       "hasAccessNotAsDefault": true,
-      "timestamp": 1769559924743
+      "timestamp": 1769564351824
     }
   },
   "isQualifiedForDataSharing": false,
@@ -412,7 +414,7 @@
         "referral_link": "https://claude.ai/referral/OAqSLq1oLQ"
       },
       "referrer_reward": null,
-      "timestamp": 1769559921054
+      "timestamp": 1769564348491
     }
   },
   "githubActionSetupCount": 1,

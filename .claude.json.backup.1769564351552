@@ -44,7 +44,7 @@
     "vscode-command-install": 253,
     "agent-flag": 256
   },
-  "promptQueueUseCount": 719926,
+  "promptQueueUseCount": 719927,
   "showExpandedTodos": true,
   "cachedStatsigGates": {
     "tengu_tool_pear": false,
@@ -137,7 +137,8 @@
     "tengu_cache_plum_violet": false,
     "tengu_cork_m4q": false,
     "tengu_plum_vx3": false,
-    "tengu_file_write_optimization": false
+    "tengu_file_write_optimization": false,
+    "tengu_compact_cache_prefix": false
   },
   "hasSeenStashHint": true,
   "firstStartTime": "2025-10-14T14:31:32.909Z",
@@ -413,7 +414,7 @@
         "referral_link": "https://claude.ai/referral/OAqSLq1oLQ"
       },
       "referrer_reward": null,
-      "timestamp": 1769559921054
+      "timestamp": 1769564348491
     }
   },
   "githubActionSetupCount": 1,

@@ -1,5 +1,5 @@
 {
-  "numStartups": 262,
+  "numStartups": 263,
   "installMethod": "native",
   "autoUpdates": false,
   "hasSeenTasksHint": true,
@@ -368,7 +368,7 @@
     "e0ec3be9-bd96-466b-a6b8-713cf1258aa5": {
       "hasAccess": false,
       "hasAccessNotAsDefault": true,
-      "timestamp": 1769559924743
+      "timestamp": 1769564351824
     }
   },
   "isQualifiedForDataSharing": false,
@@ -414,7 +414,7 @@
         "referral_link": "https://claude.ai/referral/OAqSLq1oLQ"
       },
       "referrer_reward": null,
-      "timestamp": 1769559921054
+      "timestamp": 1769564348491
     }
   },
   "githubActionSetupCount": 1,
