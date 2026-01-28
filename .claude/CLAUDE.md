@@ -56,13 +56,13 @@
 
 ## Current Week Focus
 
-**Week of**: 2026-01-22 (Week 4)
-**Primary Focus**: System cleanup & organization
-**Status**: Repository restructure complete
+**Week of**: 2026-01-27 (Week 5)
+**Primary Focus**: CLAUDE.md audit & lead enrichment
+**Status**: System cleanup complete, CLAUDE.md audit in progress
 **Completed**:
 - [x] Separated code from vault (2026-01-22)
 - [x] Created vault purity checks
-- [x] Added automated prevention (cron job every 6 hours)
+- [x] CLAUDE.md audit - removed project-specific content
 **Next Actions**:
 - [ ] Continue lead enrichment work
 - [ ] Focus on active client projects
@@ -244,8 +244,6 @@
 **Phase 2:** Modular Augments (RAG, Decomposition, Style Guide, Framework)
 **Phase 3:** Execution Protocol (P1: Static for simple tasks, P2: Dynamic with Rejection Loop for complex)
 
-**LLM Router:** `~/Code/WalterSignal/waltersignal-crews/llm-router/` - 25 model fleet (20 local FREE + 5 commercial)
-
 ---
 
 ## Session Management
@@ -407,22 +405,11 @@ Use these structured commands for specific workflows:
 
 **Other:** PIA VPN (IP rotation), claudish (multi-model CLI)
 
-### Airtable API (CRITICAL)
-**ALWAYS use `AirtableClient`** for any Airtable operations in Python scripts.
-```python
-from utils.airtable_client import AirtableClient
-client = AirtableClient(base_id="appXXX", table_id="tblXXX")
-records = client.fetch_records(filter_formula="{Status}='New'")
-client.batch_update(updates)  # 10 records/call
-client.batch_create(records)  # 10 records/call
-```
-**Location:** `~/Code/WalterSignal/walterfetch-v2/utils/airtable_client.py`
-**Features:** Batching (90% fewer calls), rate limiting, retries, caching, stats
-
 ### Storage
 - **ObsidianVault**: Primary (`~/Documents/ObsidianVault/`)
 - **Obsidian Projects**: Backlog & feature tracking (`~/Documents/ObsidianVault/Projects/`)
-- **S3**: Automated backups (s3://mikefinneran-personal/claude-backups/)
+- **S3 Vault Backup**: `s3://mikefinneran-personal/obsidian-vault-backup/` (documents/notes)
+- **S3 Claude Backup**: `s3://mikefinneran-personal/claude-backups/` (configs/scripts)
 
 ---
 
@@ -439,15 +426,15 @@ client.batch_create(records)  # 10 records/call
 
 ## Document Metadata
 
-**Version:** 3.1 | **Last Updated:** 2025-01-21 | **Owner:** Mike Finneran
+**Version:** 3.2 | **Last Updated:** 2026-01-27 | **Owner:** Mike Finneran
 
 ---
 
 ## Changelog
 
-**v3.1** (2025-01-21): Separated code from vault - ~/Code/ for code, vault for docs only
+**v3.2** (2026-01-27): Audit cleanup - removed project-specific content (Airtable API, LLM Router), clarified S3 paths
+**v3.1** (2026-01-21): Separated code from vault - ~/Code/ for code, vault for docs only
 **v3.0** (2025-12-16): Added Claude Code plugins section, hookify safety rules
-**v2.9** (2025-12-15): Trimmed to <575 lines, condensed automations/tools sections
 **Full history:** `~/.claude/CHANGELOG-ARCHIVE.md`
 
 ---
