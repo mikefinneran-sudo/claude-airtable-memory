@@ -248,79 +248,12 @@
 
 ## Session Management
 
-### Session Start Checklist
-- [ ] Say: "Load context: What am I working on?"
-- [ ] Review current week focus
-- [ ] Check if any blockers from last session
-- [ ] Verify correct project loaded
+**Full guide:** `~/.claude/SESSION-GUIDE.md`
 
-### Session End Checklist
-- [ ] Update WORKING-CONTEXT.md with progress
-- [ ] Note any blockers or open questions
-- [ ] Mark completed tasks
-- [ ] Push any git changes
+**Quick start:** "Check WORKING-CONTEXT.md - what was I working on?"
+**End session:** Update WORKING-CONTEXT.md or run `cc-save`
 
-### Weekly Review (Monday 9 AM)
-- [ ] Update Current Week Focus in CLAUDE.md
-- [ ] Archive completed projects
-- [ ] Review S3 backup logs (tail ~/.claude/logs/s3-backup.log)
-- [ ] Update PROJECT-REGISTRY.md
-- [ ] Verify automations running (launchctl list | grep claude)
-
----
-
-## Quick Context Snippets
-
-### Session Start
-```
-Load context: What am I working on this week?
-```
-
-### Project Switch
-```
-Continue [ProjectName] - show status, next actions, and recent progress
-```
-
-### Deep Dive
-```
-Load full context for [ProjectName] including all research, code, and documentation
-```
-
-### Weekly Review
-```
-Review this week's progress across all projects and suggest priorities for next week
-```
-
-### Emergency Recovery
-```
-restore-s3
-# Select backup from before issue occurred
-```
-
----
-
-## Custom Commands
-
-### Natural Language Commands
-- **"save to guides"** → Save as MD to local guides folder
-- **"add to backlog"** / **"backlog: [topic]"** → Create project note in `~/Documents/ObsidianVault/Projects/` using Obsidian MCP
-- **"save locally"** → Save to appropriate local project folder
-
-### Slash Commands (~/.claude/commands/)
-Use these structured commands for specific workflows:
-
-- **/backlog** - Add item to backlog and close tab
-- **/code-review [file-path or @file]** - Perform thorough code review
-- **/explain-code [directory or file]** - Explain code architecture and patterns
-- **/optimize [file-path]** - Analyze and optimize code performance
-- **/plan-feature [feature-description]** - Plan feature implementation with TDD approach
-- **/research [topic]** - Create comprehensive research document
-- **/save-guide [title]** - Save content as guide document
-
-### Research
-- Create MD files in appropriate project folders
-- Keep research files updated
-- Store comprehensive research in dedicated folders
+**Slash commands:** `/backlog`, `/code-review`, `/explain-code`, `/optimize`, `/plan-feature`, `/research`, `/save-guide`
 
 ---
 
@@ -426,15 +359,15 @@ Use these structured commands for specific workflows:
 
 ## Document Metadata
 
-**Version:** 3.2 | **Last Updated:** 2026-01-27 | **Owner:** Mike Finneran
+**Version:** 3.3 | **Last Updated:** 2026-01-27 | **Owner:** Mike Finneran
 
 ---
 
 ## Changelog
 
-**v3.2** (2026-01-27): Audit cleanup - removed project-specific content (Airtable API, LLM Router), clarified S3 paths
+**v3.3** (2026-01-27): Trimmed 441→374 lines - moved session/commands to SESSION-GUIDE.md
+**v3.2** (2026-01-27): Audit cleanup - removed project-specific content, clarified S3 paths
 **v3.1** (2026-01-21): Separated code from vault - ~/Code/ for code, vault for docs only
-**v3.0** (2025-12-16): Added Claude Code plugins section, hookify safety rules
 **Full history:** `~/.claude/CHANGELOG-ARCHIVE.md`
 
 ---

@@ -115,3 +115,17 @@ export OPENROUTER_API_KEY="$(op item get openrouter_api_key --fields credential 
 
 # Identity Graph monitoring
 alias ig-status="python ~/Documents/ObsidianVault/WalterSignal/Code/identity-graph/api_status.py"
+
+# Claude Code session management
+alias cc-save="~/.claude/scripts/save-session-memory.sh"
+
+# Auto-save Claude session on terminal close
+claude_session_cleanup() {
+    if [ -f "$HOME/.claude/SESSION-MEMORY.md" ]; then
+        ~/.claude/scripts/save-session-memory.sh 2>/dev/null
+    fi
+}
+trap claude_session_cleanup EXIT
+
+# 1Password CLI wrapper with auto-reauth
+alias op='~/.claude/scripts/op-wrapper.sh'

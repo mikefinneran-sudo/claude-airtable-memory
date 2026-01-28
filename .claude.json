@@ -9,11 +9,11 @@
     "terminal-setup": 260,
     "shift-enter": 161,
     "memory-command": 257,
-    "theme-command": 243,
+    "theme-command": 263,
     "status-line": 245,
     "prompt-queue": 15,
-    "enter-to-steer-in-relatime": 243,
-    "todo-list": 243,
+    "enter-to-steer-in-relatime": 263,
+    "todo-list": 263,
     "# for memory": 200,
     "install-github-app": 177,
     "drag-and-drop-images": 261,
@@ -21,7 +21,7 @@
     "double-esc-code-restore": 258,
     "continue": 261,
     "shift-tab": 261,
-    "image-paste": 243,
+    "image-paste": 263,
     "tab-toggle-thinking": 191,
     "ultrathink-keyword": 251,
     "custom-agents": 257,
@@ -44,7 +44,7 @@
     "vscode-command-install": 253,
     "agent-flag": 256
   },
-  "promptQueueUseCount": 719927,
+  "promptQueueUseCount": 719928,
   "showExpandedTodos": true,
   "cachedStatsigGates": {
     "tengu_tool_pear": false,
@@ -138,7 +138,7 @@
     "tengu_cork_m4q": false,
     "tengu_plum_vx3": false,
     "tengu_file_write_optimization": false,
-    "tengu_compact_cache_prefix": false
+    "tengu_compact_cache_prefix": true
   },
   "hasSeenStashHint": true,
   "firstStartTime": "2025-10-14T14:31:32.909Z",
@@ -181,17 +181,17 @@
       "hasCompletedProjectOnboarding": true,
       "exampleFilesGeneratedAt": 1768575693488,
       "lastTotalWebSearchRequests": 0,
-      "lastCost": 0.30890700000000004,
-      "lastAPIDuration": 32627,
-      "lastToolDuration": 3,
-      "lastDuration": 63643,
-      "lastLinesAdded": 2,
-      "lastLinesRemoved": 3,
-      "lastTotalInputTokens": 1095,
-      "lastTotalOutputTokens": 1389,
-      "lastTotalCacheCreationInputTokens": 34004,
-      "lastTotalCacheReadInputTokens": 125956,
-      "lastSessionId": "42c7d094-a516-4e94-9924-de1a2ba082a7",
+      "lastCost": 9.732035849999999,
+      "lastAPIDuration": 3184713,
+      "lastToolDuration": 2999864,
+      "lastDuration": 88221124,
+      "lastLinesAdded": 1100,
+      "lastLinesRemoved": 335,
+      "lastTotalInputTokens": 137644,
+      "lastTotalOutputTokens": 74886,
+      "lastTotalCacheCreationInputTokens": 646597,
+      "lastTotalCacheReadInputTokens": 11285384,
+      "lastSessionId": "3823b4cb-451a-41fd-b37e-879fc9c4f9bd",
       "reactVulnerabilityCache": {
         "detected": false,
         "package": null,
@@ -199,27 +199,27 @@
         "version": null,
         "packageManager": null
       },
-      "lastAPIDurationWithoutRetries": 32627,
+      "lastAPIDurationWithoutRetries": 3184545,
       "lastModelUsage": {
         "claude-haiku-4-5-20251001": {
-          "inputTokens": 1059,
-          "outputTokens": 128,
-          "cacheReadInputTokens": 0,
-          "cacheCreationInputTokens": 0,
+          "inputTokens": 128733,
+          "outputTokens": 29858,
+          "cacheReadInputTokens": 1136476,
+          "cacheCreationInputTokens": 189115,
           "webSearchRequests": 0,
-          "costUSD": 0.0016990000000000002
+          "costUSD": 0.6280643499999997
         },
         "claude-opus-4-5-20251101": {
-          "inputTokens": 36,
-          "outputTokens": 1261,
-          "cacheReadInputTokens": 125956,
-          "cacheCreationInputTokens": 34004,
+          "inputTokens": 8911,
+          "outputTokens": 45028,
+          "cacheReadInputTokens": 10148908,
+          "cacheCreationInputTokens": 457482,
           "webSearchRequests": 0,
-          "costUSD": 0.30720800000000004
+          "costUSD": 9.1039715
         }
       },
-      "lastFpsAverage": 12.75,
-      "lastFpsLow1Pct": 439.02
+      "lastFpsAverage": 1.78,
+      "lastFpsLow1Pct": 78.55
     },
     "/Users/mikefinneran/Documents": {
       "allowedTools": [],
@@ -414,7 +414,7 @@
         "referral_link": "https://claude.ai/referral/OAqSLq1oLQ"
       },
       "referrer_reward": null,
-      "timestamp": 1769564348491
+      "timestamp": 1769632438971
     }
   },
   "githubActionSetupCount": 1,
@@ -449,5 +449,6 @@
       "lastUsedAt": 1769543285663
     }
   },
-  "cachedChromeExtensionInstalled": false
+  "cachedChromeExtensionInstalled": false,
+  "lspRecommendationIgnoredCount": 1
 }

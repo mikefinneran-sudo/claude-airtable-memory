@@ -9,11 +9,11 @@
     "terminal-setup": 260,
     "shift-enter": 161,
     "memory-command": 257,
-    "theme-command": 243,
+    "theme-command": 263,
     "status-line": 245,
     "prompt-queue": 15,
-    "enter-to-steer-in-relatime": 243,
-    "todo-list": 243,
+    "enter-to-steer-in-relatime": 263,
+    "todo-list": 263,
     "# for memory": 200,
     "install-github-app": 177,
     "drag-and-drop-images": 261,
@@ -21,7 +21,7 @@
     "double-esc-code-restore": 258,
     "continue": 261,
     "shift-tab": 261,
-    "image-paste": 243,
+    "image-paste": 263,
     "tab-toggle-thinking": 191,
     "ultrathink-keyword": 251,
     "custom-agents": 257,
@@ -44,7 +44,7 @@
     "vscode-command-install": 253,
     "agent-flag": 256
   },
-  "promptQueueUseCount": 719927,
+  "promptQueueUseCount": 719928,
   "showExpandedTodos": true,
   "cachedStatsigGates": {
     "tengu_tool_pear": false,
@@ -138,7 +138,7 @@
     "tengu_cork_m4q": false,
     "tengu_plum_vx3": false,
     "tengu_file_write_optimization": false,
-    "tengu_compact_cache_prefix": false
+    "tengu_compact_cache_prefix": true
   },
   "hasSeenStashHint": true,
   "firstStartTime": "2025-10-14T14:31:32.909Z",
@@ -180,18 +180,18 @@
       ],
       "hasCompletedProjectOnboarding": true,
       "exampleFilesGeneratedAt": 1768575693488,
-      "lastTotalWebSearchRequests": 0,
-      "lastCost": 0.30890700000000004,
-      "lastAPIDuration": 32627,
-      "lastToolDuration": 3,
-      "lastDuration": 63643,
-      "lastLinesAdded": 2,
-      "lastLinesRemoved": 3,
-      "lastTotalInputTokens": 1095,
-      "lastTotalOutputTokens": 1389,
-      "lastTotalCacheCreationInputTokens": 34004,
-      "lastTotalCacheReadInputTokens": 125956,
-      "lastSessionId": "42c7d094-a516-4e94-9924-de1a2ba082a7",
+      "lastTotalWebSearchRequests": 32,
+      "lastCost": 30.81851840000001,
+      "lastAPIDuration": 6695482,
+      "lastToolDuration": 65880233,
+      "lastDuration": 88764943,
+      "lastLinesAdded": 3452,
+      "lastLinesRemoved": 634,
+      "lastTotalInputTokens": 1294498,
+      "lastTotalOutputTokens": 179615,
+      "lastTotalCacheCreationInputTokens": 1736204,
+      "lastTotalCacheReadInputTokens": 29457286,
+      "lastSessionId": "854cf45a-326a-4d44-b7a7-4b588dae8844",
       "reactVulnerabilityCache": {
         "detected": false,
         "package": null,
@@ -199,27 +199,27 @@
         "version": null,
         "packageManager": null
       },
-      "lastAPIDurationWithoutRetries": 32627,
+      "lastAPIDurationWithoutRetries": 6695169,
       "lastModelUsage": {
         "claude-haiku-4-5-20251001": {
-          "inputTokens": 1059,
-          "outputTokens": 128,
-          "cacheReadInputTokens": 0,
-          "cacheCreationInputTokens": 0,
+          "inputTokens": 1202747,
+          "outputTokens": 20156,
+          "cacheReadInputTokens": 642454,
+          "cacheCreationInputTokens": 114635,
           "webSearchRequests": 0,
-          "costUSD": 0.0016990000000000002
+          "costUSD": 1.51106615
         },
         "claude-opus-4-5-20251101": {
-          "inputTokens": 36,
-          "outputTokens": 1261,
-          "cacheReadInputTokens": 125956,
-          "cacheCreationInputTokens": 34004,
-          "webSearchRequests": 0,
-          "costUSD": 0.30720800000000004
+          "inputTokens": 91751,
+          "outputTokens": 159459,
+          "cacheReadInputTokens": 28814832,
+          "cacheCreationInputTokens": 1621569,
+          "webSearchRequests": 32,
+          "costUSD": 29.307452250000004
         }
       },
-      "lastFpsAverage": 12.75,
-      "lastFpsLow1Pct": 439.02
+      "lastFpsAverage": 2.98,
+      "lastFpsLow1Pct": 85.24
     },
     "/Users/mikefinneran/Documents": {
       "allowedTools": [],
@@ -414,7 +414,7 @@
         "referral_link": "https://claude.ai/referral/OAqSLq1oLQ"
       },
       "referrer_reward": null,
-      "timestamp": 1769564348491
+      "timestamp": 1769632438971
     }
   },
   "githubActionSetupCount": 1,
@@ -449,5 +449,6 @@
       "lastUsedAt": 1769543285663
     }
   },
-  "cachedChromeExtensionInstalled": false
+  "cachedChromeExtensionInstalled": false,
+  "lspRecommendationIgnoredCount": 1
 }

@@ -1,0 +1,67 @@
+## WalterSignal (AI Consulting)
+
+### Brand/Awareness
+```
+executive reviewing holographic data dashboard, modern glass office, warm lighting, shallow depth of field, corporate tech aesthetic, confident posture, navy blue and gold accents --ar 16:9 --v 6
+```
+
+### Service Focus (AI Transformation)
+```
+abstract visualization of business processes transforming into streamlined AI workflows, glowing neural pathways, clean minimal style, professional blue gradient, sophisticated and modern --ar 1:1 --v 6
+```
+
+### Lead Gen (Attention-Grabbing)
+```
+confident business strategist standing at intersection of traditional documents and futuristic AI interfaces, dramatic side lighting, executive environment, subtle orange and blue contrast --ar 4:5 --v 6
+```
+
+### Stories Format (Vertical)
+```
+top-down view of modern workspace with laptop displaying AI analytics, hands pointing at insights, coffee cup, clean minimal desk, soft natural light, professional atmosphere --ar 9:16 --v 6
+```
+
+---
+
+## CPA / Accounting Firm
+
+### Professional Office
+```
+professional accountant reviewing financial documents on dual monitors, modern minimalist office, soft window light, tax forms and calculator on clean desk, confident and trustworthy atmosphere, green and navy accents --ar 16:9 --v 6
+```
+
+### Abstract/Conceptual
+```
+abstract visualization of complex tax documents transforming into organized flowing charts, paper becoming digital, calm orderly aesthetic, forest green and white, professional and reassuring --ar 1:1 --v 6
+```
+
+### Client Success
+```
+client shaking hands with financial advisor across modern desk, warm natural lighting, relief and confidence on faces, successful partnership moment, upscale office environment --ar 4:5 --v 6
+```
+
+---
+
+## Excavating / Earth Moving
+
+### Hero Shot
+```
+powerful excavator silhouetted against golden hour sky, dramatic dust clouds, construction site, raw industrial power, cinematic wide angle, earth tones and orange highlights --ar 16:9 --v 6
+```
+
+### Aerial/Scale
+```
+aerial view of excavation site showing precise dig patterns, heavy machinery at work, professional operation, dramatic shadows, scale and capability on display --ar 1:1 --v 6
+```
+
+### Action/Power
+```
+close-up of excavator bucket breaking ground, dirt and rocks in motion, shallow depth of field, power and precision, warm afternoon light, gritty professional aesthetic --ar 4:5 --v 6
+```
+
+---
+
+## Aspect Ratios Reference
+- `--ar 16:9` - Facebook/LinkedIn feed, website banners
+- `--ar 1:1` - Instagram feed, Facebook feed
+- `--ar 4:5` - Instagram feed (tall), Facebook feed
+- `--ar 9:16` - Stories (Instagram, Facebook, TikTok)

@@ -6,7 +6,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "~/.claude/scripts/1password-auth.sh"
+            "command": "~/.claude/scripts/session-context-loader.sh"
           }
         ]
       }

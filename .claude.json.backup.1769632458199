@@ -1,5 +1,5 @@
 {
-  "numStartups": 262,
+  "numStartups": 263,
   "installMethod": "native",
   "autoUpdates": false,
   "hasSeenTasksHint": true,
@@ -9,11 +9,11 @@
     "terminal-setup": 260,
     "shift-enter": 161,
     "memory-command": 257,
-    "theme-command": 243,
+    "theme-command": 263,
     "status-line": 245,
     "prompt-queue": 15,
-    "enter-to-steer-in-relatime": 243,
-    "todo-list": 243,
+    "enter-to-steer-in-relatime": 263,
+    "todo-list": 263,
     "# for memory": 200,
     "install-github-app": 177,
     "drag-and-drop-images": 261,
@@ -21,7 +21,7 @@
     "double-esc-code-restore": 258,
     "continue": 261,
     "shift-tab": 261,
-    "image-paste": 243,
+    "image-paste": 263,
     "tab-toggle-thinking": 191,
     "ultrathink-keyword": 251,
     "custom-agents": 257,
@@ -181,17 +181,17 @@
       "hasCompletedProjectOnboarding": true,
       "exampleFilesGeneratedAt": 1768575693488,
       "lastTotalWebSearchRequests": 0,
-      "lastCost": 0.30890700000000004,
-      "lastAPIDuration": 32627,
-      "lastToolDuration": 3,
-      "lastDuration": 63643,
-      "lastLinesAdded": 2,
-      "lastLinesRemoved": 3,
-      "lastTotalInputTokens": 1095,
-      "lastTotalOutputTokens": 1389,
-      "lastTotalCacheCreationInputTokens": 34004,
-      "lastTotalCacheReadInputTokens": 125956,
-      "lastSessionId": "42c7d094-a516-4e94-9924-de1a2ba082a7",
+      "lastCost": 1.0070210000000002,
+      "lastAPIDuration": 299341,
+      "lastToolDuration": 12389,
+      "lastDuration": 71216997,
+      "lastLinesAdded": 79,
+      "lastLinesRemoved": 0,
+      "lastTotalInputTokens": 44674,
+      "lastTotalOutputTokens": 11181,
+      "lastTotalCacheCreationInputTokens": 38962,
+      "lastTotalCacheReadInputTokens": 953055,
+      "lastSessionId": "9b2e3f63-b204-4e1d-8dfc-9b7bb8e26429",
       "reactVulnerabilityCache": {
         "detected": false,
         "package": null,
@@ -199,27 +199,27 @@
         "version": null,
         "packageManager": null
       },
-      "lastAPIDurationWithoutRetries": 32627,
+      "lastAPIDurationWithoutRetries": 299328,
       "lastModelUsage": {
         "claude-haiku-4-5-20251001": {
-          "inputTokens": 1059,
-          "outputTokens": 128,
+          "inputTokens": 44091,
+          "outputTokens": 441,
           "cacheReadInputTokens": 0,
-          "cacheCreationInputTokens": 0,
+          "cacheCreationInputTokens": 6146,
           "webSearchRequests": 0,
-          "costUSD": 0.0016990000000000002
+          "costUSD": 0.0539785
         },
         "claude-opus-4-5-20251101": {
-          "inputTokens": 36,
-          "outputTokens": 1261,
-          "cacheReadInputTokens": 125956,
-          "cacheCreationInputTokens": 34004,
+          "inputTokens": 583,
+          "outputTokens": 10740,
+          "cacheReadInputTokens": 953055,
+          "cacheCreationInputTokens": 32816,
           "webSearchRequests": 0,
-          "costUSD": 0.30720800000000004
+          "costUSD": 0.9530425000000002
         }
       },
-      "lastFpsAverage": 12.75,
-      "lastFpsLow1Pct": 439.02
+      "lastFpsAverage": 0.29,
+      "lastFpsLow1Pct": 174.14
     },
     "/Users/mikefinneran/Documents": {
       "allowedTools": [],
@@ -368,7 +368,7 @@
     "e0ec3be9-bd96-466b-a6b8-713cf1258aa5": {
       "hasAccess": false,
       "hasAccessNotAsDefault": true,
-      "timestamp": 1769559924743
+      "timestamp": 1769564351824
     }
   },
   "isQualifiedForDataSharing": false,
@@ -414,7 +414,7 @@
         "referral_link": "https://claude.ai/referral/OAqSLq1oLQ"
       },
       "referrer_reward": null,
-      "timestamp": 1769559921054
+      "timestamp": 1769632438971
     }
   },
   "githubActionSetupCount": 1,
@@ -449,5 +449,6 @@
       "lastUsedAt": 1769543285663
     }
   },
-  "cachedChromeExtensionInstalled": false
+  "cachedChromeExtensionInstalled": false,
+  "lspRecommendationIgnoredCount": 1
 }
