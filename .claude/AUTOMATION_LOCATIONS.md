@@ -12,7 +12,8 @@ ls ~/Library/LaunchAgents/
 **Active Automations:**
 - `com.mikefinneran.research-update.plist` - Perplexity research database update (daily midnight)
 - `com.mikefinneran.airtable-sync.plist` - Airtable sync
-- `com.lifehub.dailynote.plist` - Daily note creation
+- `com.lifehub.dailynote.plist` - Daily note with Calendar + Reminders (daily 7 AM)
+- `com.mikefinneran.task-router.plist` - Route Inbox tasks by tag (every 15 min)
 - `com.lifehub.weeklyreview.new.plist` - Weekly review
 - `com.lifehub.gdrive-sync.plist` - Google Drive sync
 - `com.flyflat.weeklyupdate.plist` - Fly Flat weekly update
@@ -55,6 +56,56 @@ python3 "/Users/mikefinneran/Documents/ObsidianVault/Projects/Preplexity Pro Res
 **Output:**
 - Summary: `Projects/Preplexity Pro Research/Daily_Summaries/YYYY-MM-DD-research-update.md`
 - Database: `Projects/Preplexity Pro Research/MASTER_RESEARCH_DATABASE.md`
+
+### Daily Note with Calendar + Reminders
+**Script:** `/Users/mikefinneran/Documents/ObsidianVault/.scripts/create_daily_note_enhanced.sh`
+
+**Schedule:** Daily at 7 AM (LaunchAgent: com.lifehub.dailynote.plist)
+
+**Manual Run:**
+```bash
+/Users/mikefinneran/Documents/ObsidianVault/.scripts/create_daily_note_enhanced.sh
+```
+
+**What it does:**
+- Creates daily note in `Daily/YYYY-MM-DD.md`
+- Injects today's calendar events from Apple Calendar
+- Injects due/overdue reminders from Apple Reminders
+- Skips if note already exists
+
+**Supporting Scripts:**
+- `~/.claude/scripts/get-calendar-events.scpt` - Extracts calendar events
+- `~/.claude/scripts/get-due-reminders.scpt` - Extracts due reminders
+
+---
+
+### Task Router (Inbox Triage)
+**Script:** `/Users/mikefinneran/.claude/scripts/route-inbox-tasks.sh`
+
+**Schedule:** Every 15 minutes (LaunchAgent: com.mikefinneran.task-router.plist)
+
+**Manual Run:**
+```bash
+~/.claude/scripts/route-inbox-tasks.sh
+```
+
+**What it does:**
+- Scans Apple Reminders "Inbox" list
+- Routes tasks to destination lists based on tags in title:
+  - `#ws` or `#work` → Work list
+  - `#personal` → Personal list
+  - `#grocery` or `#groceries` → Grocery list
+  - No tag → Stays in Inbox for manual triage
+- Removes tag from task title after routing
+
+**Capture Methods:**
+- Siri: "Hey Siri, remind me to #ws Review proposal"
+- Shortcuts: Create "Quick Task" and "Work Task" shortcuts
+- Claude Code: Use apple-reminders MCP
+
+**Logs:** `~/.claude/logs/task-router.log`
+
+---
 
 ### Cost Tracking Automations
 **Script:** `/Users/mikefinneran/Documents/ObsidianVault/.scripts/run-all-trackers.sh`
@@ -134,5 +185,5 @@ python3 "/path/from/plist"
 
 ---
 
-**Last Updated:** 2025-11-02
-**Reason:** Failed to find Perplexity automation for 45 minutes. Never again.
+**Last Updated:** 2026-01-28
+**Reason:** Added Apple Reminders task router and enhanced daily note with Calendar/Reminders injection.

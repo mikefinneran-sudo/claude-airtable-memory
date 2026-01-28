@@ -147,7 +147,7 @@
   "firstStartTime": "2025-10-14T14:31:32.909Z",
   "userID": "d24e3861892a86d60e326608c56c358723873a5c6e31dd97fff6e214c7ef4f97",
   "sonnet45MigrationComplete": true,
-  "changelogLastFetched": 1769639656462,
+  "changelogLastFetched": 1769643317380,
   "autoUpdatesProtectedForNative": true,
   "claudeCodeFirstTokenDate": "2025-10-14T17:11:39.888582Z",
   "appleTerminalSetupInProgress": false,
@@ -156,7 +156,7 @@
   "hasCompletedOnboarding": true,
   "lastOnboardingVersion": "2.0.14",
   "hasOpusPlanDefault": false,
-  "lastReleaseNotesSeen": "2.1.20",
+  "lastReleaseNotesSeen": "2.1.22",
   "projects": {
     "/Users/mikefinneran": {
       "allowedTools": [],
@@ -405,6 +405,14 @@
       "type": "stdio",
       "command": "/Users/mikefinneran/.claude/scripts/airtable-mcp-wrapper.sh",
       "args": [],
+      "env": {}
+    },
+    "apple-reminders": {
+      "type": "stdio",
+      "command": "node",
+      "args": [
+        "/Users/mikefinneran/.mcp/apple-reminders-mcp/dist/index.js"
+      ],
       "env": {}
     }
   },
