@@ -1,5 +1,5 @@
 {
-  "numStartups": 263,
+  "numStartups": 264,
   "installMethod": "native",
   "autoUpdates": false,
   "hasSeenTasksHint": true,
@@ -35,7 +35,7 @@
     "frontend-design-plugin": 261,
     "rename-conversation": 254,
     "config-thinking-mode": 240,
-    "guest-passes": 261,
+    "guest-passes": 264,
     "desktop-app": 252,
     "web-app": 252,
     "mobile-app": 252,
@@ -44,7 +44,7 @@
     "vscode-command-install": 253,
     "agent-flag": 256
   },
-  "promptQueueUseCount": 719927,
+  "promptQueueUseCount": 719928,
   "showExpandedTodos": true,
   "cachedStatsigGates": {
     "tengu_tool_pear": false,
@@ -130,21 +130,24 @@
     "tengu_plank_river_frost": "user_intent",
     "tengu_brass_pebble": false,
     "tengu_scarf_coffee": false,
-    "tengu_keybinding_customization_release": false,
-    "tengu_pr_status_cli": false,
+    "tengu_keybinding_customization_release": true,
+    "tengu_pr_status_cli": true,
     "tengu_marble_kite": false,
     "tengu_kv7_prompt_sort": false,
     "tengu_cache_plum_violet": false,
     "tengu_cork_m4q": false,
     "tengu_plum_vx3": false,
     "tengu_file_write_optimization": false,
-    "tengu_compact_cache_prefix": false
+    "tengu_compact_cache_prefix": true,
+    "tengu_marble_anvil": true,
+    "tengu_tst_kx7": false,
+    "tengu_coral_fern": false
   },
   "hasSeenStashHint": true,
   "firstStartTime": "2025-10-14T14:31:32.909Z",
   "userID": "d24e3861892a86d60e326608c56c358723873a5c6e31dd97fff6e214c7ef4f97",
   "sonnet45MigrationComplete": true,
-  "changelogLastFetched": 1769546494784,
+  "changelogLastFetched": 1769639652606,
   "autoUpdatesProtectedForNative": true,
   "claudeCodeFirstTokenDate": "2025-10-14T17:11:39.888582Z",
   "appleTerminalSetupInProgress": false,
@@ -153,7 +156,7 @@
   "hasCompletedOnboarding": true,
   "lastOnboardingVersion": "2.0.14",
   "hasOpusPlanDefault": false,
-  "lastReleaseNotesSeen": "2.1.20",
+  "lastReleaseNotesSeen": "2.1.22",
   "projects": {
     "/Users/mikefinneran": {
       "allowedTools": [],
@@ -181,17 +184,17 @@
       "hasCompletedProjectOnboarding": true,
       "exampleFilesGeneratedAt": 1768575693488,
       "lastTotalWebSearchRequests": 0,
-      "lastCost": 1.0070210000000002,
-      "lastAPIDuration": 299341,
-      "lastToolDuration": 12389,
-      "lastDuration": 71216997,
-      "lastLinesAdded": 79,
-      "lastLinesRemoved": 0,
-      "lastTotalInputTokens": 44674,
-      "lastTotalOutputTokens": 11181,
-      "lastTotalCacheCreationInputTokens": 38962,
-      "lastTotalCacheReadInputTokens": 953055,
-      "lastSessionId": "9b2e3f63-b204-4e1d-8dfc-9b7bb8e26429",
+      "lastCost": 9.732035849999999,
+      "lastAPIDuration": 3184713,
+      "lastToolDuration": 2999864,
+      "lastDuration": 88221124,
+      "lastLinesAdded": 1100,
+      "lastLinesRemoved": 335,
+      "lastTotalInputTokens": 137644,
+      "lastTotalOutputTokens": 74886,
+      "lastTotalCacheCreationInputTokens": 646597,
+      "lastTotalCacheReadInputTokens": 11285384,
+      "lastSessionId": "3823b4cb-451a-41fd-b37e-879fc9c4f9bd",
       "reactVulnerabilityCache": {
         "detected": false,
         "package": null,
@@ -199,27 +202,27 @@
         "version": null,
         "packageManager": null
       },
-      "lastAPIDurationWithoutRetries": 299328,
+      "lastAPIDurationWithoutRetries": 3184545,
       "lastModelUsage": {
         "claude-haiku-4-5-20251001": {
-          "inputTokens": 44091,
-          "outputTokens": 441,
-          "cacheReadInputTokens": 0,
-          "cacheCreationInputTokens": 6146,
+          "inputTokens": 128733,
+          "outputTokens": 29858,
+          "cacheReadInputTokens": 1136476,
+          "cacheCreationInputTokens": 189115,
           "webSearchRequests": 0,
-          "costUSD": 0.0539785
+          "costUSD": 0.6280643499999997
         },
         "claude-opus-4-5-20251101": {
-          "inputTokens": 583,
-          "outputTokens": 10740,
-          "cacheReadInputTokens": 953055,
-          "cacheCreationInputTokens": 32816,
+          "inputTokens": 8911,
+          "outputTokens": 45028,
+          "cacheReadInputTokens": 10148908,
+          "cacheCreationInputTokens": 457482,
           "webSearchRequests": 0,
-          "costUSD": 0.9530425000000002
+          "costUSD": 9.1039715
         }
       },
-      "lastFpsAverage": 0.29,
-      "lastFpsLow1Pct": 174.14
+      "lastFpsAverage": 1.78,
+      "lastFpsLow1Pct": 78.55
     },
     "/Users/mikefinneran/Documents": {
       "allowedTools": [],
@@ -362,13 +365,13 @@
   },
   "fallbackAvailableWarningThreshold": 0.5,
   "feedbackSurveyState": {
-    "lastShownTime": 1768327010450
+    "lastShownTime": 1769636578176
   },
   "s1mAccessCache": {
     "e0ec3be9-bd96-466b-a6b8-713cf1258aa5": {
       "hasAccess": false,
       "hasAccessNotAsDefault": true,
-      "timestamp": 1769564351824
+      "timestamp": 1769639030233
     }
   },
   "isQualifiedForDataSharing": false,
@@ -414,7 +417,7 @@
         "referral_link": "https://claude.ai/referral/OAqSLq1oLQ"
       },
       "referrer_reward": null,
-      "timestamp": 1769632438971
+      "timestamp": 1769639027238
     }
   },
   "githubActionSetupCount": 1,
@@ -439,7 +442,7 @@
   "groveConfigCache": {
     "ad63787e-6d78-48e0-8ae6-bbd93699a1ac": {
       "grove_enabled": true,
-      "timestamp": 1769543206316
+      "timestamp": 1769639027906
     }
   },
   "opusProMigrationComplete": true,
