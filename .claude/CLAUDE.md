@@ -399,10 +399,11 @@ Use these structured commands for specific workflows:
 |------|---------|--------|
 | perplexity | Web search, research | ✅ |
 | airtable | Client data, tables | ✅ |
-| gmail | Email (mike.finneran@gmail.com) | ✅ |
+| gmail | Email (mike.finneran@gmail.com) | ⚠️ Not active |
 | memory | Knowledge graphs | ✅ |
-| playwright | Browser automation | ✅ |
-| apple-notes | Note-taking | ⚠️ Broken |
+| playwright | Browser automation | ⚠️ Not active |
+| apple-reminders | Task management | ✅ NEW |
+| obsidian-vault | Vault notes access | ✅ |
 
 **Other:** PIA VPN (IP rotation), claudish (multi-model CLI)
 

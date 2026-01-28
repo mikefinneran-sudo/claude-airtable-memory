@@ -1,5 +1,4 @@
 {
-  "alwaysThinkingEnabled": false,
   "hooks": {
     "SessionStart": [
       {
@@ -257,7 +256,7 @@
     "sentry@claude-plugins-official": true,
     "hookify@claude-plugins-official": true,
     "figma@claude-plugins-official": true,
-    "Notion@claude-plugins-official": true
+    "notion@claude-plugins-official": true
   },
   "permissions": {
     "allow": [
@@ -337,9 +336,6 @@
       "Bash(open http://localhost:3000)",
       "Bash(~/Documents/ObsidianVault/.obsidian/community-plugins.json)",
       "Bash(brew list:*)"
-    ],
-    "additionalDirectories": [
-      "/Users/mikefinneran/Documents/ObsidianVault/[1] WalterSignal/Code/walterfetch-browser/data/exports"
     ]
   }
 }
