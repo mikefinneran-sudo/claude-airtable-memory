@@ -1,79 +1,66 @@
 # Working Context
 
-**Last Updated**: 2026-01-28 12:00 AM EST
+**Last Updated**: 2026-02-08
 
 ---
 
 ## Current Session
 
-**Project**: CLAUDE.md Audit & Session Automation
-**Status**: ✅ Complete
+**Project**: iPad → Mac Remote Access for Claude Code CLI
+**Status**: Mac-side complete, iPad setup remaining (manual)
 
 ---
 
-## What We Did Today (2026-01-27)
+## What We Did (2026-02-08)
 
-### 1. Fixed 1Password CLI
-- Updated auth script with 5x retry loop
-- Created `op-wrapper.sh` for auto-reauth on failure
-- Added `op` alias to use wrapper
-- Removed SessionStart hook (was running before app ready)
+### iPad Remote Access — Mac-Side Setup Complete
 
-### 2. CLAUDE.md Audit Complete
-**Global** (`~/.claude/CLAUDE.md`):
-- 454 → 374 lines (18% reduction)
-- Moved session/commands to `~/.claude/SESSION-GUIDE.md`
-- Removed project-specific content
-- Version 3.3
+**Power:** `sleep 0`, `disksleep 0`, `disablesleep 1` on AC — Mac stays awake lid-closed
+**SSH:** Remote Login enabled, hardened at `/etc/ssh/sshd_config.d/200-hardened.conf` (key-only, no root, keepalive 60s, AllowUsers mikefinneran)
+**tmux 3.6a + mosh 1.4.0:** Installed, mosh-server in firewall allow list
+**Tailscale v1.94.1:** Running — IP `100.68.51.83`, hostname `macbook-pro-2`
+**tmux.conf:** SSH indicator on status bar (line 42)
+**~/.zshrc:** Auto-attach tmux on remote login, `BROWSER=echo`, `ts-status`/`ts-ip` aliases
+**~/.local/bin/claude-tmux:** Session launcher (code + shell windows)
 
-**Security Fix**:
-- Removed DGX password from 4 CLAUDE.md files
-- Now uses: `ssh -i ~/.ssh/dgx_key mikefinneran@192.168.68.62`
-
-### 3. Created Project CLAUDE.md Files
-**Template**: `~/.claude/templates/PROJECT-CLAUDE-MD.md`
-
-**BladeMafia**: 96 lines - knife group-buy platform
-
-**WalterSignal** (9 new files):
-- waltersignal-crews, waltersignal-website, walterfetch-saas
-- walterfetch-mac, identity-graph, wa-messenger
-- socialflow, solopreneur-crm, claude-control-center
-
-### 4. Session Automation
-- SessionStart hook shows last session summary
-- Shell trap auto-saves on terminal close
-- `cc-save` alias for manual save
-- Memory MCP entities: WalterSignal, BladeMafia, DGX Server
+### Files Modified
+- `/etc/ssh/sshd_config.d/200-hardened.conf` — CREATED
+- `~/.tmux.conf` — line 42 (SSH indicator)
+- `~/.zshrc` — appended iPad Remote Access block
+- `~/.local/bin/claude-tmux` — CREATED
+- `~/.ssh/authorized_keys` — added Mac's own key
 
 ---
 
-## Active Projects
+## Pending Tasks (Apple Reminders → Claude Tasks)
 
-| Project | Status | Next Action |
-|---------|--------|-------------|
-| WalterSignal | Active | Lead enrichment work |
-| BladeMafia | Active | Vosteed seed data, shop page, polls |
+### iPad Remote Access (remaining manual steps)
+1. Full Disk Access: add sshd-keygen-wrapper + tmux in System Settings
+2. Install Tailscale + Blink Shell on iPad
+3. Generate iPad Ed25519 key, deploy to Mac authorized_keys
+4. Configure Blink Shell host (alias: mac, Mosh ON)
+5. Enable MagicDNS in Tailscale admin
+
+### Carried Forward
+- GTM Expert: Re-train with packing=False + 5 epochs
+- Lead Magnet Deploy — scp to DGX, fix nginx port, deploy site
+- EventFlow Instantly Launch — import CSV, configure, send
+- Deploy & test batch_enrich — scp to DGX, test --dry-run
+
+---
+
+## Rollback
+- SSH broken: `sudo rm /etc/ssh/sshd_config.d/200-hardened.conf && sudo launchctl stop com.openssh.sshd && sudo launchctl start com.openssh.sshd`
+- Mac overheating: `sudo pmset -c disablesleep 0`
+- tmux auto-attach unwanted: Remove iPad Remote Access block from ~/.zshrc
 
 ---
 
 ## Quick Resume
 
 ```
-Check WORKING-CONTEXT.md - what was I working on?
+iPad Remote Access: Mac-side fully configured. Tailscale 100.68.51.83 / macbook-pro-2.
+SSH hardened (key-only). tmux auto-attach on remote login. mosh installed.
+5 manual steps remain (Apple Reminders → Claude Tasks): Full Disk Access TCC,
+iPad apps, iPad SSH key, Blink Shell config, MagicDNS.
 ```
-
----
-
-## Files Changed Today
-- `~/.claude/CLAUDE.md` (v3.3)
-- `~/.claude/WORKING-CONTEXT.md`
-- `~/.claude/SESSION-GUIDE.md` (new)
-- `~/.claude/settings.json` (hooks)
-- `~/.claude/scripts/session-context-loader.sh` (new)
-- `~/.claude/scripts/op-wrapper.sh` (new)
-- `~/.claude/scripts/1password-auth.sh` (updated)
-- `~/.claude/templates/PROJECT-CLAUDE-MD.md` (new)
-- `~/Code/BladeMafia/CLAUDE.md` (new)
-- `~/Code/WalterSignal/*.CLAUDE.md` (9 new + 3 updated)
-- `~/.zshrc` (aliases: cc-save, op wrapper, exit trap)

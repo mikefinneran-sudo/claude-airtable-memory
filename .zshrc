@@ -21,11 +21,17 @@ alias obs-sync-email="python3 ~/Documents/ObsidianVault/.scripts/sync_gmail.py"
 alias obs-sync-cal="python3 ~/Documents/ObsidianVault/.scripts/sync_calendar.py"
 alias obs-sync-all="obs-sync-email && obs-sync-cal"
 
-# 1Password CLI Session Management (authenticate once per day)
-source ~/.claude/scripts/1password-session.sh 2>/dev/null
+# 1Password CLI Session Management - LAZY LOAD (don't auth at shell startup)
+# Auth happens when first op command runs or when Claude starts MCP servers
+# To manually auth: op-auth
 
-# Perplexity API Key (managed by 1Password)
-export PERPLEXITY_API_KEY="$(op read 'op://API_Keys/Perplexity Pro API/credential' 2>/dev/null)"
+# Perplexity API Key - lazy loaded (fetched on first use)
+perplexity_key() {
+    if [[ -z "$PERPLEXITY_API_KEY" ]]; then
+        export PERPLEXITY_API_KEY="$(op read 'op://API_Keys/Perplexity Pro API/credential' 2>/dev/null)"
+    fi
+    echo "$PERPLEXITY_API_KEY"
+}
 
 # Google Drive sync alias
 alias obs-sync-drive='~/Documents/ObsidianVault/.scripts/sync-documents-to-gdrive.sh'
@@ -108,10 +114,24 @@ alias scrape-js='python3 ~/.claude/scripts/scrape-url.py --js'
 alias scrape-proxy='python3 ~/.claude/scripts/scrape-url.py --proxy'
 
 # Chrome Debug Mode (for LinkedIn robot / Playwright)
-alias chrome-debug='/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome --remote-debugging-port=9222'
+alias chrome-debug='~/Code/WalterSignal/walterfetch-mac/start-chrome-debug.sh'
 
-# OpenRouter API Configuration (Added 2025-12-02)
-export OPENROUTER_API_KEY="$(op item get openrouter_api_key --fields credential 2>/dev/null || echo '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')"
+# OpenRouter API Key - lazy loaded (fetched on first use)
+openrouter_key() {
+    if [[ -z "$OPENROUTER_API_KEY" ]]; then
+        export OPENROUTER_API_KEY="$(op item get openrouter_api_key --fields credential 2>/dev/null)"
+    fi
+    echo "$OPENROUTER_API_KEY"
+}
+
+# Manual 1Password auth command - run after Claude starts to load API keys
+op-auth() {
+    echo "🔐 Authenticating 1Password and loading API keys..."
+    source ~/.claude/scripts/1password-session.sh
+    export PERPLEXITY_API_KEY="$(op read 'op://API_Keys/Perplexity Pro API/credential' 2>/dev/null)"
+    export OPENROUTER_API_KEY="$(op item get openrouter_api_key --fields credential 2>/dev/null)"
+    echo "✅ API keys loaded"
+}
 
 # Identity Graph monitoring
 alias ig-status="python ~/Documents/ObsidianVault/WalterSignal/Code/identity-graph/api_status.py"
@@ -129,3 +149,21 @@ trap claude_session_cleanup EXIT
 
 # 1Password CLI wrapper with auto-reauth
 alias op='~/.claude/scripts/op-wrapper.sh'
+# WalterFetch safety test
+alias wf-test='cd ~/Code/WalterSignal/walterfetch-mac/backend && python3 test_safety.py'
+
+# === iPad Remote Access ===
+# Auto-attach tmux on remote login (SSH and Mosh)
+# Detects "not local" instead of "is SSH" because Mosh doesn't set SSH_CONNECTION
+if [[ -z "$TMUX" ]] && [[ "$TERM_PROGRAM" != "iTerm.app" ]] && [[ "$TERM_PROGRAM" != "Apple_Terminal" ]]; then
+    tmux new-session -A -s main
+fi
+
+# Force URLs to print (not open invisible browser) in remote sessions
+if [[ -z "$TERM_PROGRAM" ]]; then
+    export BROWSER="echo"
+fi
+
+# Tailscale shortcuts
+alias ts-status='/Applications/Tailscale.app/Contents/MacOS/Tailscale status'
+alias ts-ip='/Applications/Tailscale.app/Contents/MacOS/Tailscale ip -4'
