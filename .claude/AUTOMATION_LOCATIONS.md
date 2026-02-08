@@ -11,12 +11,15 @@ ls ~/Library/LaunchAgents/
 
 **Active Automations:**
 - `com.mikefinneran.research-update.plist` - Perplexity research database update (daily midnight)
-- `com.mikefinneran.airtable-sync.plist` - Airtable sync
 - `com.lifehub.dailynote.plist` - Daily note with Calendar + Reminders (daily 7 AM)
 - `com.mikefinneran.task-router.plist` - Route Inbox tasks by tag (every 15 min)
 - `com.lifehub.weeklyreview.new.plist` - Weekly review
 - `com.lifehub.gdrive-sync.plist` - Google Drive sync
 - `com.flyflat.weeklyupdate.plist` - Fly Flat weekly update
+
+**Disabled (2026-02-07 — Airtable migration):**
+- `com.mikefinneran.airtable-sync.plist` - DISABLED: data migrated to SQLite
+- `com.mikefinneran.github-airtable-sync.plist` - DISABLED: no longer syncing to Airtable
 
 ### Cron (SECONDARY)
 ```bash
@@ -104,6 +107,24 @@ python3 "/Users/mikefinneran/Documents/ObsidianVault/Projects/Preplexity Pro Res
 - Claude Code: Use apple-reminders MCP
 
 **Logs:** `~/.claude/logs/task-router.log`
+
+---
+
+### WalterSignal News Updater
+**Script:** `/Users/mikefinneran/.claude/scripts/waltersignal-news-updater.py`
+
+**Schedule:** Daily at 12:30 AM (LaunchAgent — check for plist)
+
+**Manual Run:**
+```bash
+python3 ~/.claude/scripts/waltersignal-news-updater.py
+```
+
+**What it does:**
+- Fetches top 5 AI/GTM news via Perplexity API
+- Stores articles in SQLite (`~/Code/WalterSignal/walterfetch-v2/data/news.db`)
+- Exports to JSON and deploys to Lightsail (`/var/www/html/api/news.json`)
+- **Migrated from Airtable to SQLite on 2026-02-07**
 
 ---
 

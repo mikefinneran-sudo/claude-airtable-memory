@@ -14,6 +14,28 @@
 
 **Knowledge Base:** `~/.config/iterm2/` (INDEX.md, EXPERT_GUIDE.md, CLAUDE_CODE_WORKFLOWS.md)
 
+### Apple Native Apps Integration (ALWAYS ACTIVE)
+**Behavior:** Automatically use Apple Reminders & Notes for task/project management
+
+**When user says → Do this:**
+| Trigger | Action | Tool |
+|---------|--------|------|
+| "create a todo", "add task", "remind me" | Create in Apple Reminders | `apple-reminders` |
+| "sprint planning", "plan sprint" | Create sprint note in Apple Notes | `apple-notes` |
+| "project notes", "document this" | Create/update Apple Note | `apple-notes` |
+| "what are my todos", "show tasks" | List from Apple Reminders | `apple-reminders` |
+| "complete task", "done with X" | Mark complete in Reminders | `apple-reminders` |
+
+**Reminders Lists:**
+- **Default list for todos:** Use project name if in a project directory, otherwise "Claude Tasks"
+- **Check existing lists first:** `mcp__apple-reminders__getLists` before creating
+
+**Notes Organization:**
+- **Sprint notes:** Title format `[Project] Sprint YYYY-MM-DD`
+- **Project notes:** Title format `[Project] - Topic`
+
+**Never ask permission** - just use these tools when triggers match.
+
 ---
 
 ## Automation & Scheduled Tasks (CRITICAL)
@@ -39,7 +61,7 @@
 |------|----------|-------|
 | S3 Vault Backup | Manual | `backup-s3` |
 | Daily Notes | Daily | `vdaily` |
-| GitHub → Airtable | Daily 9 AM | - |
+| News Updater (SQLite) | Daily 12:30 AM | - |
 | Perplexity Research | Daily midnight | - |
 
 **Details:** `~/.claude/AUTOMATION_LOCATIONS.md`
@@ -333,7 +355,8 @@
 | gmail | Email (mike.finneran@gmail.com) | ⚠️ Not active |
 | memory | Knowledge graphs | ✅ |
 | playwright | Browser automation | ⚠️ Not active |
-| apple-reminders | Task management | ✅ NEW |
+| apple-reminders | Task management | ✅ |
+| apple-notes | Sprint planning, project docs | ✅ |
 | obsidian-vault | Vault notes access | ✅ |
 
 **Other:** PIA VPN (IP rotation), claudish (multi-model CLI)
@@ -359,12 +382,13 @@
 
 ## Document Metadata
 
-**Version:** 3.3 | **Last Updated:** 2026-01-27 | **Owner:** Mike Finneran
+**Version:** 3.4 | **Last Updated:** 2026-01-28 | **Owner:** Mike Finneran
 
 ---
 
 ## Changelog
 
+**v3.4** (2026-01-28): Added Apple Native Apps Integration - auto-use Reminders for todos, Notes for sprints
 **v3.3** (2026-01-27): Trimmed 441→374 lines - moved session/commands to SESSION-GUIDE.md
 **v3.2** (2026-01-27): Audit cleanup - removed project-specific content, clarified S3 paths
 **v3.1** (2026-01-21): Separated code from vault - ~/Code/ for code, vault for docs only

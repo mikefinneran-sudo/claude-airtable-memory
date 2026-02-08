@@ -10,6 +10,20 @@
           }
         ]
       }
+    ],
+    "PostToolUse": [
+      {
+        "matcher": {
+          "tool_name": "Bash"
+        },
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 ~/.claude/scripts/bugbot.py",
+            "timeout": 5
+          }
+        ]
+      }
     ]
   },
   "allowedTools": [
@@ -97,7 +111,6 @@
     "WebFetch(domain:josephthacker.com)",
     "Bash(source .env)",
     "Bash(export GOOGLE_SHEETS_ID=\"test-sheet-id-123\")",
-    "Bash(export WEBHOOK_SECRET=\"0ox5BIZ95cxDJJ7N9MJR11gKdUpUXI6xEOaBZ7RJIF0\")",
     "Bash(export PORT=\"5000\")",
     "Bash(export PORT=\"5001\")",
     "WebFetch(domain:lobehub.com)",
@@ -256,7 +269,8 @@
     "sentry@claude-plugins-official": true,
     "hookify@claude-plugins-official": true,
     "figma@claude-plugins-official": true,
-    "notion@claude-plugins-official": true
+    "notion@claude-plugins-official": true,
+    "swift-lsp@claude-plugins-official": true
   },
   "permissions": {
     "allow": [
@@ -276,7 +290,6 @@
       "Bash(supabase --version:*)",
       "Bash(brew install:*)",
       "Bash(supabase login:*)",
-      "Bash(# The Supabase connection string format for pooled connections: # postgresql://postgres.[project-ref]:[password]@aws-0-[region].pooler.supabase.com:6543/postgres # # For direct connections: # postgresql://postgres:[password]@db.[project-ref].supabase.co:5432/postgres # # Project ref: lnabwyviifqfwitwaher # We need to either: # 1. Use the database password \\(set during project creation\\) # 2. Reset it via API using service role key # Let''s check if we can use the Supabase API to get database info curl -s -X GET \"\"https://api.supabase.com/v1/projects\"\" \\\\ -H \"\"Authorization: Bearer sb_secret_KstlRN05FFyTmXF9fnQrLw_1Ce4vQHd\"\")",
       "Bash(brew services:*)",
       "Bash(psql:*)",
       "Bash(export PATH=\"/opt/homebrew/opt/postgresql@15/bin:$PATH\")",
@@ -285,27 +298,11 @@
       "Bash(xargs kill -9)",
       "Bash(uv add:*)",
       "Bash(redis-cli ping:*)",
-      "Bash(sshpass -p 'Wally9381' ssh:*)",
-      "Bash(sshpass:*)",
       "Bash(ssh-keyscan:*)",
-      "Bash(~/.ssh/known_hosts)",
-      "Bash(SSHPASS='Wally9381' sshpass -e ssh mikefinneran@192.168.68.62 \"echo ''Wally9381'' | sudo -S -p '''' pg_ctlcluster 16 main start\")",
-      "Bash(SSHPASS='Wally9381' sshpass -e ssh mikefinneran@192.168.68.62 \"cd ~/linkedin-outreach && python3 -m venv venv && source venv/bin/activate && pip install -r requirements.txt 2>&1 | tail -10\")",
-      "Bash(SSHPASS='Wally9381' sshpass -e ssh mikefinneran@192.168.68.62 \"cd ~/linkedin-outreach && source venv/bin/activate && export DATABASE_URL=''postgresql://linkedin_app:linkedin_secure_2026@localhost/linkedin_outreach'' && cd api && nohup python -m uvicorn main:app --host 0.0.0.0 --port 8004 > /tmp/linkedin_api.log 2>&1 &\")",
-      "Bash(SSHPASS='Wally9381' sshpass -e ssh mikefinneran@192.168.68.62 \"ps aux | grep uvicorn | grep -v grep\")",
-      "Bash(SSHPASS='Wally9381' sshpass -e ssh mikefinneran@192.168.68.62 \"cd ~/linkedin-outreach && source venv/bin/activate && export DATABASE_URL=''postgresql://linkedin_app:linkedin_secure_2026@localhost/linkedin_outreach'' && nohup bash -c ''cd api && python -m uvicorn main:app --host 0.0.0.0 --port 8004'' > /tmp/linkedin_api.log 2>&1 &\")",
-      "Bash(SSHPASS='Wally9381' sshpass -e ssh mikefinneran@192.168.68.62 \"cd ~ && npx create-next-app@latest linkedin-dashboard --typescript --tailwind --eslint --app --src-dir --no-import-alias --yes 2>&1 | tail -10\")",
-      "Bash(sshpass -p 'Wally9381' ssh mikefinneran@192.168.68.62 \"ps aux | grep -E ''walterfetch|uvicorn|celery'' | grep -v grep\")",
       "Bash(scp:*)",
       "Bash(osascript:*)",
       "Bash(curl:*)",
       "Bash(ping:*)",
-      "Bash(SSHPASS='Wally9381' sshpass -e ssh mikefinneran@192.168.68.62 \"cd ~/linkedin-dashboard && npm install swr lucide-react 2>&1 | tail -5\")",
-      "Bash(sshpass -p 'Wally9381' scp:*)",
-      "Bash(SSHPASS='Wally9381' sshpass -e ssh mikefinneran@192.168.68.62 \"mkdir -p ~/linkedin-dashboard/src/app/accounts ~/linkedin-dashboard/src/app/campaigns ~/linkedin-dashboard/src/app/inbox\")",
-      "Bash(SSHPASS='Wally9381' sshpass -e ssh mikefinneran@192.168.68.62 \"cd ~/linkedin-dashboard && npm run build 2>&1 | tail -20\")",
-      "Bash(SSHPASS='Wally9381' sshpass -e ssh mikefinneran@192.168.68.62 \"cd ~/linkedin-dashboard && nohup npm run start -- -p 3000 -H 0.0.0.0 > /tmp/dashboard.log 2>&1 &\")",
-      "Bash(SSHPASS='Wally9381' sshpass -e ssh mikefinneran@192.168.68.62 \"echo ''Wally9381'' | sudo -S -p '''' cp /tmp/linkedin-dashboard.service /etc/systemd/system/ && echo ''Wally9381'' | sudo -S -p '''' systemctl daemon-reload && echo ''Wally9381'' | sudo -S -p '''' systemctl enable linkedin-dashboard\")",
       "Bash(JOB_ID=\"90bfe97a-a32c-4f15-be44-5b7bfc07d584\")",
       "Bash(open \"https://oxylabs.io/products/static-residential-proxy\")",
       "Bash(open \"https://oxylabs.io/pricing/isp-proxies\")",
@@ -316,7 +313,6 @@
       "Bash(ssh:*)",
       "mcp__obsidian-vault__search_notes",
       "mcp__memory__search_nodes",
-      "Bash(sshpass -p 'Wally9381' ssh mikefinneran@192.168.68.62:*)",
       "Bash(op signin:*)",
       "Bash(op whoami:*)",
       "mcp__obsidian-vault__create_daily_note",

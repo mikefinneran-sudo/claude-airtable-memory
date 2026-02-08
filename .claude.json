@@ -1,50 +1,51 @@
 {
-  "numStartups": 264,
+  "numStartups": 318,
   "installMethod": "native",
   "autoUpdates": false,
   "hasSeenTasksHint": true,
   "tipsHistory": {
     "new-user-warmup": 7,
-    "plan-mode-for-complex-tasks": 253,
-    "terminal-setup": 260,
+    "plan-mode-for-complex-tasks": 314,
+    "terminal-setup": 310,
     "shift-enter": 161,
-    "memory-command": 257,
-    "theme-command": 263,
-    "status-line": 245,
+    "memory-command": 317,
+    "theme-command": 303,
+    "status-line": 295,
     "prompt-queue": 15,
-    "enter-to-steer-in-relatime": 263,
-    "todo-list": 263,
+    "enter-to-steer-in-relatime": 303,
+    "todo-list": 304,
     "# for memory": 200,
     "install-github-app": 177,
-    "drag-and-drop-images": 261,
-    "paste-images-mac": 258,
-    "double-esc-code-restore": 258,
-    "continue": 261,
-    "shift-tab": 261,
-    "image-paste": 263,
+    "drag-and-drop-images": 312,
+    "paste-images-mac": 309,
+    "double-esc-code-restore": 309,
+    "continue": 312,
+    "shift-tab": 312,
+    "image-paste": 304,
     "tab-toggle-thinking": 191,
     "ultrathink-keyword": 251,
-    "custom-agents": 257,
-    "permissions": 261,
-    "custom-commands": 257,
-    "git-worktrees": 257,
-    "shift-enter-setup": 262,
+    "custom-agents": 317,
+    "permissions": 312,
+    "custom-commands": 317,
+    "git-worktrees": 309,
+    "shift-enter-setup": 312,
     "ide-upsell-external-terminal": 239,
     "stickers-command": 246,
-    "default-permission-mode-config": 262,
-    "frontend-design-plugin": 261,
-    "rename-conversation": 254,
+    "default-permission-mode-config": 312,
+    "frontend-design-plugin": 316,
+    "rename-conversation": 314,
     "config-thinking-mode": 240,
-    "guest-passes": 264,
-    "desktop-app": 252,
-    "web-app": 252,
-    "mobile-app": 252,
-    "install-slack-app": 261,
+    "guest-passes": 316,
+    "desktop-app": 313,
+    "web-app": 313,
+    "mobile-app": 313,
+    "install-slack-app": 311,
     "btw-side-question": 233,
-    "vscode-command-install": 253,
-    "agent-flag": 256
+    "vscode-command-install": 290,
+    "agent-flag": 316,
+    "overage-promo": 316
   },
-  "promptQueueUseCount": 719928,
+  "promptQueueUseCount": 719965,
   "showExpandedTodos": true,
   "cachedStatsigGates": {
     "tengu_tool_pear": false,
@@ -110,11 +111,11 @@
       "color": ""
     },
     "tengu_permission_explainer": true,
-    "tengu_scratch": true,
+    "tengu_scratch": false,
     "tengu_log_segment_events": false,
     "tengu_log_datadog_events": true,
     "tengu_post_compact_survey": false,
-    "tengu_streaming_tool_execution2": false,
+    "tengu_streaming_tool_execution2": true,
     "enhanced_telemetry_beta": false,
     "tengu_vscode_review_upsell": false,
     "tengu_vscode_onboarding": false,
@@ -134,20 +135,34 @@
     "tengu_pr_status_cli": true,
     "tengu_marble_kite": false,
     "tengu_kv7_prompt_sort": false,
-    "tengu_cache_plum_violet": false,
-    "tengu_cork_m4q": false,
-    "tengu_plum_vx3": false,
+    "tengu_cache_plum_violet": true,
+    "tengu_cork_m4q": true,
+    "tengu_plum_vx3": true,
     "tengu_file_write_optimization": false,
     "tengu_compact_cache_prefix": true,
     "tengu_marble_anvil": true,
     "tengu_tst_kx7": false,
-    "tengu_coral_fern": false
+    "tengu_coral_fern": false,
+    "tengu_system_prompt_global_cache": false,
+    "tengu_workout": false,
+    "tengu_vinteuil_phrase": true,
+    "tengu_oboe": true,
+    "tengu_tst_names_in_messages": false,
+    "tengu_chomp_inflection": true,
+    "tengu_silver_lantern": true,
+    "tengu_copper_lantern": true,
+    "tengu_workout2": true,
+    "tengu_penguins_enabled": true,
+    "tengu_penguins_off": null,
+    "tengu_copper_lantern_config": {
+      "meridian": "2026-02-05T07:59:00Z"
+    }
   },
   "hasSeenStashHint": true,
   "firstStartTime": "2025-10-14T14:31:32.909Z",
   "userID": "d24e3861892a86d60e326608c56c358723873a5c6e31dd97fff6e214c7ef4f97",
   "sonnet45MigrationComplete": true,
-  "changelogLastFetched": 1769643337493,
+  "changelogLastFetched": 1770525259250,
   "autoUpdatesProtectedForNative": true,
   "claudeCodeFirstTokenDate": "2025-10-14T17:11:39.888582Z",
   "appleTerminalSetupInProgress": false,
@@ -156,7 +171,7 @@
   "hasCompletedOnboarding": true,
   "lastOnboardingVersion": "2.0.14",
   "hasOpusPlanDefault": false,
-  "lastReleaseNotesSeen": "2.1.22",
+  "lastReleaseNotesSeen": "2.1.37",
   "projects": {
     "/Users/mikefinneran": {
       "allowedTools": [],
@@ -165,6 +180,15 @@
         "figma": {
           "type": "http",
           "url": "https://mcp.figma.com/mcp"
+        },
+        "apple-notes": {
+          "type": "stdio",
+          "command": "npx",
+          "args": [
+            "-y",
+            "apple-notes-mcp"
+          ],
+          "env": {}
         }
       },
       "enabledMcpjsonServers": [],
@@ -184,17 +208,17 @@
       "hasCompletedProjectOnboarding": true,
       "exampleFilesGeneratedAt": 1768575693488,
       "lastTotalWebSearchRequests": 0,
-      "lastCost": 9.732035849999999,
-      "lastAPIDuration": 3184713,
-      "lastToolDuration": 2999864,
-      "lastDuration": 88221124,
-      "lastLinesAdded": 1100,
-      "lastLinesRemoved": 335,
-      "lastTotalInputTokens": 137644,
-      "lastTotalOutputTokens": 74886,
-      "lastTotalCacheCreationInputTokens": 646597,
-      "lastTotalCacheReadInputTokens": 11285384,
-      "lastSessionId": "3823b4cb-451a-41fd-b37e-879fc9c4f9bd",
+      "lastCost": 6.186775500000001,
+      "lastAPIDuration": 1211847,
+      "lastToolDuration": 741132,
+      "lastDuration": 20447913,
+      "lastLinesAdded": 444,
+      "lastLinesRemoved": 128,
+      "lastTotalInputTokens": 149675,
+      "lastTotalOutputTokens": 50721,
+      "lastTotalCacheCreationInputTokens": 312102,
+      "lastTotalCacheReadInputTokens": 5794324,
+      "lastSessionId": "eeb4394b-bed4-41f7-a479-1752c72c551c",
       "reactVulnerabilityCache": {
         "detected": false,
         "package": null,
@@ -202,27 +226,35 @@
         "version": null,
         "packageManager": null
       },
-      "lastAPIDurationWithoutRetries": 3184545,
+      "lastAPIDurationWithoutRetries": 1211755,
       "lastModelUsage": {
         "claude-haiku-4-5-20251001": {
-          "inputTokens": 128733,
-          "outputTokens": 29858,
-          "cacheReadInputTokens": 1136476,
-          "cacheCreationInputTokens": 189115,
+          "inputTokens": 147436,
+          "outputTokens": 4384,
+          "cacheReadInputTokens": 0,
+          "cacheCreationInputTokens": 0,
           "webSearchRequests": 0,
-          "costUSD": 0.6280643499999997
+          "costUSD": 0.16935599999999998
         },
-        "claude-opus-4-5-20251101": {
-          "inputTokens": 8911,
-          "outputTokens": 45028,
-          "cacheReadInputTokens": 10148908,
-          "cacheCreationInputTokens": 457482,
+        "claude-opus-4-6": {
+          "inputTokens": 148,
+          "outputTokens": 38152,
+          "cacheReadInputTokens": 5278745,
+          "cacheCreationInputTokens": 245099,
           "webSearchRequests": 0,
-          "costUSD": 9.1039715
+          "costUSD": 5.125781250000001
+        },
+        "claude-sonnet-4-5-20250929": {
+          "inputTokens": 2091,
+          "outputTokens": 8185,
+          "cacheReadInputTokens": 515579,
+          "cacheCreationInputTokens": 67003,
+          "webSearchRequests": 0,
+          "costUSD": 0.8916382499999999
         }
       },
-      "lastFpsAverage": 1.78,
-      "lastFpsLow1Pct": 78.55
+      "lastFpsAverage": 1.98,
+      "lastFpsLow1Pct": 151.19
     },
     "/Users/mikefinneran/Documents": {
       "allowedTools": [],
@@ -365,13 +397,13 @@
   },
   "fallbackAvailableWarningThreshold": 0.5,
   "feedbackSurveyState": {
-    "lastShownTime": 1769636578176
+    "lastShownTime": 1770502809528
   },
   "s1mAccessCache": {
     "e0ec3be9-bd96-466b-a6b8-713cf1258aa5": {
       "hasAccess": false,
       "hasAccessNotAsDefault": true,
-      "timestamp": 1769639030233
+      "timestamp": 1770565728573
     }
   },
   "isQualifiedForDataSharing": false,
@@ -380,12 +412,11 @@
     "accountUuid": "ad63787e-6d78-48e0-8ae6-bbd93699a1ac",
     "emailAddress": "mike.finneran@gmail.com",
     "organizationUuid": "e0ec3be9-bd96-466b-a6b8-713cf1258aa5",
-    "displayName": "Mike",
-    "organizationBillingType": "stripe_subscription",
-    "organizationRole": "admin",
-    "workspaceRole": null,
-    "organizationName": "mike.finneran@gmail.com's Organization",
-    "hasExtraUsageEnabled": false
+    "hasExtraUsageEnabled": true,
+    "billingType": "stripe_subscription",
+    "accountCreatedAt": "2025-06-28T20:41:56.325970Z",
+    "subscriptionCreatedAt": "2025-10-14T17:09:15.993517Z",
+    "displayName": "Mike"
   },
   "hasUsedBackslashReturn": true,
   "hasShownS1MWelcomeV2": {
@@ -414,6 +445,17 @@
         "/Users/mikefinneran/.mcp/apple-reminders-mcp/dist/index.js"
       ],
       "env": {}
+    },
+    "asana": {
+      "type": "stdio",
+      "command": "npx",
+      "args": [
+        "-y",
+        "@roychri/mcp-server-asana"
+      ],
+      "env": {
+        "ASANA_ACCESS_TOKEN": ""
+      }
     }
   },
   "passesEligibilityCache": {
@@ -425,7 +467,8 @@
         "referral_link": "https://claude.ai/referral/OAqSLq1oLQ"
       },
       "referrer_reward": null,
-      "timestamp": 1769639027238
+      "remaining_passes": 3,
+      "timestamp": 1770586998594
     }
   },
   "githubActionSetupCount": 1,
@@ -445,12 +488,12 @@
   },
   "officialMarketplaceAutoInstallAttempted": true,
   "officialMarketplaceAutoInstalled": true,
-  "passesUpsellSeenCount": 4,
+  "passesUpsellSeenCount": 3,
   "thinkingMigrationComplete": true,
   "groveConfigCache": {
     "ad63787e-6d78-48e0-8ae6-bbd93699a1ac": {
       "grove_enabled": true,
-      "timestamp": 1769639027906
+      "timestamp": 1770504518653
     }
   },
   "opusProMigrationComplete": true,
@@ -458,8 +501,31 @@
     "plan-feature": {
       "usageCount": 2,
       "lastUsedAt": 1769543285663
+    },
+    "research": {
+      "usageCount": 1,
+      "lastUsedAt": 1769786869782
+    },
+    "save-guide": {
+      "usageCount": 7,
+      "lastUsedAt": 1770567099271
+    },
+    "backlog": {
+      "usageCount": 1,
+      "lastUsedAt": 1770419406405
     }
   },
   "cachedChromeExtensionInstalled": false,
-  "lspRecommendationIgnoredCount": 1
+  "lspRecommendationIgnoredCount": 2,
+  "hasVisitedPasses": false,
+  "passesLastSeenRemaining": 3,
+  "clientDataCache": {
+    "data": {},
+    "timestamp": 1770319758514
+  },
+  "hasShownOpus46Notice": {
+    "e0ec3be9-bd96-466b-a6b8-713cf1258aa5": true
+  },
+  "penguinModeOrgEnabled": true,
+  "opus46FeedSeenCount": 154
 }

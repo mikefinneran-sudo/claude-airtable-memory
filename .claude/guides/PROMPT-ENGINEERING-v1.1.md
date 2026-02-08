@@ -305,4 +305,39 @@ This implements the "Rejection Loop Method" and is the elite standard for qualit
 
 ---
 
+## Phase 4: Output Quality — The OCEAN Framework
+
+When polishing final outputs (proposals, outreach, thought leadership, GTM content), validate against these 5 dimensions:
+
+| Dimension | Question | Fail Signal |
+|---|---|---|
+| **O**riginal | Does this say something only WE could say? | Generic, could be anyone's output |
+| **C**oncrete | Are there specific numbers, names, examples? | Vague, abstract, hand-wavy |
+| **E**vident | Is every claim backed by data or experience? | Unsupported assertions |
+| **A**ssertive | Does it take a clear stance? | Hedging, "it depends", wishy-washy |
+| **N**arrative | Does it tell a story with tension and resolution? | Bullet-point listicle with no arc |
+
+### Usage
+
+**As a self-check prompt (Phase 3, P2 rejection loop):**
+```
+Score this output 1-5 on each OCEAN dimension:
+- Original: Is this distinctive or generic?
+- Concrete: Are there specific examples and numbers?
+- Evident: Is every claim supported?
+- Assertive: Does it take a clear position?
+- Narrative: Does it flow as a story?
+
+Flag any dimension scoring below 3. Rewrite those sections only.
+```
+
+**As a Spotter Protocol prompt (critique YOUR work before sending):**
+```
+I wrote this [email/proposal/pitch]. Act as a skeptical [CTO/CFO/prospect].
+Critique my logic, identify weak arguments, and score on OCEAN.
+Do NOT rewrite — tell me what's wrong so I can fix it myself.
+```
+
+---
+
 *Reference this guide when delegating tasks to AI systems*
