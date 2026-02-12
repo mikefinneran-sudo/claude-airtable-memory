@@ -1,62 +1,100 @@
 # Working Context
 
-**Last Updated**: 2026-02-08
+**Last Updated**: 2026-02-11 (late night)
 
 ---
 
 ## Current Session
 
-**Project**: WalterFetch Mac — Code Review + Distribution Planning
-**Status**: Code review complete (16 fixes, commit `3abbeea`). Distribution/integration strategy needs research.
+**Project**: Ascend Top 5 Investor — Best Path In Analysis + Outreach Playbook
+**Status**: COMPLETED
 
 ---
 
-## What We Did (2026-02-08)
+## What We Did (2026-02-11, session 5)
 
-### WalterFetch Mac Code Review — COMPLETE
-- Implemented 16 fixes across 13 files (11 walterfetch-mac + 2 identity-graph)
-- Commit: `3abbeea`
-- **Critical:** SSL default context + per-URL fallback, asyncio.sleep, file handle lifecycle, Chrome sandbox restored
-- **High:** Settings singleton, CORS regex, cookie file perms (0o600), PII out of query params
-- **Medium:** Thread-safe lazy globals, datetime.now(timezone.utc), bare excepts typed, Swift fetch<T>() helper
-- **Low:** Breakeven label, template dedup, removed check_same_thread=False
-- Pre-commit fix: identity-graph YAML + removed detect-secrets hook (monorepo incompatible)
+### Top 5 Investor "Best Path In" Research
 
-### Distribution Strategy — NEEDS RESEARCH
-Client-facing WalterFetch Mac product requires decisions on:
-- Architecture: bundle Python vs hosted API vs Swift-native rewrite
-- Install method: notarized DMG vs TestFlight vs App Store
-- Integrations: HubSpot, Salesforce, Apollo/ZoomInfo, Zapier
+Analyzed `~/Desktop/ascend_top20_salesnav_2026-02-11.csv` — researched top 5 by rank score:
 
-### Task Reorganization — COMPLETE
-Parsed all Claude Tasks into 3 new Apple Reminders lists:
-- **Execute** (10 tasks) — quick actions, no decisions needed
-- **Expand** (10 tasks) — setup/config, clear path forward
-- **Evolve** (7 tasks) — multi-step, requires research/decisions
-- Originals still in Claude Tasks (completed ones still visible, MCP can't hide them)
+| # | Investor | Firm | Score | Verdict |
+|---|----------|------|-------|---------|
+| 1 | David Wachter | W Capital Partners | 90 | DEPRIORITIZE — secondary fund ($5M-$200M), wrong type entirely |
+| 2 | Jim Westmacott | Lighter Capital | 90 | DATA ISSUE — Jim not affiliated w/ Lighter. Lighter itself = apply online |
+| 3 | Mallun Yen | Operator Collective | 87 | STRONG FIT — $500K-$1.5M, B2B. Path: operator LP network |
+| 4 | James Gill | Alumni Ventures | 86 | GREAT FIT — $250K-$1M Seed Fund. Path: apply after lead secured |
+| 5 | Michele Romanow | Clearco | 82 | SKIP CLEARCO — target Michele as angel. Canadian tech connections |
+
+### Deliverable: Outreach Playbook XLSX
+
+**File:** `~/Desktop/ascend_top5_outreach_playbook_2026-02-11.xlsx`
+
+6 sheets:
+1. **Investor Profiles** — firm thesis, check size, fit assessment, priority (color-coded)
+2. **Best Path In** — ranked approach strategies, connections to map, first moves
+3. **Action Items** — 15 tasks, owners, status, due dates
+4. **Outreach Scripts** — full HeyReach sequences (warm intros, FO, syndicates, angels, RBF)
+5. **Reply Templates** — 7 scenarios (deck request, too early, not in thesis, etc.)
+6. **Campaign Settings** — sequence steps, limits, launch order, metrics/circuit breakers
+
+---
+
+## Earlier Today (2026-02-11)
+
+### Session 4: WalterFetch Sales Nav Bridge
+- `SalesNavImporter` class, import-salesnav endpoint, email_source DB column
+- Ranker fix: evaboot_verified scoring. All tests passed.
+
+### Session 3: Sales Nav Mapping
+- Built 54-lead list in Zach's Sales Nav ("1st Degree Connections")
+- Top 20 non-trad export: `~/Desktop/ascend_top20_salesnav_2026-02-11.csv`
+
+### Session 2: LinkedIn v2 + Lead Magnet Forms
+- LinkedIn copy + posts v2 rewritten
+- Lead magnet forms → Cloudflare → Airtable (deployed)
+
+### Session 1: GTM Execution
+- Positioning pivot, lead magnets rebuilt, GA4 added
 
 ---
 
 ## Pending Tasks
 
-All tasks now live in Apple Reminders (Execute / Expand / Evolve lists).
+### Immediate — Resume Next Session
+- [ ] **Execute playbook action items** — see XLSX Action Items tab (15 tasks)
+- [ ] **Apply to Lighter Capital** if Ascend has $200K+ ARR (URGENT)
+- [ ] **Map OpCo operator LPs** against LinkedIn 2nd-degree (Mallun Yen path)
+- [ ] **Map AV 23 alumni funds** against Ascend network (Alumni Ventures path)
+- [ ] **Find Canadian tech connection** to Michele Romanow
+- [ ] **Fix Zach's LinkedIn profile** per outreach checklist before any campaigns
+- [ ] **Fill outreach variables** (MRR, SAVINGS, CLIENTS, GROWTH, ROUND)
 
-### Not in Reminders
-- [ ] HuggingFace login on DGX → download FLUX-dev checkpoint
-- [ ] Test ComfyUI SDXL generation via API end-to-end
-- [ ] Lead Magnet Deploy — scp to DGX, fix nginx port, deploy site
-- [ ] Deploy & test batch_enrich — scp to DGX, test --dry-run
+### WalterFetch (Carry-Forward)
+- [ ] **Test Sales Nav import end-to-end** — get real Evaboot CSV
+- [ ] **Screenshot remaining 7 pages of Sales Nav list** → extract all 54 leads
+- [ ] **Phase 2: Phone enrichment** — deferred
+- [ ] **SMTP email verification** — or rely on Instantly's built-in
 
-### Phase 5 (Next Month)
-- UGREEN NAS DH2300 + 2x4TB IronWolf (~$370)
-- Setup RAID 1, Time Machine, S3 Hyper Backup
+### Week 1 Sprint (WalterSignal GTM)
+- [ ] Paste LinkedIn profile copy v2 (on Desktop)
+- [ ] Publish LinkedIn posts v2 (5 posts, order: 4→3→1→2→5)
+- [ ] Create Featured Slot 1 — need before/after case study
+
+### Carry-Forward
+- [ ] DDD v2 go-live — after Neil approval
+- [ ] Ascend parallel email sequence
+- [ ] Deploy & test batch_enrich on DGX
 
 ---
 
 ## Quick Resume
 
 ```
-Code review done (3abbeea, 16 fixes). Distribution strategy needs research.
-Tasks reorganized into Apple Reminders: Execute (10), Expand (10), Evolve (7).
-Originals still in Claude Tasks list — clean up manually when ready.
+Outreach playbook: ~/Desktop/ascend_top5_outreach_playbook_2026-02-11.xlsx
+Outreach scripts source: ~/Documents/ObsidianVault/[1] WalterSignal/Comms/ascend-investor-outreach.md
+Top 20 export: ~/Desktop/ascend_top20_salesnav_2026-02-11.csv
+WalterFetch backend: ~/Code/WalterSignal/walterfetch-mac/backend/
+LinkedIn copy v2: ~/Desktop/linkedin-profile-copy-2026-02-11.md
+LinkedIn posts v2: ~/Desktop/linkedin-posts-2026-02-11.md
+Lead magnets live: waltersignal.io/{audit,roi,checklist}.html
 ```

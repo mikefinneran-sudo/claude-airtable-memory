@@ -1,52 +1,51 @@
 {
-  "numStartups": 318,
+  "numStartups": 330,
   "installMethod": "native",
   "autoUpdates": false,
   "hasSeenTasksHint": true,
   "tipsHistory": {
     "new-user-warmup": 7,
-    "plan-mode-for-complex-tasks": 314,
-    "terminal-setup": 310,
+    "plan-mode-for-complex-tasks": 330,
+    "terminal-setup": 330,
     "shift-enter": 161,
     "memory-command": 317,
-    "theme-command": 303,
-    "status-line": 295,
+    "theme-command": 323,
+    "status-line": 320,
     "prompt-queue": 15,
-    "enter-to-steer-in-relatime": 303,
-    "todo-list": 304,
+    "enter-to-steer-in-relatime": 323,
+    "todo-list": 325,
     "# for memory": 200,
     "install-github-app": 177,
-    "drag-and-drop-images": 312,
-    "paste-images-mac": 309,
-    "double-esc-code-restore": 309,
-    "continue": 312,
-    "shift-tab": 312,
-    "image-paste": 304,
+    "drag-and-drop-images": 322,
+    "paste-images-mac": 329,
+    "double-esc-code-restore": 329,
+    "continue": 322,
+    "shift-tab": 322,
+    "image-paste": 325,
     "tab-toggle-thinking": 191,
     "ultrathink-keyword": 251,
     "custom-agents": 317,
-    "permissions": 312,
+    "permissions": 322,
     "custom-commands": 317,
-    "git-worktrees": 309,
-    "shift-enter-setup": 312,
+    "git-worktrees": 329,
+    "shift-enter-setup": 322,
     "ide-upsell-external-terminal": 239,
     "stickers-command": 246,
-    "default-permission-mode-config": 312,
-    "frontend-design-plugin": 316,
-    "rename-conversation": 314,
+    "default-permission-mode-config": 322,
+    "frontend-design-plugin": 328,
+    "rename-conversation": 329,
     "config-thinking-mode": 240,
-    "guest-passes": 316,
-    "desktop-app": 313,
-    "web-app": 313,
-    "mobile-app": 313,
-    "install-slack-app": 311,
+    "guest-passes": 328,
+    "desktop-app": 328,
+    "web-app": 328,
+    "mobile-app": 328,
+    "install-slack-app": 321,
     "btw-side-question": 233,
     "vscode-command-install": 290,
     "agent-flag": 316,
-    "overage-promo": 316
+    "overage-promo": 328
   },
-  "promptQueueUseCount": 719965,
-  "showExpandedTodos": true,
+  "promptQueueUseCount": 719970,
   "cachedStatsigGates": {
     "tengu_tool_pear": false,
     "tengu_disable_bypass_permissions_mode": false,
@@ -156,13 +155,16 @@
     "tengu_penguins_off": null,
     "tengu_copper_lantern_config": {
       "meridian": "2026-02-05T07:59:00Z"
-    }
+    },
+    "tengu_mcp_elicitation": false,
+    "tengu_snippet_save": false,
+    "tengu_bergotte_lantern": false
   },
   "hasSeenStashHint": true,
   "firstStartTime": "2025-10-14T14:31:32.909Z",
   "userID": "d24e3861892a86d60e326608c56c358723873a5c6e31dd97fff6e214c7ef4f97",
   "sonnet45MigrationComplete": true,
-  "changelogLastFetched": 1770525259250,
+  "changelogLastFetched": 1770773882780,
   "autoUpdatesProtectedForNative": true,
   "claudeCodeFirstTokenDate": "2025-10-14T17:11:39.888582Z",
   "appleTerminalSetupInProgress": false,
@@ -171,7 +173,7 @@
   "hasCompletedOnboarding": true,
   "lastOnboardingVersion": "2.0.14",
   "hasOpusPlanDefault": false,
-  "lastReleaseNotesSeen": "2.1.37",
+  "lastReleaseNotesSeen": "2.1.39",
   "projects": {
     "/Users/mikefinneran": {
       "allowedTools": [],
@@ -208,17 +210,17 @@
       "hasCompletedProjectOnboarding": true,
       "exampleFilesGeneratedAt": 1768575693488,
       "lastTotalWebSearchRequests": 0,
-      "lastCost": 6.186775500000001,
-      "lastAPIDuration": 1211847,
-      "lastToolDuration": 741132,
-      "lastDuration": 20447913,
-      "lastLinesAdded": 444,
-      "lastLinesRemoved": 128,
-      "lastTotalInputTokens": 149675,
-      "lastTotalOutputTokens": 50721,
-      "lastTotalCacheCreationInputTokens": 312102,
-      "lastTotalCacheReadInputTokens": 5794324,
-      "lastSessionId": "eeb4394b-bed4-41f7-a479-1752c72c551c",
+      "lastCost": 4.312551800000001,
+      "lastAPIDuration": 828518,
+      "lastToolDuration": 163498,
+      "lastDuration": 11717263,
+      "lastLinesAdded": 240,
+      "lastLinesRemoved": 131,
+      "lastTotalInputTokens": 36683,
+      "lastTotalOutputTokens": 41324,
+      "lastTotalCacheCreationInputTokens": 224396,
+      "lastTotalCacheReadInputTokens": 5614176,
+      "lastSessionId": "258de7db-c5b1-4e9c-96da-1bffbd8f1404",
       "reactVulnerabilityCache": {
         "detected": false,
         "package": null,
@@ -226,35 +228,36 @@
         "version": null,
         "packageManager": null
       },
-      "lastAPIDurationWithoutRetries": 1211755,
+      "lastAPIDurationWithoutRetries": 828472,
       "lastModelUsage": {
         "claude-haiku-4-5-20251001": {
-          "inputTokens": 147436,
-          "outputTokens": 4384,
-          "cacheReadInputTokens": 0,
-          "cacheCreationInputTokens": 0,
+          "inputTokens": 36587,
+          "outputTokens": 7455,
+          "cacheReadInputTokens": 604533,
+          "cacheCreationInputTokens": 115253,
           "webSearchRequests": 0,
-          "costUSD": 0.16935599999999998
+          "costUSD": 0.27838155000000003
         },
         "claude-opus-4-6": {
-          "inputTokens": 148,
-          "outputTokens": 38152,
-          "cacheReadInputTokens": 5278745,
-          "cacheCreationInputTokens": 245099,
+          "inputTokens": 96,
+          "outputTokens": 33869,
+          "cacheReadInputTokens": 5009643,
+          "cacheCreationInputTokens": 109143,
           "webSearchRequests": 0,
-          "costUSD": 5.125781250000001
-        },
-        "claude-sonnet-4-5-20250929": {
-          "inputTokens": 2091,
-          "outputTokens": 8185,
-          "cacheReadInputTokens": 515579,
-          "cacheCreationInputTokens": 67003,
-          "webSearchRequests": 0,
-          "costUSD": 0.8916382499999999
+          "costUSD": 4.034170250000001
         }
       },
-      "lastFpsAverage": 1.98,
-      "lastFpsLow1Pct": 151.19
+      "lastFpsAverage": 6.97,
+      "lastFpsLow1Pct": 146.49,
+      "lastSessionMetrics": {
+        "frame_duration_ms_count": 81620,
+        "frame_duration_ms_min": 0.196375000057742,
+        "frame_duration_ms_max": 65.57683299854398,
+        "frame_duration_ms_avg": 2.662658370237558,
+        "frame_duration_ms_p50": 2.5845414996147156,
+        "frame_duration_ms_p95": 4.021216050582006,
+        "frame_duration_ms_p99": 5.830018749618898
+      }
     },
     "/Users/mikefinneran/Documents": {
       "allowedTools": [],
@@ -397,13 +400,13 @@
   },
   "fallbackAvailableWarningThreshold": 0.5,
   "feedbackSurveyState": {
-    "lastShownTime": 1770502809528
+    "lastShownTime": 1770842179215
   },
   "s1mAccessCache": {
     "e0ec3be9-bd96-466b-a6b8-713cf1258aa5": {
       "hasAccess": false,
       "hasAccessNotAsDefault": true,
-      "timestamp": 1770565728573
+      "timestamp": 1770853080511
     }
   },
   "isQualifiedForDataSharing": false,
@@ -468,7 +471,7 @@
       },
       "referrer_reward": null,
       "remaining_passes": 3,
-      "timestamp": 1770586998594
+      "timestamp": 1770853073416
     }
   },
   "githubActionSetupCount": 1,
@@ -493,7 +496,7 @@
   "groveConfigCache": {
     "ad63787e-6d78-48e0-8ae6-bbd93699a1ac": {
       "grove_enabled": true,
-      "timestamp": 1770504518653
+      "timestamp": 1770853078263
     }
   },
   "opusProMigrationComplete": true,
@@ -507,8 +510,8 @@
       "lastUsedAt": 1769786869782
     },
     "save-guide": {
-      "usageCount": 7,
-      "lastUsedAt": 1770567099271
+      "usageCount": 9,
+      "lastUsedAt": 1770830023109
     },
     "backlog": {
       "usageCount": 1,
@@ -527,5 +530,6 @@
     "e0ec3be9-bd96-466b-a6b8-713cf1258aa5": true
   },
   "penguinModeOrgEnabled": true,
-  "opus46FeedSeenCount": 154
+  "opus46FeedSeenCount": 511,
+  "showSpinnerTree": false
 }

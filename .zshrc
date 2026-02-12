@@ -153,9 +153,9 @@ alias op='~/.claude/scripts/op-wrapper.sh'
 alias wf-test='cd ~/Code/WalterSignal/walterfetch-mac/backend && python3 test_safety.py'
 
 # === iPad Remote Access ===
-# Auto-attach tmux on remote login (SSH and Mosh)
-# Detects "not local" instead of "is SSH" because Mosh doesn't set SSH_CONNECTION
-if [[ -z "$TMUX" ]] && [[ "$TERM_PROGRAM" != "iTerm.app" ]] && [[ "$TERM_PROGRAM" != "Apple_Terminal" ]]; then
+# Auto-attach tmux on remote login (SSH and Mosh only)
+# Only activate when SSH_CONNECTION or MOSH are set — never on local terminals
+if [[ -z "$TMUX" ]] && [[ -n "$SSH_CONNECTION" || -n "$MOSH" ]]; then
     tmux new-session -A -s main
 fi
 
