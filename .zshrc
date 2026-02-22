@@ -155,7 +155,7 @@ alias wf-test='cd ~/Code/WalterSignal/walterfetch-mac/backend && python3 test_sa
 # === iPad Remote Access ===
 # Auto-attach tmux on remote login (SSH and Mosh only)
 # Only activate when SSH_CONNECTION or MOSH are set — never on local terminals
-if [[ -z "$TMUX" ]] && [[ -n "$SSH_CONNECTION" || -n "$MOSH" ]]; then
+if [[ -z "$TMUX" ]] && [[ -n "$SSH_CONNECTION" || -n "$MOSH" ]] && [[ -z "$TERM_PROGRAM" ]]; then
     tmux new-session -A -s main
 fi
 
@@ -167,3 +167,13 @@ fi
 # Tailscale shortcuts
 alias ts-status='/Applications/Tailscale.app/Contents/MacOS/Tailscale status'
 alias ts-ip='/Applications/Tailscale.app/Contents/MacOS/Tailscale ip -4'
+
+# NAS (UGREEN DH2300 IronWolf)
+alias mount-nas='~/.claude/scripts/mount-nas.sh'
+alias nas-space='df -h ~/NAS 2>/dev/null || echo "NAS not mounted. Run: mount-nas"'
+alias backup-status='~/.claude/scripts/backup-status.sh'
+alias archive-project='~/.claude/scripts/archive-project.sh'
+alias archive-client='~/.claude/scripts/archive-client-file.sh'
+alias context-check='~/.claude/scripts/context-check.sh'
+alias nas-files='open ~/NAS/files/'
+alias nas-imports='open ~/NAS/cloud-imports/'

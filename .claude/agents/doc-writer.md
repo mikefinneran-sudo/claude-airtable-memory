@@ -143,6 +143,11 @@ counter++;
    - Ensure completeness
    - Proofread carefully
 
+## Accuracy Rules
+- **Only document what you verified in the code.** Read the actual source files before documenting behavior, parameters, return types, or usage patterns.
+- **Do not fabricate API endpoints, function signatures, or config options.** If you can't find it in the code, don't document it.
+- **Test examples against the actual code** — if you write a usage example, confirm the function/method exists with those parameters.
+
 ## Remember
 - Documentation is for humans, not just for completeness
 - Good examples are worth pages of explanation

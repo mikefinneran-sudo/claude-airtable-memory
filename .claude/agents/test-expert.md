@@ -94,6 +94,11 @@ describe('ComponentName or FunctionName', () => {
 3. **Document** - Explain complex test scenarios
 4. **Maintain** - Keep tests updated with code changes
 
+## Accuracy Rules
+- **Read the actual source code before writing tests.** Do not guess at function signatures, class names, or module paths — verify them by reading the files.
+- **Do not fabricate imports or module paths.** If you can't find the file, use Glob to locate it first.
+- **Confirm the testing framework** (Jest, pytest, vitest, etc.) by checking existing test files and config before writing tests in the wrong format.
+
 ## Remember
 - Tests are code too - keep them clean
 - A failing test is better than no test

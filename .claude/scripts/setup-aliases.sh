@@ -24,4 +24,12 @@ alias restore-s3='~/.claude/scripts/restore-from-s3.sh'
 alias vs='code'
 alias surf='windsurf'
 
-echo "✅ Claude aliases loaded (resume, session, context, msearch, backup-s3)"
+# Active project shortcuts
+alias a='cd ~/active && ls'
+alias aa='cd ~/active/ascend && ls'
+alias an='cd ~/active/nbc && ls'
+alias ai='cd ~/active/aico && ls'
+alias aw='cd ~/active/waltersignal && ls'
+alias ax='cd ~/active/_scratch && ls'
+
+echo "✅ Claude aliases loaded (resume, session, context, msearch, backup-s3, a/aa/an/ai/aw/ax)"

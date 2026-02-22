@@ -2,18 +2,6 @@
 
 ## Core Operating Principles
 
-### iTerm2 Integration (ALWAYS ACTIVE)
-**Terminal:** iTerm2 (expert-level knowledge)
-**Behavior:** Automatically integrate terminal optimization into ALL responses
-- Suggest split panes when monitoring multiple things
-- Offer triggers for repetitive checks
-- Create dynamic profiles for new projects
-- Use shell integration features proactively
-- Set up alerts for long operations
-- Never wait to be asked - offer improvements naturally
-
-**Knowledge Base:** `~/.config/iterm2/` (INDEX.md, EXPERT_GUIDE.md, CLAUDE_CODE_WORKFLOWS.md)
-
 ### Apple Native Apps Integration (ALWAYS ACTIVE)
 **Behavior:** Automatically use Apple Reminders & Notes for task/project management
 
@@ -54,17 +42,7 @@
 
 ### Reference Document
 **Location:** `~/.claude/AUTOMATION_LOCATIONS.md`
-**Contains:** All scheduled tasks, script locations, manual run commands
-
-### Known Automations:
-| Task | Schedule | Alias |
-|------|----------|-------|
-| S3 Vault Backup | Manual | `backup-s3` |
-| Daily Notes | Daily | `vdaily` |
-| News Updater (SQLite) | Daily 12:30 AM | - |
-| Perplexity Research | Daily midnight | - |
-
-**Details:** `~/.claude/AUTOMATION_LOCATIONS.md`
+**Contains:** All scheduled tasks, plist names, script locations, manual run commands, and logs.
 
 **NEVER build new automation tools without checking existing ones first.**
 
@@ -76,28 +54,12 @@
 - **Primary Email**: mike.finneran@gmail.com
 - **Work Email**: fly-flat.com account (do NOT use unless explicitly directed)
 
-## Current Week Focus
-
-**Week of**: 2026-01-27 (Week 5)
-**Primary Focus**: CLAUDE.md audit & lead enrichment
-**Status**: System cleanup complete, CLAUDE.md audit in progress
-**Completed**:
-- [x] Separated code from vault (2026-01-22)
-- [x] Created vault purity checks
-- [x] CLAUDE.md audit - removed project-specific content
-**Next Actions**:
-- [ ] Continue lead enrichment work
-- [ ] Focus on active client projects
-
----
-
 ## Context Loading Priority
 
 **When context window is limited, load in this order:**
-1. User Profile & Current Week Focus (critical)
+1. User Profile (critical)
 2. Active project details (high priority)
 3. Tool usage guidelines (medium)
-4. iTerm2 integration (low - reference as needed)
 
 **Token Budget Guidelines:**
 - CLAUDE.md: Keep under 5000 tokens (~600 lines max)
@@ -115,14 +77,38 @@
 
 ## Default File Locations
 
-### CRITICAL: Code vs Documents Separation
-**Code lives in:** `~/Code/` (organized by project)
-**Documents live in:** `~/Documents/ObsidianVault/` (docs, media, notes)
+### CRITICAL: Three-Way Separation
+**Code repos** → `~/Code/` (git repos, npm, venvs)
+**Active work** → `~/active/{client}/` (deliverables, scripts, research, xlsx — symlinked on Desktop)
+**Archive** → `~/Documents/ObsidianVault/` (finished docs, notes, reference — NOT active work)
 
-**NEVER put code in the vault:**
-- No `node_modules`, `venv`, `.next`, `__pycache__` in vault
-- No `.claude` folders in vault (Claude Code creates these - delete if found)
-- If you find code in the vault, move it to `~/Code/`
+**NEVER put code in the vault.** No `node_modules`, `venv`, `.next`, `__pycache__`.
+**Write ALL new files to `~/Desktop/Daily Working Files/`** (except downloads). Never write directly to `~/active/{client}/` — files go to the inbox first, get sorted when user asks.
+
+### Daily Working Files (`~/Desktop/Daily Working Files/`)
+The daily inbox. All new files land here first. Contains symlinks to project folders:
+```
+~/Desktop/Daily Working Files/
+├── Ascend/        → ~/active/ascend/
+├── NBC/           → ~/active/nbc/
+├── AICO/          → ~/active/aico/
+├── WalterSignal/  → ~/active/waltersignal/
+├── BladeMafia/    → ~/active/blademafia/
+├── Scratch/       → ~/active/_scratch/
+└── (unsorted files — Claude sorts these)
+```
+New client = `mkdir ~/active/{name} && ln -s ~/active/{name} ~/Desktop/Daily\ Working\ Files/{Name}`.
+
+### Daily File Sort (Claude does this when asked)
+When user says "sort files" or "clean up", check for loose files in `~/Desktop/Daily Working Files/` and sort:
+- `ascend`, `flyflat`, `intro_map`, `investor` → Ascend/
+- `nbc`, `north_branch`, `manufacturing` → NBC/
+- `aico` → AICO/
+- `waltersignal`, `electrotek`, `kraft`, `briscoe`, `geisleman` → WalterSignal/
+- `blade`, `knife`, `bladeshow` → BladeMafia/
+- Screenshots → Scratch/
+- Unknown → ask user
+**Show sort plan first, move after confirmation.**
 
 ### Code Directory (`~/Code/`)
 ```
@@ -145,14 +131,18 @@
 - **Airtable**: Client tracking, data tables
 - **S3**: Cloud backup to `s3://mikefinneran-personal/obsidian-vault-backup/`
 
-### Backup Strategy (3-Tier)
-1. **Local**: ObsidianVault (`~/Documents/ObsidianVault/`) + git
-2. **DGX External**: `rsync` to external drive on DGX (192.168.68.62)
-3. **S3 Cloud**: `s3://mikefinneran-personal/obsidian-vault-backup/`
+### Backup Strategy (3-2-1 Rule)
+1. **NAS** (local hub): UGREEN DH2300 at `192.168.68.70` — automated rsync + Time Machine
+   - `/Volumes/IronWolf-Backups` — code (hourly), vault (15 min), configs (daily), desktop (daily)
+   - `/Volumes/IronWolf-Archives` — projects, clients, media, exports (manual)
+   - Time Machine → `timemachine` share (hourly, automatic)
+2. **Git/GitHub**: `~/Code/` repos pushed to GitHub (daily auto-push + manual)
+3. **S3 Cloud** (offsite): NAS → S3 weekly (vault + configs, STANDARD_IA)
+   - `s3://mikefinneran-personal/obsidian-vault-backup/`
+   - `s3://mikefinneran-personal/claude-backups/`
 
-**Commands:**
-- S3: `aws s3 sync ~/Documents/ObsidianVault/ s3://mikefinneran-personal/obsidian-vault-backup/`
-- DGX: `rsync -avz ~/Documents/ObsidianVault/ mikefinneran@192.168.68.62:/mnt/external/obsidian-backup/`
+**Quick commands:** `mount-nas`, `backup-status`, `nas-space`, `archive-project`, `archive-client`
+**Details:** `~/.claude/AUTOMATION_LOCATIONS.md`
 
 ## Command Auto-Approval
 
@@ -173,10 +163,20 @@
 - Maintain clean, organized structure
 
 ### File Naming Convention
-- Format: `YYYY-MM-DD - Description or Title - Version Number`
-- Example: `2025-10-16 - Sales Organization Growth Strategy - v1`
-- Increment version numbers instead of creating new file names
-- README files should reference original project name
+Files live in `~/active/{client}/` so the folder IS the client context. No client prefix needed.
+
+| Type | Pattern | Example |
+|------|---------|---------|
+| Deliverable | `{what}_v{n}_{date}.xlsx` | `intro_map_8plus_v3_2026-02-19.xlsx` |
+| Build script | `build_{what}_v{n}.py` | `build_intro_map_v3.py` |
+| Research | `{topic}_{date}.md` | `connector_research_2026-02-19.md` |
+| Reference | `{description}.{ext}` | `investor_targets_reranked.xlsx` |
+
+**Rules:**
+- Increment version, don't create new filenames
+- Date = delivery/creation date, `YYYY-MM-DD`
+- Lowercase, underscores, no spaces
+- Scratch files: anything goes — they're in `_scratch/`
 
 ### Development Workflow
 1. **Explore** → Read relevant files, understand architecture before coding
@@ -309,14 +309,6 @@
 
 ---
 
-## iTerm2 Expertise
-
-**Docs:** `~/.config/iterm2/` (EXPERT_GUIDE.md, CLAUDE_CODE_WORKFLOWS.md, QUICK_REFERENCE.md)
-**Capabilities:** Shell integration, Python API, triggers, dynamic profiles, tmux, split panes
-**Behavior:** Automatically suggest iTerm2 optimizations during development work
-
----
-
 ## Tools & Integrations
 
 ### Claude Code Plugins (✅ = Installed)
@@ -382,17 +374,18 @@
 
 ## Document Metadata
 
-**Version:** 3.4 | **Last Updated:** 2026-01-28 | **Owner:** Mike Finneran
+**Version:** 3.6 | **Last Updated:** 2026-02-13 | **Owner:** Mike Finneran
 
 ---
 
 ## Changelog
 
+**v3.6** (2026-02-13): Context audit — removed stale sections, deduped automation table, trimmed ~30 lines
+**v3.5** (2026-02-12): NAS backup system (UGREEN DH2300) — 6 LaunchAgents, 3-2-1 backup strategy
 **v3.4** (2026-01-28): Added Apple Native Apps Integration - auto-use Reminders for todos, Notes for sprints
 **v3.3** (2026-01-27): Trimmed 441→374 lines - moved session/commands to SESSION-GUIDE.md
 **v3.2** (2026-01-27): Audit cleanup - removed project-specific content, clarified S3 paths
 **v3.1** (2026-01-21): Separated code from vault - ~/Code/ for code, vault for docs only
-**Full history:** `~/.claude/CHANGELOG-ARCHIVE.md`
 
 ---
 *Automatically loaded by Claude Code on every session*

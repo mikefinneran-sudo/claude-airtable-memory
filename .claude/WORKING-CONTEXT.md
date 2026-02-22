@@ -1,100 +1,63 @@
 # Working Context
 
-**Last Updated**: 2026-02-11 (late night)
+**Last Updated**: 2026-02-22
 
 ---
 
 ## Current Session
 
-**Project**: Ascend Top 5 Investor — Best Path In Analysis + Outreach Playbook
-**Status**: COMPLETED
+**Project**: Elite EA — Streamlit Web Dashboard
+**Status**: COMPLETE. Dashboard live at localhost:8502.
 
 ---
 
-## What We Did (2026-02-11, session 5)
+## What We Did (2026-02-22, Session 92)
 
-### Top 5 Investor "Best Path In" Research
-
-Analyzed `~/Desktop/ascend_top20_salesnav_2026-02-11.csv` — researched top 5 by rank score:
-
-| # | Investor | Firm | Score | Verdict |
-|---|----------|------|-------|---------|
-| 1 | David Wachter | W Capital Partners | 90 | DEPRIORITIZE — secondary fund ($5M-$200M), wrong type entirely |
-| 2 | Jim Westmacott | Lighter Capital | 90 | DATA ISSUE — Jim not affiliated w/ Lighter. Lighter itself = apply online |
-| 3 | Mallun Yen | Operator Collective | 87 | STRONG FIT — $500K-$1.5M, B2B. Path: operator LP network |
-| 4 | James Gill | Alumni Ventures | 86 | GREAT FIT — $250K-$1M Seed Fund. Path: apply after lead secured |
-| 5 | Michele Romanow | Clearco | 82 | SKIP CLEARCO — target Michele as angel. Canadian tech connections |
-
-### Deliverable: Outreach Playbook XLSX
-
-**File:** `~/Desktop/ascend_top5_outreach_playbook_2026-02-11.xlsx`
-
-6 sheets:
-1. **Investor Profiles** — firm thesis, check size, fit assessment, priority (color-coded)
-2. **Best Path In** — ranked approach strategies, connections to map, first moves
-3. **Action Items** — 15 tasks, owners, status, due dates
-4. **Outreach Scripts** — full HeyReach sequences (warm intros, FO, syndicates, angels, RBF)
-5. **Reply Templates** — 7 scenarios (deck request, too early, not in thesis, etc.)
-6. **Campaign Settings** — sequence steps, limits, launch order, metrics/circuit breakers
+### Elite EA — Streamlit Dashboard (Phase 7)
+- **Created** `~/Code/WalterSignal/eliteea/dashboard.py` (~280 lines) — full Streamlit dashboard with 6 sections: Hero greeting, Priority Actions, Email Inbox (interactive archive/star/mark-read), Calendar, Tasks (interactive checkboxes + add), Comms Summary (Slack)
+- **Created** `.streamlit/config.toml` — dark theme (blue accent #4A9EFF)
+- **Modified** `src/comms/email_manager.py` — added `account_name` field to `EmailSummary` dataclass, set in `triage_inbox()` loop
+- **Modified** `requirements.txt` — added `streamlit>=1.33.0`
+- **Gotcha**: Port 8501 taken by PyroCalc (SplitDecision). Dashboard runs on port 8502.
+- **Run**: `cd ~/Code/WalterSignal/eliteea && source scripts/env-loader.sh .venv/bin/streamlit run dashboard.py --server.port 8502`
 
 ---
 
-## Earlier Today (2026-02-11)
+## What We Did (2026-02-22, Session 91)
 
-### Session 4: WalterFetch Sales Nav Bridge
-- `SalesNavImporter` class, import-salesnav endpoint, email_source DB column
-- Ranker fix: evaboot_verified scoring. All tests passed.
-
-### Session 3: Sales Nav Mapping
-- Built 54-lead list in Zach's Sales Nav ("1st Degree Connections")
-- Top 20 non-trad export: `~/Desktop/ascend_top20_salesnav_2026-02-11.csv`
-
-### Session 2: LinkedIn v2 + Lead Magnet Forms
-- LinkedIn copy + posts v2 rewritten
-- Lead magnet forms → Cloudflare → Airtable (deployed)
-
-### Session 1: GTM Execution
-- Positioning pivot, lead magnets rebuilt, GA4 added
+### SplitDecision — Dark Mode Toggle + Rename
+- Dark mode toggle in header bar (query param approach), renamed from PyroCalc to SplitDecision, deployed to Lightsail.
+- Live at waltersignal.io/pyrocalc/
 
 ---
 
-## Pending Tasks
+## What We Did (2026-02-22, Session 90)
 
-### Immediate — Resume Next Session
-- [ ] **Execute playbook action items** — see XLSX Action Items tab (15 tasks)
-- [ ] **Apply to Lighter Capital** if Ascend has $200K+ ARR (URGENT)
-- [ ] **Map OpCo operator LPs** against LinkedIn 2nd-degree (Mallun Yen path)
-- [ ] **Map AV 23 alumni funds** against Ascend network (Alumni Ventures path)
-- [ ] **Find Canadian tech connection** to Michele Romanow
-- [ ] **Fix Zach's LinkedIn profile** per outreach checklist before any campaigns
-- [ ] **Fill outreach variables** (MRR, SAVINGS, CLIENTS, GROWTH, ROUND)
+### Elite EA — Phase 6 Complete
+- EmailBot OAuth fixed, Gmail connected (4,429 unread). WalterBot phone added. Standalone Slack bot retired.
 
-### WalterFetch (Carry-Forward)
-- [ ] **Test Sales Nav import end-to-end** — get real Evaboot CSV
-- [ ] **Screenshot remaining 7 pages of Sales Nav list** → extract all 54 leads
-- [ ] **Phase 2: Phone enrichment** — deferred
-- [ ] **SMTP email verification** — or rely on Instantly's built-in
+---
 
-### Week 1 Sprint (WalterSignal GTM)
-- [ ] Paste LinkedIn profile copy v2 (on Desktop)
-- [ ] Publish LinkedIn posts v2 (5 posts, order: 4→3→1→2→5)
-- [ ] Create Featured Slot 1 — need before/after case study
+## Next Steps
 
-### Carry-Forward
-- [ ] DDD v2 go-live — after Neil approval
-- [ ] Ascend parallel email sequence
-- [ ] Deploy & test batch_enrich on DGX
+### Ascend (Immediate)
+- [ ] SalesNav pull for all 22 PASS firms (manual — needs Zach's account)
+- [ ] Email enrichment via Clay for connectors missing emails
+- [ ] Send REVIEW list to Zach (8 firms, especially Left Lane Capital)
+- [ ] Swap contacts for K5 Global (→ Keenan Rice) and Maveron (→ Natalie Dillon)
+- [ ] Build .xlsx deliverable using build script template after SalesNav data
+
+### Other (Carry-Forward)
+- [ ] Briscoe: Review overhaul plan + deck
+- [ ] NBC: Send cover email + 3 .xlsx to TJ Gaul
+- [ ] ElectroTek: Deploy website to Cloudflare Pages
 
 ---
 
 ## Quick Resume
 
 ```
-Outreach playbook: ~/Desktop/ascend_top5_outreach_playbook_2026-02-11.xlsx
-Outreach scripts source: ~/Documents/ObsidianVault/[1] WalterSignal/Comms/ascend-investor-outreach.md
-Top 20 export: ~/Desktop/ascend_top20_salesnav_2026-02-11.csv
-WalterFetch backend: ~/Code/WalterSignal/walterfetch-mac/backend/
-LinkedIn copy v2: ~/Desktop/linkedin-profile-copy-2026-02-11.md
-LinkedIn posts v2: ~/Desktop/linkedin-posts-2026-02-11.md
-Lead magnets live: waltersignal.io/{audit,roi,checklist}.html
+Session 92: Elite EA Streamlit dashboard built + running on port 8502.
+dashboard.py, .streamlit/config.toml, email_manager.py updated, requirements.txt updated.
+Source: ~/Code/WalterSignal/eliteea/dashboard.py
 ```

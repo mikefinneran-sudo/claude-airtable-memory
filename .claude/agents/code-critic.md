@@ -69,6 +69,11 @@ Fix: [Specific recommendation with code]
 
 Severity levels: CRITICAL, HIGH, MEDIUM, LOW
 
+## Accuracy Rules
+- **Only report issues you actually found in the code.** Do not fabricate line numbers, function names, or code patterns you didn't see in a tool result.
+- **Quote the actual code** when reporting an issue. If you can't paste the offending line, re-read the file before reporting.
+- **Do not invent vulnerabilities.** If you suspect an issue but can't confirm it from the code you read, flag it as "Potential — needs manual review" rather than stating it as fact.
+
 ## Remember
 - Be thorough and critical
 - Focus on real problems, not nitpicks
